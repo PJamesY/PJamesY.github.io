@@ -12,17 +12,17 @@
     
         <meta name="keywords" content>
     
-    <meta name="description" content="1. MLE(Maximum Liklihood Estimation) 최대가능도 &amp;lt;font size=”4.5”, color=’orange’&amp;gt;Notation   $D$ : Data (관측한(Observed) 데이터) $\theta$ : parameter (확률) $H$ : 앞면이 나온 횟수 $T$ : 뒷면이 나온 횟수   Maximum Likeliho">
+    <meta name="description" content="1. MLE(Maximum Liklihood Estimation) 최대가능도 Notation   $D$ : Data (관측한(Observed) 데이터) $\theta$ : parameter (확률)&amp;lt;/font&amp;gt; $H$ : 앞면이 나온 횟수 $T$ : 뒷면이 나온 횟수   Maximum Likelihood Estimation (MLE) of $\t">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MLE MAP">
 <meta property="og:url" content="http://progresivoJS.github.io/2019/03/29/MLE-MAP/index.html">
 <meta property="og:site_name" content="James Blog">
-<meta property="og:description" content="1. MLE(Maximum Liklihood Estimation) 최대가능도 &amp;lt;font size=”4.5”, color=’orange’&amp;gt;Notation   $D$ : Data (관측한(Observed) 데이터) $\theta$ : parameter (확률) $H$ : 앞면이 나온 횟수 $T$ : 뒷면이 나온 횟수   Maximum Likeliho">
+<meta property="og:description" content="1. MLE(Maximum Liklihood Estimation) 최대가능도 Notation   $D$ : Data (관측한(Observed) 데이터) $\theta$ : parameter (확률)&amp;lt;/font&amp;gt; $H$ : 앞면이 나온 횟수 $T$ : 뒷면이 나온 횟수   Maximum Likelihood Estimation (MLE) of $\t">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-03-29T06:17:51.703Z">
+<meta property="og:updated_time" content="2019-03-29T06:27:38.886Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MLE MAP">
-<meta name="twitter:description" content="1. MLE(Maximum Liklihood Estimation) 최대가능도 &amp;lt;font size=”4.5”, color=’orange’&amp;gt;Notation   $D$ : Data (관측한(Observed) 데이터) $\theta$ : parameter (확률) $H$ : 앞면이 나온 횟수 $T$ : 뒷면이 나온 횟수   Maximum Likeliho">
+<meta name="twitter:description" content="1. MLE(Maximum Liklihood Estimation) 최대가능도 Notation   $D$ : Data (관측한(Observed) 데이터) $\theta$ : parameter (확률)&amp;lt;/font&amp;gt; $H$ : 앞면이 나온 횟수 $T$ : 뒷면이 나온 횟수   Maximum Likelihood Estimation (MLE) of $\t">
     
 
     
@@ -169,11 +169,11 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h1 id="1-MLE-Maximum-Liklihood-Estimation-최대가능도"><a href="#1-MLE-Maximum-Liklihood-Estimation-최대가능도" class="headerlink" title="1. MLE(Maximum Liklihood Estimation) 최대가능도 "></a><span style="color:pink">1. MLE(Maximum Liklihood Estimation) 최대가능도 </span></h1>&lt;font size=”4.5”, color=’orange’&gt;Notation
+            <h2 id="1-MLE-Maximum-Liklihood-Estimation-최대가능도"><a href="#1-MLE-Maximum-Liklihood-Estimation-최대가능도" class="headerlink" title="1. MLE(Maximum Liklihood Estimation) 최대가능도 "></a><span style="color:pink">1. MLE(Maximum Liklihood Estimation) 최대가능도 </span></h2><font size="4.5" , color="orange">Notation</font>
 
 <ul>
 <li><font size="3.5">$D$ : Data (관측한(Observed) 데이터)</font></li>
-<li>$\theta$ : parameter (확률)</li>
+<li>$\theta$ : parameter (확률)&lt;/font&gt;</li>
 <li>$H$ : 앞면이 나온 횟수</li>
 <li>$T$ : 뒷면이 나온 횟수</li>
 </ul>
@@ -184,33 +184,29 @@
 <li>$\hat\theta = \underset{\theta}{\operatorname{argmax}} P(D\mid \theta)$</li>
 <li>$P(D\mid \theta)$ 를 가장 높여주는 $\theta$ 를 구하는것</li>
 </ul>
-&lt;font size=”4.5”, color=’orange’&gt;MLE 계산
+<font size="4.5" , color="orange">MLE 계산</font>
 
-<font size="3.5">1. Maximum Liklihood 식<br></font>
+<font size="3.5">1. Maximum Liklihood 식
+</font>
 
-<p>$$\hat\theta = \underset{\theta}{\operatorname{argmax}} P(D\mid \theta) = \underset{\theta}{\operatorname{argmax}} \theta^{T} (1-\theta)^{H}$$</p>
-<font size="3.5">2. $log$ $function$ 을 씌운다<br></font>
+<script type="math/tex; mode=display">\hat\theta = \underset{\theta}{\operatorname{argmax}} P(D\mid \theta) = \underset{\theta}{\operatorname{argmax}} \theta^{T} (1-\theta)^{H}</script><font size="3.5">2. $log$ $function$ 을 씌운다
+</font>
 
 <ul>
 <li>곱셈은 계산이 복잡하므로 $ln$를 씌워준다 → $log$ $function$ : 곱을 합으로 바꿔준다<br>  로그는 단조 증가 함수이므로 $\underset{\theta}{\operatorname{argmax}}$ 의 값은 변하지 않는다</li>
 </ul>
-<p>$$\hat\theta = \underset{\theta}{\operatorname{argmax}} ln (P(D\mid \theta)) = \underset{\theta}{\operatorname{argmax}}{Tln(\theta) + Hln(1-\theta)}$$</p>
-<font size="3.5">3. $\theta$ 에 대해서 미분을 한다(derivative)</font>
+<script type="math/tex; mode=display">\hat\theta = \underset{\theta}{\operatorname{argmax}} ln (P(D\mid \theta)) = \underset{\theta}{\operatorname{argmax}}\{Tln(\theta) + Hln(1-\theta)\}</script><font size="3.5">3. $\theta$ 에 대해서 미분을 한다(derivative)</font>
 
 <ul>
 <li>구하고자 하는 $\theta$에 대해 미분한 값이 $0$이 되도록 식을 세운다</li>
 <li>미분한 값이 $0$ 되게 하는 $\theta$값을 구한다</li>
 </ul>
-<p>$$\frac{d}{d\theta}(Tln(\theta) + Hln(1-\theta)) = 0$$</p>
-<p>$$\frac{T}{\theta} - \frac{H}{1-\theta} = 0$$</p>
-<p>$$\theta = \frac{T}{T+H}$$</p>
-<font size="3.5">4. MLE 관점에서 $\hat\theta$</font>
+<script type="math/tex; mode=display">\frac{d}{d\theta}(Tln(\theta) + Hln(1-\theta)) = 0</script><script type="math/tex; mode=display">\frac{T}{\theta} - \frac{H}{1-\theta} = 0</script><script type="math/tex; mode=display">\theta = \frac{T}{T+H}</script><font size="3.5">4. MLE 관점에서 $\hat\theta$</font>
 
 <ul>
 <li>우리가 상식적으로 생각하고 있는 확률이 MLE(Maximum Liklihood Estimation)으로 구한 것이다</li>
 </ul>
-<p>$$\hat\theta = \frac{T}{T+H}$$</p>
-<h1 id="2-MAP-Maximum-a-Posteriori-Estimation"><a href="#2-MAP-Maximum-a-Posteriori-Estimation" class="headerlink" title="2. MAP(Maximum a Posteriori Estimation) "></a><span style="color:pink">2. MAP(Maximum a Posteriori Estimation) </span></h1>&lt;font size=”4.5”, color=’orange’&gt;Notation
+<script type="math/tex; mode=display">\hat\theta = \frac{T}{T+H}</script><h1 id="2-MAP-Maximum-a-Posteriori-Estimation"><a href="#2-MAP-Maximum-a-Posteriori-Estimation" class="headerlink" title="2. MAP(Maximum a Posteriori Estimation) "></a><span style="color:pink">2. MAP(Maximum a Posteriori Estimation) </span></h1><font size="4.5" , color="orange">Notation</font>
 
 <ul>
 <li>Prior Knowledge(사전 지식)을 고려한다</li>
@@ -220,39 +216,35 @@
 </ul>
 </li>
 </ul>
-&lt;font size=”4.5”, color=’orange’&gt;MAP 계산
+<font size="4.5" , color="orange">MAP 계산</font>
 
-<font size="3.5">1. 베이즈 정리(Bayes’ theorem)<br></font>
+<font size="3.5">1. 베이즈 정리(Bayes' theorem)
+</font>
 
-<p>$$P(\theta\mid D)=\frac{P(D\mid\theta)P(\theta)}{P(D)}$$</p>
-<p>$$𝑷𝒐𝒔𝒕𝒆𝒓𝒊𝒐𝒓=\frac{𝑳𝒊𝒌𝒆𝒍𝒊𝒉𝒐𝒐𝒅 \cdot 𝑷𝒓𝒊𝒐𝒓 𝑲𝒏𝒐𝒘𝒍𝒆𝒅𝒈𝒆}{𝑵𝒐𝒓𝒎𝒂𝒍𝒊𝒛𝒊𝒏𝒈  𝑪𝒐𝒏𝒔𝒕𝒂𝒏𝒕}$$</p>
-<font size="3.5">2. 관계식 정리<br></font>
+<script type="math/tex; mode=display">P(\theta\mid D)=\frac{P(D\mid\theta)P(\theta)}{P(D)}</script><script type="math/tex; mode=display">𝑷𝒐𝒔𝒕𝒆𝒓𝒊𝒐𝒓=\frac{𝑳𝒊𝒌𝒆𝒍𝒊𝒉𝒐𝒐𝒅 \cdot 𝑷𝒓𝒊𝒐𝒓 𝑲𝒏𝒐𝒘𝒍𝒆𝒅𝒈𝒆}{𝑵𝒐𝒓𝒎𝒂𝒍𝒊𝒛𝒊𝒏𝒈  𝑪𝒐𝒏𝒔𝒕𝒂𝒏𝒕}</script><font size="3.5">2. 관계식 정리
+</font>
 
-<p>$$P(\theta\mid D)\propto P(D\mid \theta)P(\theta)$$</p>
-<ul>
+<script type="math/tex; mode=display">P(\theta\mid D)\propto P(D\mid \theta)P(\theta)</script><ul>
 <li>$𝑵𝒐𝒓𝒎𝒂𝒍𝒊𝒛𝒊𝒏𝒈  𝑪𝒐𝒏𝒔𝒕𝒂𝒏𝒕$은 크게 중요하지 않는다. 주어진 데이터는 이미 일어난 사건이고 정해져 있기 때문이다.</li>
 <li>$P(D\mid \theta)$ Liklihood : $\theta^{T} (1-\theta)^{H}$</li>
 <li>$P(\theta)$ 사전확률 : 사전확률 분포가 베타 분포를 따른다고 가정한다</li>
 </ul>
-<p>$$P(\theta)=\frac{\theta^{\alpha-1}(1-\theta)^{\beta -1}}{B(\alpha,\beta)}, B(\alpha,\beta)=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha,\beta)}, \Gamma(\alpha)=(\alpha-1)!$$</p>
-<font size="3.5">3. 사후확률<br></font>
+<script type="math/tex; mode=display">P(\theta)=\frac{\theta^{\alpha-1}(1-\theta)^{\beta -1}}{B(\alpha,\beta)}, B(\alpha,\beta)=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha,\beta)}, \Gamma(\alpha)=(\alpha-1)!</script><font size="3.5">3. 사후확률
+</font>
 
-<p>$$P(\theta\mid D)\propto P(D\mid \theta)P(\theta)$$</p>
-<p>$$P(D\mid \theta)P(\theta) \propto \theta^{T} (1-\theta)^{H}\theta^{\alpha-1}(1-\theta)^{\beta -1}  \propto \theta^{T+\alpha-1} (1-\theta)^{H+\beta-1}$$</p>
-<font size="3.5">4. MAP 관점에서 $\hat\theta$</font>
+<script type="math/tex; mode=display">P(\theta\mid D)\propto P(D\mid \theta)P(\theta)</script><script type="math/tex; mode=display">P(D\mid \theta)P(\theta) \propto \theta^{T} (1-\theta)^{H}\theta^{\alpha-1}(1-\theta)^{\beta -1}  \propto \theta^{T+\alpha-1} (1-\theta)^{H+\beta-1}</script><font size="3.5">4. MAP 관점에서 $\hat\theta$</font>
 
 <ul>
 <li>만약 던진 횟수가 많아지게 되면 $\alpha, \beta$가 미치는 영향은 미비해지므로 결국 MLE로 구한 것과 같아지게 된다</li>
 </ul>
-<p>$$\hat\theta=\frac{T+\alpha-1} {T+H+\alpha+\beta-2}$$</p>
-
+<script type="math/tex; mode=display">\hat\theta=\frac{T+\alpha-1} {T+H+\alpha+\beta-2}</script>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://progresivoJS.github.io/2019/03/29/MLE-MAP/" data-id="cjttoe3ed0001ozl5u319o7c5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://progresivoJS.github.io/2019/03/29/MLE-MAP/" data-id="cjttosbwf0001l5l52cwkv8e6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -330,17 +322,17 @@
         "dateCreated": "2019-03-29",
         "dateModified": "2019-03-29",
         "url": "http://progresivoJS.github.io/2019/03/29/MLE-MAP/",
-        "description": "1. MLE(Maximum Liklihood Estimation) 최대가능도 &lt;font size=”4.5”, color=’orange’&gt;Notation
+        "description": "1. MLE(Maximum Liklihood Estimation) 최대가능도 Notation
 
 
 $D$ : Data (관측한(Observed) 데이터)
-$\theta$ : parameter (확률)
+$\theta$ : parameter (확률)&lt;/font&gt;
 $H$ : 앞면이 나온 횟수
 $T$ : 뒷면이 나온 횟수
 
 
-Maximum Likeliho"
-        "wordCount": 276
+Maximum Likelihood Estimation (MLE) of $\t"
+        "wordCount": 306
     }
 </script>
 
@@ -420,6 +412,16 @@ Maximum Likeliho"
         
 <nav id="article-nav">
     
+        <a href="/2019/03/29/MLE-MAP-1/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            MLE MAP
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
     
         <a href="/2019/02/26/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">older</strong>
@@ -441,6 +443,26 @@ Maximum Likeliho"
         <h3 class="widget-title">recents</h3>
         <div class="widget">
             <ul id="recent-post" class>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/03/29/MLE-MAP-1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/03/29/MLE-MAP-1/" class="title">MLE MAP</a></p>
+                            <p class="item-date"><time datetime="2019-03-29T06:28:54.000Z" itemprop="datePublished">2019-03-29</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -494,7 +516,7 @@ Maximum Likeliho"
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 

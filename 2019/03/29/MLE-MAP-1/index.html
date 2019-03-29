@@ -6,17 +6,23 @@
     
 
     
-    <title>Archive: 2019/3 | James Blog</title>
+    <title>MLE MAP | James Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="James Blog">
-<meta property="og:url" content="http://progresivoJS.github.io/archives/2019/03/index.html">
+        <meta name="keywords" content>
+    
+    <meta name="description" content="1. MLE(Maximum Liklihood Estimation) 최대가능도  Notation    $D$ : Data (관측한(Observed) 데이터) $\theta$ : parameter (확률)&amp;lt;/font&amp;gt; $H$ : 앞면이 나온 횟수 $T$ : 뒷면이 나온 횟수   Maximum Likelihood Estimation (MLE) of $">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MLE MAP">
+<meta property="og:url" content="http://progresivoJS.github.io/2019/03/29/MLE-MAP-1/index.html">
 <meta property="og:site_name" content="James Blog">
+<meta property="og:description" content="1. MLE(Maximum Liklihood Estimation) 최대가능도  Notation    $D$ : Data (관측한(Observed) 데이터) $\theta$ : parameter (확률)&amp;lt;/font&amp;gt; $H$ : 앞면이 나온 횟수 $T$ : 뒷면이 나온 횟수   Maximum Likelihood Estimation (MLE) of $">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-03-29T06:28:54.847Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="James Blog">
+<meta name="twitter:title" content="MLE MAP">
+<meta name="twitter:description" content="1. MLE(Maximum Liklihood Estimation) 최대가능도  Notation    $D$ : Data (관측한(Observed) 데이터) $\theta$ : parameter (확률)&amp;lt;/font&amp;gt; $H$ : 앞면이 나온 횟수 $T$ : 뒷면이 나온 횟수   Maximum Likelihood Estimation (MLE) of $">
     
 
     
@@ -129,64 +135,194 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-archive"></i>Archive: 2019/3
+    uncategorized
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-MLE-MAP-1" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2019" class="archive-year"><i class="icon fa fa-calendar-o"></i>2019</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2019/03/29/MLE-MAP-1/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier data-disqus-url="http://progresivoJS.github.io/2019/03/29/MLE-MAP-1/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2019-03-29T06:28:54.000Z" itemprop="datePublished">2019-03-29</time></div>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2019/03/29/MLE-MAP-1/">MLE MAP</a>
+        MLE MAP
         </h1>
     
 
-        <p class="article-excerpt">
-            1. MLE(Maximum Liklihood Estimation) 최대가능도  Notation 
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2019/03/29/MLE-MAP-1/" class="article-date">
+            <time datetime="2019-03-29T06:28:54.000Z" itemprop="datePublished">2019-03-29</time>
+        </a>
+    </div>
+
+		
+
+                
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="1-MLE-Maximum-Liklihood-Estimation-최대가능도"><a href="#1-MLE-Maximum-Liklihood-Estimation-최대가능도" class="headerlink" title="1. MLE(Maximum Liklihood Estimation) 최대가능도 "></a><span style="color:pink">1. MLE(Maximum Liklihood Estimation) 최대가능도 </span></h1><font size="4.5" , color="orange"> Notation </font>
+
+<ul>
+<li><font size="3.5">$D$ : Data (관측한(Observed) 데이터)</font></li>
+<li>$\theta$ : parameter (확률)&lt;/font&gt;</li>
+<li>$H$ : 앞면이 나온 횟수</li>
+<li>$T$ : 뒷면이 나온 횟수</li>
+</ul>
+<hr>
+<font size="4.5" color="orange">Maximum Likelihood Estimation (MLE) of $\theta$</font>
+
+<ul>
+<li>$\hat\theta = \underset{\theta}{\operatorname{argmax}} P(D\mid \theta)$</li>
+<li>$P(D\mid \theta)$ 를 가장 높여주는 $\theta$ 를 구하는것</li>
+</ul>
+<font size="4.5" , color="orange">MLE 계산</font>
+
+<font size="3.5">1. Maximum Liklihood 식
+</font>
+
+<script type="math/tex; mode=display">\hat\theta = \underset{\theta}{\operatorname{argmax}} P(D\mid \theta) = \underset{\theta}{\operatorname{argmax}} \theta^{T} (1-\theta)^{H}</script><font size="3.5">2. $log$ $function$ 을 씌운다
+</font>
+
+<ul>
+<li>곱셈은 계산이 복잡하므로 $ln$를 씌워준다 → $log$ $function$ : 곱을 합으로 바꿔준다<br>  로그는 단조 증가 함수이므로 $\underset{\theta}{\operatorname{argmax}}$ 의 값은 변하지 않는다</li>
+</ul>
+<script type="math/tex; mode=display">\hat\theta = \underset{\theta}{\operatorname{argmax}} ln (P(D\mid \theta)) = \underset{\theta}{\operatorname{argmax}}\{Tln(\theta) + Hln(1-\theta)\}</script><font size="3.5">3. $\theta$ 에 대해서 미분을 한다(derivative)</font>
+
+<ul>
+<li>구하고자 하는 $\theta$에 대해 미분한 값이 $0$이 되도록 식을 세운다</li>
+<li>미분한 값이 $0$ 되게 하는 $\theta$값을 구한다</li>
+</ul>
+<script type="math/tex; mode=display">\frac{d}{d\theta}(Tln(\theta) + Hln(1-\theta)) = 0</script><script type="math/tex; mode=display">\frac{T}{\theta} - \frac{H}{1-\theta} = 0</script><script type="math/tex; mode=display">\theta = \frac{T}{T+H}</script><font size="3.5">4. MLE 관점에서 $\hat\theta$</font>
+
+<ul>
+<li>우리가 상식적으로 생각하고 있는 확률이 MLE(Maximum Liklihood Estimation)으로 구한 것이다</li>
+</ul>
+<script type="math/tex; mode=display">\hat\theta = \frac{T}{T+H}</script><h1 id="2-MAP-Maximum-a-Posteriori-Estimation"><a href="#2-MAP-Maximum-a-Posteriori-Estimation" class="headerlink" title="2. MAP(Maximum a Posteriori Estimation) "></a><span style="color:pink">2. MAP(Maximum a Posteriori Estimation) </span></h1><font size="4.5" , color="orange">Notation</font>
+
+<ul>
+<li>Prior Knowledge(사전 지식)을 고려한다</li>
+<li>MLE(Maximum Liklihood Estimation)과 다르게 일어난 사건만을 고려하는것이 아니다<ul>
+<li>MLE는 $P(D\mid\theta)$를 최대화 하는 $\theta$를 구하는 것이다</li>
+<li>MAP는 $P(\theta\mid D)$ 즉 데이터가 주어졌을때 $\theta$의 확률 사후확률(Posterior)을 최대화 하는 $\theta$를 구하는 것이다</li>
+</ul>
+</li>
+</ul>
+<font size="4.5" , color="orange">MAP 계산</font>
+
+<font size="3.5">1. 베이즈 정리(Bayes' theorem)
+</font>
+
+<script type="math/tex; mode=display">P(\theta\mid D)=\frac{P(D\mid\theta)P(\theta)}{P(D)}</script><script type="math/tex; mode=display">𝑷𝒐𝒔𝒕𝒆𝒓𝒊𝒐𝒓=\frac{𝑳𝒊𝒌𝒆𝒍𝒊𝒉𝒐𝒐𝒅 \cdot 𝑷𝒓𝒊𝒐𝒓 𝑲𝒏𝒐𝒘𝒍𝒆𝒅𝒈𝒆}{𝑵𝒐𝒓𝒎𝒂𝒍𝒊𝒛𝒊𝒏𝒈  𝑪𝒐𝒏𝒔𝒕𝒂𝒏𝒕}</script><font size="3.5">2. 관계식 정리
+</font>
+
+<script type="math/tex; mode=display">P(\theta\mid D)\propto P(D\mid \theta)P(\theta)</script><ul>
+<li>$𝑵𝒐𝒓𝒎𝒂𝒍𝒊𝒛𝒊𝒏𝒈  𝑪𝒐𝒏𝒔𝒕𝒂𝒏𝒕$은 크게 중요하지 않는다. 주어진 데이터는 이미 일어난 사건이고 정해져 있기 때문이다.</li>
+<li>$P(D\mid \theta)$ Liklihood : $\theta^{T} (1-\theta)^{H}$</li>
+<li>$P(\theta)$ 사전확률 : 사전확률 분포가 베타 분포를 따른다고 가정한다</li>
+</ul>
+<script type="math/tex; mode=display">P(\theta)=\frac{\theta^{\alpha-1}(1-\theta)^{\beta -1}}{B(\alpha,\beta)}, B(\alpha,\beta)=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha,\beta)}, \Gamma(\alpha)=(\alpha-1)!</script><font size="3.5">3. 사후확률
+</font>
+
+<script type="math/tex; mode=display">P(\theta\mid D)\propto P(D\mid \theta)P(\theta)</script><script type="math/tex; mode=display">P(D\mid \theta)P(\theta) \propto \theta^{T} (1-\theta)^{H}\theta^{\alpha-1}(1-\theta)^{\beta -1}  \propto \theta^{T+\alpha-1} (1-\theta)^{H+\beta-1}</script><font size="3.5">4. MAP 관점에서 $\hat\theta$</font>
+
+<ul>
+<li>만약 던진 횟수가 많아지게 되면 $\alpha, \beta$가 미치는 영향은 미비해지므로 결국 MLE로 구한 것과 같아지게 된다</li>
+</ul>
+<script type="math/tex; mode=display">\hat\theta=\frac{T+\alpha-1} {T+H+\alpha+\beta-2}</script>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://progresivoJS.github.io/2019/03/29/MLE-MAP-1/" data-id="cjttosbiq0000l5l5s6bdivjf" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "James Park"
+        },
+        "headline": "MLE MAP",
+        "image": "http://progresivoJS.github.io",
+        "keywords": "",
+        "genre": "",
+        "datePublished": "2019-03-29",
+        "dateCreated": "2019-03-29",
+        "dateModified": "2019-03-29",
+        "url": "http://progresivoJS.github.io/2019/03/29/MLE-MAP-1/",
+        "description": "1. MLE(Maximum Liklihood Estimation) 최대가능도  Notation 
 
 
 $D$ : Data (관측한(Observed) 데이터)
@@ -195,71 +331,22 @@ $H$ : 앞면이 나온 횟수
 $T$ : 뒷면이 나온 횟수
 
 
-Maximum Likelihood Estimation (MLE) of $
-        </p>
-    </div>
+Maximum Likelihood Estimation (MLE) of $"
+        "wordCount": 308
+    }
+</script>
+
 </article>
-    
 
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2019/03/29/MLE-MAP/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
+    <section id="comments">
     
         
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier data-disqus-url="http://progresivoJS.github.io/2019/03/29/MLE-MAP/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2019-03-29T06:17:51.000Z" itemprop="datePublished">2019-03-29</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2019/03/29/MLE-MAP/">MLE MAP</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            1. MLE(Maximum Liklihood Estimation) 최대가능도 Notation
-
-
-$D$ : Data (관측한(Observed) 데이터)
-$\theta$ : parameter (확률)&lt;/font&gt;
-$H$ : 앞면이 나온 횟수
-$T$ : 뒷면이 나온 횟수
-
-
-Maximum Likelihood Estimation (MLE) of $\t
-        </p>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
-</article>
-    
-        </div>
-    
 
-
-    </div></section>
+    
+    </section>
 
 
 
@@ -321,6 +408,19 @@ Maximum Likelihood Estimation (MLE) of $\t
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2019/03/29/MLE-MAP/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">MLE MAP</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -468,11 +568,13 @@ Maximum Likelihood Estimation (MLE) of $\t
     var disqus_shortname = 'hexo-theme-hueman';
     
     
+    var disqus_url = 'http://progresivoJS.github.io/2019/03/29/MLE-MAP-1/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
