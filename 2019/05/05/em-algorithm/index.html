@@ -6,23 +6,25 @@
     
 
     
-    <title>MLE MAP | James Blog</title>
+    <title>EM Algorithm | James Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
         <meta name="keywords" content>
     
-    <meta name="description" content="1. MLE(Maximum Liklihood Estimation) 최대가능도  Notation    $D$ : Data (관측한(Observed) 데이터) $\theta$ : parameter (확률)&amp;lt;/font&amp;gt; $H$ : 앞면이 나온 횟수 $T$ : 뒷면이 나온 횟수   Maximum Likelihood Estimation (MLE) of $">
+    <meta name="description" content="latent variable 추론  clustering과 classification의 가장 큰 차이점은 숨어있는 변수가 있느냐 없느냐이다.clustering은 latent variable이 포함되어 있다classification은 observed variable로 분류 한다  $\{ X, Z\}$ : 모든 variable  $X$ : 관측된(Observed">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MLE MAP">
-<meta property="og:url" content="http://progresivoJS.github.io/2019/03/29/MLE-MAP-1/index.html">
+<meta property="og:title" content="EM Algorithm">
+<meta property="og:url" content="http://progresivoJS.github.io/2019/05/05/em-algorithm/index.html">
 <meta property="og:site_name" content="James Blog">
-<meta property="og:description" content="1. MLE(Maximum Liklihood Estimation) 최대가능도  Notation    $D$ : Data (관측한(Observed) 데이터) $\theta$ : parameter (확률)&amp;lt;/font&amp;gt; $H$ : 앞면이 나온 횟수 $T$ : 뒷면이 나온 횟수   Maximum Likelihood Estimation (MLE) of $">
+<meta property="og:description" content="latent variable 추론  clustering과 classification의 가장 큰 차이점은 숨어있는 변수가 있느냐 없느냐이다.clustering은 latent variable이 포함되어 있다classification은 observed variable로 분류 한다  $\{ X, Z\}$ : 모든 variable  $X$ : 관측된(Observed">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-03-29T06:28:54.847Z">
+<meta property="og:image" content="https://www.probabilitycourse.com/images/chapter6/Convex_b.png">
+<meta property="og:updated_time" content="2019-05-05T14:29:55.089Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MLE MAP">
-<meta name="twitter:description" content="1. MLE(Maximum Liklihood Estimation) 최대가능도  Notation    $D$ : Data (관측한(Observed) 데이터) $\theta$ : parameter (확률)&amp;lt;/font&amp;gt; $H$ : 앞면이 나온 횟수 $T$ : 뒷면이 나온 횟수   Maximum Likelihood Estimation (MLE) of $">
+<meta name="twitter:title" content="EM Algorithm">
+<meta name="twitter:description" content="latent variable 추론  clustering과 classification의 가장 큰 차이점은 숨어있는 변수가 있느냐 없느냐이다.clustering은 latent variable이 포함되어 있다classification은 observed variable로 분류 한다  $\{ X, Z\}$ : 모든 variable  $X$ : 관측된(Observed">
+<meta name="twitter:image" content="https://www.probabilitycourse.com/images/chapter6/Convex_b.png">
     
 
     
@@ -144,14 +146,14 @@
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-MLE-MAP-1" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-em-algorithm" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        MLE MAP
+        EM Algorithm
         </h1>
     
 
@@ -161,8 +163,8 @@
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2019/03/29/MLE-MAP-1/" class="article-date">
-            <time datetime="2019-03-29T06:28:54.000Z" itemprop="datePublished">2019-03-29</time>
+        <a href="/2019/05/05/em-algorithm/" class="article-date">
+            <time datetime="2019-05-05T14:29:55.000Z" itemprop="datePublished">2019-05-05</time>
         </a>
     </div>
 
@@ -173,82 +175,61 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h1 id="1-MLE-Maximum-Liklihood-Estimation-최대가능도"><a href="#1-MLE-Maximum-Liklihood-Estimation-최대가능도" class="headerlink" title="1. MLE(Maximum Liklihood Estimation) 최대가능도 "></a><span style="color:pink">1. MLE(Maximum Liklihood Estimation) 최대가능도 </span></h1><font size="4.5" , color="orange"> Notation </font>
+            <font size="5" color="orange">latent variable 추론</font>
 
+<p>clustering과 classification의 가장 큰 차이점은 숨어있는 변수가 있느냐 없느냐이다.<br>clustering은 latent variable이 포함되어 있다<br>classification은 observed variable로 분류 한다</p>
 <ul>
-<li><font size="3.5">$D$ : Data (관측한(Observed) 데이터)</font></li>
-<li>$\theta$ : parameter (확률)&lt;/font&gt;</li>
-<li>$H$ : 앞면이 나온 횟수</li>
-<li>$T$ : 뒷면이 나온 횟수</li>
-</ul>
-<hr>
-<font size="4.5" color="orange">Maximum Likelihood Estimation (MLE) of $\theta$</font>
-
-<ul>
-<li>$\hat\theta = \underset{\theta}{\operatorname{argmax}} P(D\mid \theta)$</li>
-<li>$P(D\mid \theta)$ 를 가장 높여주는 $\theta$ 를 구하는것</li>
-</ul>
-<font size="4.5" , color="orange">MLE 계산</font>
-
-<font size="3.5">1. Maximum Liklihood 식
-</font>
-
-<script type="math/tex; mode=display">\hat\theta = \underset{\theta}{\operatorname{argmax}} P(D\mid \theta) = \underset{\theta}{\operatorname{argmax}} \theta^{T} (1-\theta)^{H}</script><font size="3.5">2. $log$ $function$ 을 씌운다
-</font>
-
-<ul>
-<li>곱셈은 계산이 복잡하므로 $ln$를 씌워준다 → $log$ $function$ : 곱을 합으로 바꿔준다<br>  로그는 단조 증가 함수이므로 $\underset{\theta}{\operatorname{argmax}}$ 의 값은 변하지 않는다</li>
-</ul>
-<script type="math/tex; mode=display">\hat\theta = \underset{\theta}{\operatorname{argmax}} ln (P(D\mid \theta)) = \underset{\theta}{\operatorname{argmax}}\{Tln(\theta) + Hln(1-\theta)\}</script><font size="3.5">3. $\theta$ 에 대해서 미분을 한다(derivative)</font>
-
-<ul>
-<li>구하고자 하는 $\theta$에 대해 미분한 값이 $0$이 되도록 식을 세운다</li>
-<li>미분한 값이 $0$ 되게 하는 $\theta$값을 구한다</li>
-</ul>
-<script type="math/tex; mode=display">\frac{d}{d\theta}(Tln(\theta) + Hln(1-\theta)) = 0</script><script type="math/tex; mode=display">\frac{T}{\theta} - \frac{H}{1-\theta} = 0</script><script type="math/tex; mode=display">\theta = \frac{T}{T+H}</script><font size="3.5">4. MLE 관점에서 $\hat\theta$</font>
-
-<ul>
-<li>우리가 상식적으로 생각하고 있는 확률이 MLE(Maximum Liklihood Estimation)으로 구한 것이다</li>
-</ul>
-<script type="math/tex; mode=display">\hat\theta = \frac{T}{T+H}</script><h1 id="2-MAP-Maximum-a-Posteriori-Estimation"><a href="#2-MAP-Maximum-a-Posteriori-Estimation" class="headerlink" title="2. MAP(Maximum a Posteriori Estimation) "></a><span style="color:pink">2. MAP(Maximum a Posteriori Estimation) </span></h1><font size="4.5" , color="orange">Notation</font>
-
-<ul>
-<li>Prior Knowledge(사전 지식)을 고려한다</li>
-<li>MLE(Maximum Liklihood Estimation)과 다르게 일어난 사건만을 고려하는것이 아니다<ul>
-<li>MLE는 $P(D\mid\theta)$를 최대화 하는 $\theta$를 구하는 것이다</li>
-<li>MAP는 $P(\theta\mid D)$ 즉 데이터가 주어졌을때 $\theta$의 확률 사후확률(Posterior)을 최대화 하는 $\theta$를 구하는 것이다</li>
-</ul>
+<li><p>$\{ X, Z\}$ : 모든 variable</p>
+</li>
+<li><p>$X$ : 관측된(Observed) variable</p>
+</li>
+<li><p>$Z$ : hidden(latent) Variable</p>
+</li>
+<li><p>$\theta$ : 분포 parameter</p>
 </li>
 </ul>
-<font size="4.5" , color="orange">MAP 계산</font>
-
-<font size="3.5">1. 베이즈 정리(Bayes' theorem)
-</font>
-
-<script type="math/tex; mode=display">P(\theta\mid D)=\frac{P(D\mid\theta)P(\theta)}{P(D)}</script><script type="math/tex; mode=display">𝑷𝒐𝒔𝒕𝒆𝒓𝒊𝒐𝒓=\frac{𝑳𝒊𝒌𝒆𝒍𝒊𝒉𝒐𝒐𝒅 \cdot 𝑷𝒓𝒊𝒐𝒓 𝑲𝒏𝒐𝒘𝒍𝒆𝒅𝒈𝒆}{𝑵𝒐𝒓𝒎𝒂𝒍𝒊𝒛𝒊𝒏𝒈  𝑪𝒐𝒏𝒔𝒕𝒂𝒏𝒕}</script><font size="3.5">2. 관계식 정리
-</font>
-
-<script type="math/tex; mode=display">P(\theta\mid D)\propto P(D\mid \theta)P(\theta)</script><ul>
-<li>$𝑵𝒐𝒓𝒎𝒂𝒍𝒊𝒛𝒊𝒏𝒈  𝑪𝒐𝒏𝒔𝒕𝒂𝒏𝒕$은 크게 중요하지 않는다. 주어진 데이터는 이미 일어난 사건이고 정해져 있기 때문이다.</li>
-<li>$P(D\mid \theta)$ Liklihood : $\theta^{T} (1-\theta)^{H}$</li>
-<li>$P(\theta)$ 사전확률 : 사전확률 분포가 베타 분포를 따른다고 가정한다</li>
-</ul>
-<script type="math/tex; mode=display">P(\theta)=\frac{\theta^{\alpha-1}(1-\theta)^{\beta -1}}{B(\alpha,\beta)}, B(\alpha,\beta)=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha,\beta)}, \Gamma(\alpha)=(\alpha-1)!</script><font size="3.5">3. 사후확률
-</font>
-
-<script type="math/tex; mode=display">P(\theta\mid D)\propto P(D\mid \theta)P(\theta)</script><script type="math/tex; mode=display">P(D\mid \theta)P(\theta) \propto \theta^{T} (1-\theta)^{H}\theta^{\alpha-1}(1-\theta)^{\beta -1}  \propto \theta^{T+\alpha-1} (1-\theta)^{H+\beta-1}</script><font size="3.5">4. MAP 관점에서 $\hat\theta$</font>
-
+<p>latent variable을 marginal out 해주면 된다</p>
+<script type="math/tex; mode=display">P(X \mid \theta) = \sum_z P(X,Z \mid \theta)</script><p>로그 속에 summation이 있으면 계산이 복잡해져서 결국에는 summation의 위치를 바꿔줘야 한다(Jensens’s inequality). 그리고 $q(z)$의 임의의 pdf를 넣어준다</p>
+<script type="math/tex; mode=display">\ln P(X \mid \theta) = \ln \left\{ \sum_z P(X,Z \mid \theta)\right\}</script><script type="math/tex; mode=display">l(\theta) = \ln P(X \mid \theta) = \ln \left\{ \sum_z q(z)\frac{P(X,Z \mid \theta)}{q(z)} \right\}</script><p><strong>CF) Jensen’s inequality</strong></p>
+<p><img src="https://www.probabilitycourse.com/images/chapter6/Convex_b.png" alt></p>
 <ul>
-<li>만약 던진 횟수가 많아지게 되면 $\alpha, \beta$가 미치는 영향은 미비해지므로 결국 MLE로 구한 것과 같아지게 된다</li>
+<li>$\psi$가 <code>convex</code> function일때는</li>
 </ul>
-<script type="math/tex; mode=display">\hat\theta=\frac{T+\alpha-1} {T+H+\alpha+\beta-2}</script>
+<script type="math/tex; mode=display">f \left( \frac{x+y}{2}\right) \leq \frac{f(x) + f(y)}{2}</script><script type="math/tex; mode=display">\psi\left( \frac{\sum a_i x_i}{\sum a_j} \right) \leq \frac{\sum a_i \psi (x_i)}{\sum a_j}</script><ul>
+<li>$\psi$가 <code>concave</code> function일때는</li>
+</ul>
+<script type="math/tex; mode=display">f \left( \frac{x+y}{2}\right) \geq \frac{f(x) + f(y)}{2}</script><script type="math/tex; mode=display">\psi\left( \frac{\sum a_i x_i}{\sum a_j} \right) \geq \frac{\sum a_i \psi (x_i)}{\sum a_j}</script><p>로그는 Concave function이므로 jensen’s inequality에 의해 다음과 같이 로그 속의 summation을 다음과 같이 빼서 식을 정리할수 있다</p>
+<script type="math/tex; mode=display">l(\theta) = \ln \left\{ \sum_z q(z)\frac{P(X,Z \mid \theta)}{q(z)} \right\} \geq \sum_z q(z) \ln \frac{P(X,Z \mid \theta)}{q(z)}</script><p>오른쪽항의 식을 정리해주면</p>
+<script type="math/tex; mode=display">\sum_z \left\{q(z) \ln P(X,Z \mid \theta) - q(z)\ln q(z) \right\}</script><p>첫번째 항은 $q(z)$의 가중평균이고 두번째 항은 $q(z)$가 확률분포라는 가정하에 엔트로피를 나타낸다. 따라서 다음과 같이 식을 notation 해줄 수 있다</p>
+<script type="math/tex; mode=display">Q(\theta, q) = E_{q(z)} \ln P(X,Z \mid \theta) + H(q)</script><p>$Q(\theta, q)$은 결국 $l(\theta)$의 lower bound이다 이것을 최대화 시켜주면 $l(\theta)$값도 같이 최대화 시켜줄수 있다는 것이다<br> 단 항상 그런것은 아니다 왜냐하면 서로 inequality하기 때문이다</p>
+ <font size="5" color="orange">Maximizing lower bound(1)</font>
+
+<script type="math/tex; mode=display">l(\theta) \geq \sum_z q(z) \ln \frac{P(X,Z \mid \theta)}{q(z)} = \sum_z q(z) \ln \frac{P(Z \mid X, \theta)P(X \mid \theta)}{q(z)}</script><p>맨 오른쪽의 항을 다음과 같이 정리할수 있다</p>
+<script type="math/tex; mode=display">\sum_z \left\{q(z) \ln \frac{P(Z \mid X, \theta)}{q(z)} + q(z)\ln P(X \mid \theta) \right\}</script><script type="math/tex; mode=display">=\sum_z \left\{q(z) \ln \frac{P(Z \mid X, \theta)}{q(z)}\right\} + \ln P(X \mid \theta)</script><p>다음을 최적화 시키기 위한 식으로 바꿔주기 위해 summation 속의 로그를 역수로 취해줌으로써 Kullback-Leiber divergence로 변형 시켜준다</p>
+<script type="math/tex; mode=display">L(\theta, q) = \ln P(X \mid \theta) - \sum_z \left\{ q(z) \ln \frac{q(z)}{P(Z \mid X, \theta)} \right\}</script><p>이 식을 보면 많은 뜻을 볼수 있다 기존의 우리가 maximize시키고 싶었던 $\ln P(X \mid \theta)$에 KL divergence term을 빼주는 식이 되었다 즉 KL divergence term을 0에 가깝게 해주면 해줄수록 우리의 objective function에 가까워 진다<br>KL divergence term이 0에 가까워 진다는 것은 $q(z)$ 분포 모양과 $P(Z \mid X, \theta)$의 분포 모양이 비슷해 진다는 것을 의미한다</p>
+ <font size="5" color="orange">Maximizing lower bound(2)</font>
+
+
+<script type="math/tex; mode=display">Q(\theta, q) = E_{q(z)} \ln P(X,Z \mid \theta) + H(q)</script><script type="math/tex; mode=display">L(\theta, q) = \ln P(X \mid \theta) - \sum_z \left\{ q(z) \ln \frac{q(z)}{P(Z \mid X, \theta)} \right\}</script><p>우리가 $L(\theta, q)$를 구한 이유는<br>우리가 제일 처음 구한 $Q(\theta, q)$만 가지고 optimal value를 구하는 것은 쉽지 않다. 왜냐하면 $q(z)$를 업데이트하는 방법에 대한 정확한 지식이 없기 때문이다<br>하지만 $L(\theta, q)$를 가지고 $q(z)$를 업데이트 하기는 쉽다 임의의 $\theta$에 대해 $q(z)$는 $P(Z \mid X, \theta)$의 분포와 비슷하게 Update해주면 된다</p>
+<script type="math/tex; mode=display">KL\left(q(Z) \lVert P(Z \mid X, \theta)\right) = 0 \to q^t(z) = P(Z \mid X, \theta^t)</script><p>특정한 iteration동안 $\theta^t$로 되면 $q^t(z)$로 업그레이드 된다</p>
+<script type="math/tex; mode=display">Q(\theta, q^t) = E_{q^t(z)} \ln P(X,Z \mid \theta^t) + H(q^t)</script><script type="math/tex; mode=display">\theta^{t+1} = argmax_{\theta}Q(\theta, q^t) = argmax_{\theta}E_{q^t(z)} \ln P(X,Z \mid \theta)</script><p>그러면 업그레이드 된 $q^t$를 가지고 다시 $\theta$를 업그레이드 해준다</p>
+ <font size="5" color="orange">정리</font>
+
+<script type="math/tex; mode=display">P(X \mid \theta) = \sum_z P(X,Z \mid \theta)</script> <font> 1. EM 알고리즘은 latent variable이 포함된 maximum likelihood를 찾는것이다 </font>
+<br>
+
+<font> 2. 처음에는 $\theta$를 랜덤으로 정해준다 </font>
+<br>
+
+<font> 3. likelihood가 converge할때 까지 iteration을 돌려준다 </font>
+
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://progresivoJS.github.io/2019/03/29/MLE-MAP-1/" data-id="cjvb19b900001ym5649pr63ee" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://progresivoJS.github.io/2019/05/05/em-algorithm/" data-id="cjvb19b940002ym56gmci12zc" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -318,25 +299,22 @@
             "@type": "Person",
             "name": "James Park"
         },
-        "headline": "MLE MAP",
-        "image": "http://progresivoJS.github.io",
+        "headline": "EM Algorithm",
+        "image": "http://progresivoJS.github.iohttps://www.probabilitycourse.com/images/chapter6/Convex_b.png",
         "keywords": "",
         "genre": "",
-        "datePublished": "2019-03-29",
-        "dateCreated": "2019-03-29",
-        "dateModified": "2019-03-29",
-        "url": "http://progresivoJS.github.io/2019/03/29/MLE-MAP-1/",
-        "description": "1. MLE(Maximum Liklihood Estimation) 최대가능도  Notation 
+        "datePublished": "2019-05-05",
+        "dateCreated": "2019-05-05",
+        "dateModified": "2019-05-05",
+        "url": "http://progresivoJS.github.io/2019/05/05/em-algorithm/",
+        "description": "latent variable 추론
 
+clustering과 classification의 가장 큰 차이점은 숨어있는 변수가 있느냐 없느냐이다.clustering은 latent variable이 포함되어 있다classification은 observed variable로 분류 한다
 
-$D$ : Data (관측한(Observed) 데이터)
-$\theta$ : parameter (확률)&lt;/font&gt;
-$H$ : 앞면이 나온 횟수
-$T$ : 뒷면이 나온 횟수
+$\{ X, Z\}$ : 모든 variable
 
-
-Maximum Likelihood Estimation (MLE) of $"
-        "wordCount": 308
+$X$ : 관측된(Observed"
+        "wordCount": 547
     }
 </script>
 
@@ -376,16 +354,12 @@ Maximum Likelihood Estimation (MLE) of $"
         
 <nav id="article-nav">
     
-        <a href="/2019/05/04/Recommend-system/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">newer</strong>
-        <p class="article-nav-title">
-        
-            Recommend system
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
+        <a href="/2019/05/04/Recommend-system/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Recommend system</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
     
 </nav>
 
@@ -487,7 +461,7 @@ Maximum Likelihood Estimation (MLE) of $"
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'http://progresivoJS.github.io/2019/03/29/MLE-MAP-1/';
+    var disqus_url = 'http://progresivoJS.github.io/2019/05/05/em-algorithm/';
     
     (function() {
     var dsq = document.createElement('script');
