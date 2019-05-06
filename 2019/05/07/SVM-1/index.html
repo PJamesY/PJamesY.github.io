@@ -12,18 +12,18 @@
     
         <meta name="keywords" content>
     
-    <meta name="description" content="Support Vector Machine  Andrew ng lecture note 를 공부하며 정리한 자료입니다 SVM을 이해하기 위해서는 Margin(마진)과 데이터를 분리해주는 경계선과 데이터 사이의 거리 Gap이 커야 한다는 것에 초점을 맞춰야 한다 1. Margin  여기에서는 ‘confidence’라는 개념이 등장한다 confidence는 예측이">
+    <meta name="description" content="Support Vector Machine  Andrew ng lecture note 를 공부하며 정리한 자료입니다. SVM을 이해하기 위해서는 Margin(마진)과 데이터를 분리해주는 경계선과 데이터 사이의 거리 Gap이 커야 한다는 것에 초점을 맞춰야 한다. 1. Margin  여기에서는 ‘confidence’라는 개념이 등장한다. confidence는">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SVM">
-<meta property="og:url" content="http://progresivoJS.github.io/2019/05/06/SVM/index.html">
+<meta property="og:url" content="http://progresivoJS.github.io/2019/05/07/SVM-1/index.html">
 <meta property="og:site_name" content="James Blog">
-<meta property="og:description" content="Support Vector Machine  Andrew ng lecture note 를 공부하며 정리한 자료입니다 SVM을 이해하기 위해서는 Margin(마진)과 데이터를 분리해주는 경계선과 데이터 사이의 거리 Gap이 커야 한다는 것에 초점을 맞춰야 한다 1. Margin  여기에서는 ‘confidence’라는 개념이 등장한다 confidence는 예측이">
+<meta property="og:description" content="Support Vector Machine  Andrew ng lecture note 를 공부하며 정리한 자료입니다. SVM을 이해하기 위해서는 Margin(마진)과 데이터를 분리해주는 경계선과 데이터 사이의 거리 Gap이 커야 한다는 것에 초점을 맞춰야 한다. 1. Margin  여기에서는 ‘confidence’라는 개념이 등장한다. confidence는">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://www.researchgate.net/profile/K_Kishore_Raju/publication/306304077/figure/fig4/AS:559901644079104@1510502362706/Margin-of-decision-boundary-in-Binary-SVM-classifier.png">
-<meta property="og:updated_time" content="2019-05-06T14:35:45.025Z">
+<meta property="og:updated_time" content="2019-05-06T15:46:00.796Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SVM">
-<meta name="twitter:description" content="Support Vector Machine  Andrew ng lecture note 를 공부하며 정리한 자료입니다 SVM을 이해하기 위해서는 Margin(마진)과 데이터를 분리해주는 경계선과 데이터 사이의 거리 Gap이 커야 한다는 것에 초점을 맞춰야 한다 1. Margin  여기에서는 ‘confidence’라는 개념이 등장한다 confidence는 예측이">
+<meta name="twitter:description" content="Support Vector Machine  Andrew ng lecture note 를 공부하며 정리한 자료입니다. SVM을 이해하기 위해서는 Margin(마진)과 데이터를 분리해주는 경계선과 데이터 사이의 거리 Gap이 커야 한다는 것에 초점을 맞춰야 한다. 1. Margin  여기에서는 ‘confidence’라는 개념이 등장한다. confidence는">
 <meta name="twitter:image" content="https://www.researchgate.net/profile/K_Kishore_Raju/publication/306304077/figure/fig4/AS:559901644079104@1510502362706/Margin-of-decision-boundary-in-Binary-SVM-classifier.png">
     
 
@@ -146,7 +146,7 @@
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-SVM" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-SVM-1" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
@@ -163,8 +163,8 @@
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2019/05/06/SVM/" class="article-date">
-            <time datetime="2019-05-06T14:35:45.000Z" itemprop="datePublished">2019-05-06</time>
+        <a href="/2019/05/07/SVM-1/" class="article-date">
+            <time datetime="2019-05-06T15:46:00.000Z" itemprop="datePublished">2019-05-07</time>
         </a>
     </div>
 
@@ -177,30 +177,30 @@
         <div class="article-entry" itemprop="articleBody">
             <font size="6" color="sky blue">Support Vector Machine</font>
 
-<p>Andrew ng lecture note 를 공부하며 정리한 자료입니다</p>
-<p>SVM을 이해하기 위해서는 Margin(마진)과 데이터를 분리해주는 경계선과 데이터 사이의 거리 Gap이 커야 한다는 것에 초점을 맞춰야 한다</p>
+<p>Andrew ng lecture note 를 공부하며 정리한 자료입니다.</p>
+<p>SVM을 이해하기 위해서는 Margin(마진)과 데이터를 분리해주는 경계선과 데이터 사이의 거리 Gap이 커야 한다는 것에 초점을 맞춰야 한다.</p>
 <font size="4.5" color="orange">1. Margin</font>
 
-<p>여기에서는 ‘confidence’라는 개념이 등장한다</p>
-<p>confidence는 예측이 얼마나 맞는지에 대한 확신을 나타낸다</p>
+<p>여기에서는 ‘confidence’라는 개념이 등장한다.</p>
+<p>confidence는 예측이 얼마나 맞는지에 대한 확신을 나타낸다.</p>
 <p><img src="https://www.researchgate.net/profile/K_Kishore_Raju/publication/306304077/figure/fig4/AS:559901644079104@1510502362706/Margin-of-decision-boundary-in-Binary-SVM-classifier.png" alt></p>
-<p>그림을 보면 경계선(Seperating hyperplane) 근처에 있으면 Confidence가 낮고 즉 예측의 정확도가 낮아지고,</p>
-<p>경계선에서 멀어질수록 Confidence가 높아지며 예측의 정확도가 높아진다.</p>
+<p>그림을 보면 경계선(Seperating hyperplane) 근처에 있으면 Confidence가 낮고 즉 예측의 정확도가 낮아지고, 경계선에서 멀어질수록 Confidence가 높아지며 예측의 정확도가 높아진다.</p>
 <font size="4.5" color="orange">2. Notation</font>
 
-<p>여기에서 $x$ feature와 $y$ label를 사용한다</p>
-<p>label $y$는 SVM에서 $y \in \{-1, 1\}$ 로 지정해 준다</p>
+<p>여기에서 $x$ feature와 $y$ label를 사용한다.</p>
+<p>label $y$는 SVM에서 $y \in \{-1, 1\}$ 로 지정해 준다.</p>
 <p>사용할 파라미터는 $w$, $b$로 표기할것이다.</p>
-<p>classifier는 다음과 같다</p>
-<script type="math/tex; mode=display">h_{w,b}(x)=g(w^Tx + b)</script><p>만약 $w^Tx + b \geq 0$ 이면 $g(w^Tx + b)=1$ 이 되고, $w^Tx + b \leq 0$ 이면 $g(w^Tx + b)=-1$ 이 된다</p>
+<p>classifier는 다음과 같다.</p>
+<script type="math/tex; mode=display">h_{w,b}(x)=g(w^Tx + b)</script><p>만약 $w^Tx + b \geq 0$ 이면 $g(w^Tx + b)=1$ 이 되고, $w^Tx + b \leq 0$ 이면 $g(w^Tx + b)=-1$ 이 된다.</p>
 <font size="4.5" color="orange">3. Functional / geomeric margins</font>
 
+<p><br></p>
 <font size="3.5" color="green">3.1 Functional margins</font>
 
-<p>training dataset $(x^{(i)},y^{(i)})$ 가 주어지면 functional margin $\left(\widehat\gamma^{(i)} \right)$은 다음과 같다</p>
+<p>training dataset $(x^{(i)},y^{(i)})$ 가 주어지면 functional margin $\left(\widehat\gamma^{(i)} \right)$은 다음과 같다.</p>
 <script type="math/tex; mode=display">\widehat\gamma^{(i)}=y^{(i)} (w^Tx + b)</script><p>식에서 보면 functional margin이 커지기 위해서는 $y^{(i)}=1$ 이면 $w^Tx + b$ 가 양의 부호로 커져야 하고, $y^{(i)}=-1$ 이면 $w^Tx + b$ 가 음의 부호로 커져야 한다. 또한 $y^{(i)} (w^Tx + b) &gt; 0$ 이면 예측이 맞았다는 뜻도 된다.</p>
-<p>그러므로 functional margin은 confidence와 예측의 정확성을 나타낸다</p>
-<p>단 여기서 functional margin $\left(\widehat\gamma \right)$은 데이터 마다의 functional margin중에서 가장 작은 값이 functional margin이 된다.</p>
+<p>그러므로 functional margin은 confidence와 예측의 정확성을 나타낸다.</p>
+<p>단 여기서 functional margin $\left(\widehat\gamma \right)$은 데이터 마다의 functional margins중에서 가장 작은 값이 functional margin이 된다.</p>
 <script type="math/tex; mode=display">\widehat\gamma=min_{i=1,\ldots,m} \widehat\gamma^{(i)}</script><font size="3.5" color="green">3.2 geomeric margins</font>
 
 <p><img src="https://i.stack.imgur.com/CgGze.jpg" alt></p>
@@ -249,17 +249,17 @@ s.t. && g_i(w) \leq 0 \\
 f(x) & \text{if }g_i(w) \leq 0 \text{, } h_i(w)=0 \\
 \infty & \text{if } g_i(w) > 0 \text{ or }h_i(w)\neq0
 \end{cases}</script><p>제약 조건을 모두 만족하면 $\theta_P(w)=f(x)$가 되고 제약 조건하나라도 만족을못하면 무한대로 발산한다</p>
-<p>결국 위식에서 알수 있는 것은 제약식을 만족 시킨다는 것은 $\theta_P(w)$를 가장 최소화 해야 된다는것을 알수 있다</p>
+<p>결국 위식에서 알수 있는 것은 제약식을 모두 만족 시키려면 $\theta_P(w)$를 가장 최소화 해야 된다는것을 알수 있다.</p>
 <script type="math/tex; mode=display">p^*=min_w \theta_P(w)=min_wmax_{\alpha ,\beta : \alpha >0} L(w,\alpha , \beta)</script><font size="3.5" color="green">5.2 dual optimal problem</font>
 
 <p>dual problem은 primal problem과 반대로 $w$를 최소화하는 라그랑지안을 구하는 것이다</p>
-<script type="math/tex; mode=display">\theta_D(\alpha, \beta) =min_w L(w,\alpha , \beta)</script><script type="math/tex; mode=display">d^*=max_{\alpha ,\beta : \alpha >0} \theta_D(\alpha  , \beta)=max_{\alpha ,\beta : \alpha >0} min_w L(w,\alpha , \beta)</script><font size="3.5" color="green">5.3 primal / dual optimal problem</font>
+<script type="math/tex; mode=display">\theta_D(\alpha, \beta) =min_w L(w,\alpha , \beta)</script><script type="math/tex; mode=display">d^{*}=max_{\alpha ,\beta : \alpha >0} \theta_D(\alpha  , \beta)=max_{\alpha ,\beta : \alpha >0} min_w L(w,\alpha , \beta)</script><font size="3.5" color="green">5.3 primal / dual optimal problem</font>
 
-<p>primal optimal 과 dual optimal 식은 min max를 자리바꾼것 말고는 다른게 없다. max min 함수가 min max보다 항상 작거나 같다. 하지만 특정한 조건하에서는 $d^<em> = p^</em>$가 성립한다</p>
-<p>$f$와 $g_i$가 convex, $h_i$가 affine하고 모든 $i$에 대해서 $g_i(w) &lt; 0$ 라고 가정하면 $w, \alpha ,\beta$는 반드시 존재하게 된다. $w^<em>$는 Primal problem의 solution이 되고, $\alpha^</em>, \beta ^*$는 Dual problem의 solution이 된다</p>
+<p>primal optimal 과 dual optimal 식은 min max를 자리바꾼것 말고는 다른게 없다. max min 함수가 min max보다 항상 작거나 같다. 하지만 특정한 조건하에서는 $d$ = $p$ 가 성립한다</p>
+<p>$f$와 $g_i$가 convex, $h_i$가 affine하고 모든 $i$에 대해서 $g_i(w) &lt; 0$ 라고 가정하면 $w, \alpha ,\beta$는 반드시 존재하게 된다. $w$는 Primal problem의 solution이 되고, $\alpha, \beta$는 Dual problem의 solution이 된다</p>
 <font size="3.5" color="green">5.4 KKT conditions</font>
 
-<script type="math/tex; mode=display">{\partial\over\partial w_i}L(w^*,\alpha^* , \beta^*)=0, \text{ } i=1,\ldots,n</script><script type="math/tex; mode=display">{\partial\over\partial \beta_i}L(w^*,\alpha^* , \beta^*)=0, \text{ } i=1,\ldots,l</script><script type="math/tex; mode=display">\alpha_i^* g_i(w^*)=0, \text{ } i=1,\ldots,k</script><script type="math/tex; mode=display">g_i(w^*)\leq 0, \text{ } i=1,\ldots,k</script><script type="math/tex; mode=display">\alpha_i^* \geq0, \text{ } i=1,\ldots,k</script><p>$w^<em>,\alpha^</em> , \beta^*$가 KKT 조건을 만족한다면 dual problem과 primal Problem이 같아지므로 두개 모두의 해가 된다</p>
+<script type="math/tex; mode=display">{\partial\over\partial w_i}L(w^*,\alpha^* , \beta^*)=0, \text{ } i=1,\ldots,n</script><script type="math/tex; mode=display">{\partial\over\partial \beta_i}L(w^*,\alpha^* , \beta^*)=0, \text{ } i=1,\ldots,l</script><script type="math/tex; mode=display">\alpha_i^* g_i(w^*)=0, \text{ } i=1,\ldots,k</script><script type="math/tex; mode=display">g_i(w^*)\leq 0, \text{ } i=1,\ldots,k</script><script type="math/tex; mode=display">\alpha_i^* \geq0, \text{ } i=1,\ldots,k</script><p>$w,\alpha , \beta$가 KKT 조건을 만족한다면 dual problem과 primal Problem이 같아지므로 두개 모두의 해가 된다</p>
 <font size="4.5" color="orange">5. Optimal margin classifiers</font>
 
 <p>다시 Margin classifiers문제로 돌아와 보자</p>
@@ -274,6 +274,15 @@ s.t. && y^{(i)} (w^Tx^{(i)} + b) \geq 1 , i=1,\ldots,m
 <p>Lagranian 식은 다음과 같다.</p>
 <script type="math/tex; mode=display">L(w^*,\alpha^* , \beta^*)=\frac{1}{2}\lVert w \rVert^2-\sum_{i=1}^m \alpha_i \left[y^{(i)} (w^Tx^{(i)} + b)-1\right]</script><p>부등식 제약조건만 있으므로 $\alpha_i$만 존재한다</p>
 <p>dual problem을 푸기 위해서 $minimize_{w,b}L(w,\alpha , \beta)$ $\alpha$는 고정한 상태에서 $w$, $b$에 대해서 미분을 해야한다</p>
+<p>w에 대해 미분한다</p>
+<script type="math/tex; mode=display">\nabla_w L(w,\alpha , \beta)= w -\sum_{i=1}^m\alpha_i y^{(i)}x^{(i)}=0</script><script type="math/tex; mode=display">w=\sum_{i=1}^m\alpha_i y^{(i)}x^{(i)}</script><p>b에 대해 미분한다</p>
+<script type="math/tex; mode=display">{\partial\over\partial b}L(w,\alpha , \beta)=\sum_{i=1}^m\alpha_i y^{(i)}=0</script><p>미분해서 구한 w를 라그랑지안 식에 대입해주고 정리해주면 다음과 같은 식을 얻을수 있다</p>
+<script type="math/tex; mode=display">L(w,\alpha , \beta)=\sum_{i=1}^m\alpha_i - \frac{1}{2} \sum_{i,j=1}^my^{(i)}y^{(j)}\alpha_i\alpha_j \left(x^{(i)}\right)^T x^{(j)}-b\sum_{i=1}^m\alpha_i y^{(i)}</script><p>$\sum_{i=1}^m\alpha_i y^{(i)}=0$이므로 최종식은 다음과 같다</p>
+<script type="math/tex; mode=display">L(w,\alpha , \beta)=\sum_{i=1}^m\alpha_i - \frac{1}{2} \sum_{i,j=1}^my^{(i)}y^{(j)}\alpha_i\alpha_j \left(x^{(i)}\right)^T x^{(j)}</script><p>현재까지 w,b에 대해서 최소화 하는 문제를 풀었고 최종 dual problem을 풀기위해서는 제약식 $\alpha &gt;0$ 을 포함한 $max_\alpha W(\alpha)$를 구해야 한다. dual problem 식은다음과 같다</p>
+<script type="math/tex; mode=display">max_{\alpha} W(\alpha)=\sum_{i=1}^m\alpha_i- \frac{1}{2} \sum_{i,j=1}^my^{(i)}y^{(j)}\alpha_i\alpha_j <x^{(i)}, x^{(j)}></script><p>다음의 식을 최대화하는 $\alpha$를찾으면 $w=\sum_{i=1}^m\alpha_i y^{(i)}x^{(i)}$를 이용해 optimal $w$를 찾는다</p>
+<p>$b$는 구해진 $w$를가지고 다음식에 대입하여 풀수 있다.</p>
+<script type="math/tex; mode=display">b^{*}=-\frac{max_{i:y^{(i)}=-1}w^{*T}x^{(i)}+min_{i:y^{(i)}=1}w^{*T}x^{(i)}}{2}</script><p>추가적으로 $w=\sum_{i=1}^m \alpha_i y^{(i)} x^{(i)}$를 이용하여 다음과 같은 식을 도출해낼수 있다. 이것은 나중에 kernel trick에서 사용하게 될것이다.</p>
+<script type="math/tex; mode=display">w^Tx +b =\left(\sum_{i=1}^m \alpha_i y^{(i)} x^{(i)}\right)x + b=\sum_{i=1}^m \alpha_i y^{(i)}<x^{(i)},x>+b</script><p>classification할때 예측하려는 input data ($x$)와 트레이닝 학습 데이터 ($x^{(i)}$)의 내적 합 으로 예측할수있다. 위 식은 kernel trick에서 사용된다.</p>
 
         </div>
         <footer class="article-footer">
@@ -281,7 +290,7 @@ s.t. && y^{(i)} (w^Tx^{(i)} + b) \geq 1 , i=1,\ldots,m
 
 
 
-    <a data-url="http://progresivoJS.github.io/2019/05/06/SVM/" data-id="cjvcjf1ju0005z356kek1yfw4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://progresivoJS.github.io/2019/05/07/SVM-1/" data-id="cjvcjf1jo0002z356o9n8vk0b" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -355,19 +364,19 @@ s.t. && y^{(i)} (w^Tx^{(i)} + b) \geq 1 , i=1,\ldots,m
         "image": "http://progresivoJS.github.iohttps://www.researchgate.net/profile/K_Kishore_Raju/publication/306304077/figure/fig4/AS:559901644079104@1510502362706/Margin-of-decision-boundary-in-Binary-SVM-classifier.png",
         "keywords": "",
         "genre": "",
-        "datePublished": "2019-05-06",
-        "dateCreated": "2019-05-06",
-        "dateModified": "2019-05-06",
-        "url": "http://progresivoJS.github.io/2019/05/06/SVM/",
+        "datePublished": "2019-05-07",
+        "dateCreated": "2019-05-07",
+        "dateModified": "2019-05-07",
+        "url": "http://progresivoJS.github.io/2019/05/07/SVM-1/",
         "description": "Support Vector Machine
 
-Andrew ng lecture note 를 공부하며 정리한 자료입니다
-SVM을 이해하기 위해서는 Margin(마진)과 데이터를 분리해주는 경계선과 데이터 사이의 거리 Gap이 커야 한다는 것에 초점을 맞춰야 한다
+Andrew ng lecture note 를 공부하며 정리한 자료입니다.
+SVM을 이해하기 위해서는 Margin(마진)과 데이터를 분리해주는 경계선과 데이터 사이의 거리 Gap이 커야 한다는 것에 초점을 맞춰야 한다.
 1. Margin
 
-여기에서는 ‘confidence’라는 개념이 등장한다
-confidence는 예측이"
-        "wordCount": 889
+여기에서는 ‘confidence’라는 개념이 등장한다.
+confidence는 "
+        "wordCount": 1036
     }
 </script>
 
@@ -407,20 +416,10 @@ confidence는 예측이"
         
 <nav id="article-nav">
     
-        <a href="/2019/05/07/SVM-1/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">newer</strong>
-        <p class="article-nav-title">
-        
-            SVM
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2019/05/05/em-algorithm/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2019/05/06/SVM/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">older</strong>
-        <p class="article-nav-title">EM Algorithm</p>
+        <p class="article-nav-title">SVM</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -542,7 +541,7 @@ confidence는 예측이"
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'http://progresivoJS.github.io/2019/05/06/SVM/';
+    var disqus_url = 'http://progresivoJS.github.io/2019/05/07/SVM-1/';
     
     (function() {
     var dsq = document.createElement('script');
