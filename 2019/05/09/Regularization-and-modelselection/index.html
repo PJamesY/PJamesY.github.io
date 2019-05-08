@@ -6,23 +6,23 @@
     
 
     
-    <title>Recommend system | James Blog</title>
+    <title>Regularization and model selection | James Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
         <meta name="keywords" content>
     
-    <meta name="description" content="andrew ng lecture note recommend 를 공부하며 번역하여서 올립니다 각 영화에 대해서 평점이 5점까지 줄수 있다고 가정한다     Movie Alice(1) Bob(2) Carol(3) Dave(4)     Love at star 5 5 0 0   Romance Forevere 5 ? ? 0   Cute love ? 4 0 ?">
+    <meta name="description" content="다음과 같은 hypothesis $h_\theta(x)=g(\theta_0 + \theta_1 x + \ldots + \theta_k x^k)$ 가 있을때 $k$를 몇으로 해야 할지 어떻게 정할수 있을까? 즉 몇차로 식을 만드는게 bias / variance trade off 에 있어서 가장 좋은 모델일까를 어떻게 알수 있을까?조금 구체적으로 이해 하기 위">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Recommend system">
-<meta property="og:url" content="http://progresivoJS.github.io/2019/05/04/Recommend-system/index.html">
+<meta property="og:title" content="Regularization and model selection">
+<meta property="og:url" content="http://progresivoJS.github.io/2019/05/09/Regularization-and-modelselection/index.html">
 <meta property="og:site_name" content="James Blog">
-<meta property="og:description" content="andrew ng lecture note recommend 를 공부하며 번역하여서 올립니다 각 영화에 대해서 평점이 5점까지 줄수 있다고 가정한다     Movie Alice(1) Bob(2) Carol(3) Dave(4)     Love at star 5 5 0 0   Romance Forevere 5 ? ? 0   Cute love ? 4 0 ?">
+<meta property="og:description" content="다음과 같은 hypothesis $h_\theta(x)=g(\theta_0 + \theta_1 x + \ldots + \theta_k x^k)$ 가 있을때 $k$를 몇으로 해야 할지 어떻게 정할수 있을까? 즉 몇차로 식을 만드는게 bias / variance trade off 에 있어서 가장 좋은 모델일까를 어떻게 알수 있을까?조금 구체적으로 이해 하기 위">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-04T06:29:55.136Z">
+<meta property="og:updated_time" content="2019-05-08T15:48:24.735Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Recommend system">
-<meta name="twitter:description" content="andrew ng lecture note recommend 를 공부하며 번역하여서 올립니다 각 영화에 대해서 평점이 5점까지 줄수 있다고 가정한다     Movie Alice(1) Bob(2) Carol(3) Dave(4)     Love at star 5 5 0 0   Romance Forevere 5 ? ? 0   Cute love ? 4 0 ?">
+<meta name="twitter:title" content="Regularization and model selection">
+<meta name="twitter:description" content="다음과 같은 hypothesis $h_\theta(x)=g(\theta_0 + \theta_1 x + \ldots + \theta_k x^k)$ 가 있을때 $k$를 몇으로 해야 할지 어떻게 정할수 있을까? 즉 몇차로 식을 만드는게 bias / variance trade off 에 있어서 가장 좋은 모델일까를 어떻게 알수 있을까?조금 구체적으로 이해 하기 위">
     
 
     
@@ -144,14 +144,14 @@
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-Recommend-system" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-Regularization-and-modelselection" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Recommend system
+        Regularization and model selection
         </h1>
     
 
@@ -161,8 +161,8 @@
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2019/05/04/Recommend-system/" class="article-date">
-            <time datetime="2019-05-04T06:29:55.000Z" itemprop="datePublished">2019-05-04</time>
+        <a href="/2019/05/09/Regularization-and-modelselection/" class="article-date">
+            <time datetime="2019-05-08T15:48:24.000Z" itemprop="datePublished">2019-05-09</time>
         </a>
     </div>
 
@@ -173,230 +173,93 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <!-- <font size = '4'> -->
-<p>andrew ng lecture note recommend 를 공부하며 번역하여서 올립니다</p>
-<p>각 영화에 대해서 평점이 5점까지 줄수 있다고 가정한다</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>Movie</th>
-<th>Alice(1)</th>
-<th>Bob(2)</th>
-<th>Carol(3)</th>
-<th>Dave(4)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Love at star</td>
-<td>5</td>
-<td>5</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>Romance Forevere</td>
-<td>5</td>
-<td>?</td>
-<td>?</td>
-<td>0</td>
-</tr>
-<tr>
-<td>Cute love</td>
-<td>?</td>
-<td>4</td>
-<td>0</td>
-<td>?</td>
-</tr>
-<tr>
-<td>Nonstop Car</td>
-<td>0</td>
-<td>0</td>
-<td>5</td>
-<td>4</td>
-</tr>
-<tr>
-<td>Sword</td>
-<td>0</td>
-<td>0</td>
-<td>5</td>
-<td>?</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>Notation</strong></p>
-<ul>
-<li><p>$n_u$ <strong>:</strong> 총 유저의 명(수)</p>
-</li>
-<li><p>$n_m$ <strong>:</strong> 총 영화의 갯수</p>
-</li>
-<li><p>$r(i,j)$ <strong>:</strong> $j$라는 유저가 영화 $i$에 평점을 줬으면 <strong>1</strong></p>
-</li>
-<li><p>$r(i,j)$ <strong>:</strong> $r(i,j) = 1$이라는 조건 하에 user $j$가 movie $i$에게 준 평점 점수</p>
-</li>
-</ul>
-<p>우리는 주어진 데이터를 가지고 missing value를 predict해야 한다</p>
-<font size="6" color="sky blue">1. Content_based algorithm</font>
+            <p>다음과 같은 hypothesis $h_\theta(x)=g(\theta_0 + \theta_1 x + \ldots + \theta_k x^k)$ 가 있을때 $k$를 몇으로 해야 할지 어떻게 정할수 있을까? 즉 몇차로 식을 만드는게 bias / variance trade off 에 있어서 가장 좋은 모델일까를 어떻게 알수 있을까?<br>조금 구체적으로 이해 하기 위해 유한개의 모델을 다음과 같이 정의하겠다. $M={M_1, \ldots, M_d}$ 여기서 $M_i$는 $i$차수의 다항 회귀 모델이다.</p>
+<font size="4.5" color="orange">1. Cross Validation</font>
 
-<p>content_based는 content가 어떤 특정한 잠재 feature가 있을거라고 생각하고 그 feature vector를 적용하는 것이다.<br>예를 들어 영화를 추천하는 거라면 영화에는 각 장르가 존재한다. 영화의 로맨스 장르 정도, 액션 정도를 가중치 개념으로 주어서 각 영화의 latent feature vector를 지정해준다</p>
-<p>여기에서는 romance를 $x_1$, action $x_2$의 feature vector를 만들어준다 extra(constant) feature도 넣어준다</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>Movie</th>
-<th>Alice(1)</th>
-<th>Bob(2)</th>
-<th>Carol(3)</th>
-<th>Dave(4)</th>
-<th>$x_0$(constant)</th>
-<th>$x_1$(romance)</th>
-<th>$x_2$(action)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Love at star</td>
-<td>5</td>
-<td>5</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0.9</td>
-<td>0</td>
-</tr>
-<tr>
-<td>Romance Forevere</td>
-<td>5</td>
-<td>?</td>
-<td>?</td>
-<td>0</td>
-<td>1</td>
-<td>1.0</td>
-<td>0.1</td>
-</tr>
-<tr>
-<td>Cute love</td>
-<td>?</td>
-<td>4</td>
-<td>0</td>
-<td>?</td>
-<td>1</td>
-<td>0.99</td>
-<td>0</td>
-</tr>
-<tr>
-<td>Nonstop Car</td>
-<td>0</td>
-<td>0</td>
-<td>5</td>
-<td>4</td>
-<td>1</td>
-<td>0.1</td>
-<td>1.0</td>
-</tr>
-<tr>
-<td>Sword</td>
-<td>0</td>
-<td>0</td>
-<td>5</td>
-<td>?</td>
-<td>1</td>
-<td>0</td>
-<td>0.9</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>각각의 영화는 $\begin{bmatrix}<br>Love.. &amp; Romance.. &amp; Cute.. &amp; Nonstop.. &amp; Sword.. \\<br>\end{bmatrix} =\begin{bmatrix}<br>x^1 &amp; x^2 &amp; x^3 &amp; x^4 &amp; x^5 \\<br>\end{bmatrix}$</p>
-<p>각각의 영화 $x^i$은 feature vector를 가지고 있다<br>에를 들어 영화 Love at star $x^1 = \begin{bmatrix}<br>1 \\<br>0.9\\<br>0<br>\end{bmatrix}$ 의 feature vector를 가지고 있다</p>
-<p>content_based 방식에서는 각각의 content feature vector에 따른 user parameter vector를 learning시켜야한다<br>각각의 user마다 각각의 평점은 linear regression방식으로 나타난다</p>
-<p>만약 Alice의 parameter vector($\theta^1$)이 $x^1 = \begin{bmatrix}<br>0 \\<br>5\\<br>0<br>\end{bmatrix}$ 이라고 한다면 Alice가 Cute love 영화에 평점을 줄 점수는 $(\theta^{(1)})^T x^{(3)}$ inner product를 해주면 4.95 평점을 줄거라는 예측이 나온다</p>
-<font size="5" color="orange">$\theta$를 learning 해보자 </font>
-
-<p><strong>Notation</strong></p>
-<ul>
-<li><p>n <strong>:</strong> feature의 dimension(constant를 제외한것) 여기서는 2(romance, action)이다</p>
-</li>
-<li><p>$m^j$ <strong>:</strong> $j$ user가 평점을 준 영화의 갯수  </p>
-</li>
-</ul>
-<p>$j$ user가 평점을 준 영화에 한해서 $j$ user의 영화에 준 예측 평점과 실제 평점의 차를 최소화 해야한다</p>
-<script type="math/tex; mode=display">min_{\theta^{(j)}} \frac{1}{2 m^{(j)}} \sum_{i:r(i,j)=1} \left(\left(\theta^{(j)}\right) ^T x^{(i)} - y^{(i,j)}\right)^2 + \frac{\lambda}{2 m^{(j)}}\sum_{k=1}^n \left( \theta_k^{(j)}\right)^2</script><p>최적화 하는데 $m^{(j)}$는 필요 없으므로 없애주어도 된다</p>
-<script type="math/tex; mode=display">min_{\theta^{(j)}} \frac{1}{2} \sum_{i:r(i,j)=1} \left(\left(\theta^{(j)}\right) ^T x^{(i)} - y^{(i,j)}\right)^2 + \frac{\lambda}{2}\sum_{k=1}^n \left( \theta_k^{(j)}\right)^2</script><p>이거를 모든 user에게 적용시켜야 한다. 우리의 objective function이  된다</p>
-<script type="math/tex; mode=display">J(\theta^1, \ldots, \theta^{n_u}) =\underset{\theta^{(1)}, \cdots, \theta^{(n_u)}}{\operatorname{min}}\frac{1}{2} \sum_{j=1}^{n_u}\sum_{i:r(i,j)=1} \left(\left(\theta^{(j)}\right) ^T x^{(i)} - y^{(i,j)}\right)^2 + \frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^n \left( \theta_k^{(j)}\right)^2</script><p>$\theta$에 대해서 미분을 해준다</p>
-<p>$\theta_k^{(j)} : \theta_k^{(j)} - \alpha\sum_{i:r(i,j)=1} \left(\left(\theta^{(j)}\right) ^T x^{(i)} - y^{(i,j)}\right)x_k^{(i)}$ $(for \text{ } k= 0)$</p>
-<p>$\theta_k^{(j)} : \theta_k^{(j)} - \alpha \left(\sum_{i:r(i,j)=1} \left(\left(\theta^{(j)}\right) ^T x^{(i)} - y^{(i,j)}\right)x_k^{(i)} + \lambda \theta_k^{(j)}  \right)$ $(for \text{ } k\neq 0)$</p>
-<p>k가 0인것과 K가 0이 아닌것의 뜻은 feature의 constant term을 하느냐 안하느냐 이다</p>
-<p>우리의 Obejctive function의 최종식은</p>
-<script type="math/tex; mode=display">{\partial^2\over\partial\theta_k^{(j)}}J(\theta^1, \ldots, \theta^{n_u})=\left(\sum_{i:r(i,j)=1} \left(\left(\theta^{(j)}\right) ^T x^{(i)} - y^{(i,j)}\right)x_k^{(i)} + \lambda \theta_k^{(j)}  \right)</script><p>content_based는 각 content에 대한 feature를 알아야 한다는 단점이 있다. 다음에 알아볼 방법은 이거를 보완해준 Colloaborative filtering방법이다</p>
-<font size="6" color="sky blue">2. Collaborative filtering</font>
-
+<p>training set $S$가 있다면 우리는 empirical risk minimization 알고리즘에 의해 다음과 같은 과정을 거쳐 최적의 hypothesis를 찾는다.</p>
 <ol>
-<li>content_based 방식에서는 content feature를 알고 있는 상태였다. 하지만 현실에서는 불가능하다</li>
-<li>또한 Feature의 갯수를 조금더 많이 알기를 원한다</li>
+<li><p>데이터셋에 각각의 $M_i$ 모델을 적용한후 hypothesis $h_i$를 얻는다.</p>
+</li>
+<li><p>가장 낮은 training error를 낸 hypotheses 를 선택한다</p>
+</li>
 </ol>
-<font size="5" color="orange">user의 영화 취향 벡터 $\theta$와  각 영화의 장르 feature 벡터 $x$를 서로 교차적으로 learning </font>
-
-<p><strong>Notation</strong></p>
-<ul>
-<li><p>$n_m$ <strong>:</strong> 영화의 갯수</p>
-</li>
-<li><p>$n_u$ <strong>:</strong> user의 수</p>
-</li>
-</ul>
+<p>위의 방법은 효과적이지는 않다.<br>분명 높은 차수의 hypothesis가 더 낮은 training error를 발생 시킬것이기 때문이다. 따라서 이 방법은 항상 높은 variance, 높은 차수의 hypothesis가 선택 될것이다.</p>
+<p>더 효율이 높은 알고리즘은 <strong>Cross validation</strong> 방법이다. 방법은 다음과 같다.</p>
 <ol>
-<li><p>$\theta$를 랜덤적으로 Initialize한다</p>
-<p> $\theta$를 가지고 $x$를 update시킨다</p>
-<script type="math/tex; mode=display">\underset{x^{(1)}, \cdots, x^{(n_m)}}{\operatorname{min}} {1\over2} \sum_{j=1}^{n_m}\sum_{i:r(i,j)=1} \left(\left(\theta^{(j)}\right) ^T x^{(i)} - y^{(i,j)}\right)^2 + \frac{\lambda}{2}\sum_{j=1}^{n_m}\sum_{k=1}^n \left( x_k^{(j)}\right)^2</script></li>
-<li><p>update된 $x$를 가지고 $\theta$를 Update시킨다</p>
-<script type="math/tex; mode=display">\underset{\theta^{(1)}, \cdots, \theta^{(n_u)}}{\operatorname{min}} {1\over2} \sum_{j=1}^{n_u}\sum_{i:r(i,j)=1} \left(\left(\theta^{(j)}\right) ^T x^{(i)} - y^{(i,j)}\right)^2 + \frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^n \left( \theta_k^{(j)}\right)^2</script></li>
+<li><p>랜덤하게 데이터셋 $S$를 70%는 $S_{train} : $ training 데이터로, 나머지 30% $S_{cv}$(hold out cross validation set)으로 나눈다.</p>
+</li>
+<li><p>hypothesis $h_i$를 얻기 위해 $S_{train}$ 데이터만 사용한다.</p>
+</li>
+<li><p>그리고 가장 작은 에러($\hat \epsilon_{S_{cv}}$)를 낸 hypothesis를 선택하면 된다. (여기서 $\hat \epsilon_{S_{cv}}$ 는 $S_{cv}$ 데이터에 대한 empirical error를 나타낸 것이다.)</p>
+</li>
 </ol>
-<font size="5" color="orange">Minimizing $\theta^{(1)}, \cdots, \theta^{(n_u)}$ and $x^{(1)}, \cdots, x^{(n_m)}$ simultaneously</font>
-
-<script type="math/tex; mode=display">J(x^{(1)}, \cdots, x^{(n_m)},\theta^{(1)}, \cdots, \theta^{(n_u)}) ={1\over2} \sum_{(i,j):r(i,j)=1} \left(\left(\theta^{(j)}\right) ^T x^{(i)} - y^{(i,j)}\right)^2 + \frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^n \left( \theta_k^{(j)}\right)^2 + \frac{\lambda}{2}\sum_{i=1}^{n_m}\sum_{k=1}^n \left( x_k^{(i)}\right)^2</script><script type="math/tex; mode=display">\underset{x^{(1)}, \cdots, x^{(n_m)},\theta^{(1)}, \cdots, \theta^{(n_u)}}{\operatorname{min}}J\left(x^{(1)}, \cdots, x^{(n_m)},\theta^{(1)}, \cdots, \theta^{(n_u)}\right)</script><p>content_based와 다른점은 costant Term을 넣어주지 않는다는 것이다</p>
-<p>cost function J를 최대한 줄여주는 벡터를 찾는다</p>
-<font size="6" color="sky blue">3. Low rank matrix Factorization</font>
-
-<script type="math/tex; mode=display">Y = \begin{bmatrix}
-5 & 5 & 0 &0\\
-5 & ? & ? &0\\
-? & 4 & 0 &?\\
-0 & 0 & 5 &4\\
-0 & 0 & 5 &0\\
-\end{bmatrix}</script><p>5개의 영화와 4명의 user matrix이다</p>
-<p>predicted rating은 다음과 같이 나타낼수 있다</p>
-<script type="math/tex; mode=display">X = \begin{bmatrix}
---- \left(x^{(1)}\right)^T ---\\
---- \left(x^{(2)}\right)^T ---\\
-\vdots\\ --- \left(x^{(n_m)}\right)^T ---\\
-\end{bmatrix}</script><script type="math/tex; mode=display">\Theta = \begin{bmatrix}
---- \left(\theta^{(1)}\right)^T ---\\
---- \left(\theta^{(2)}\right)^T ---\\
-\vdots\\ --- \left(\theta^{(n_u)}\right)^T ---\\
-\end{bmatrix}</script><p>predicted rating matrix = $\Theta^T \cdot X$</p>
-<p><strong><em>Notation</em></strong></p>
+<p>$S_{train}$ 데이터로 학습하며 얻은 $h_i$로 학습할때 사용하지 않았던 $S_{cv}$로 테스트를 해보면 $h_i$의 true generalization error를 측정할수 있다. 그 다음 가장 작은 generalization error를 가진 hypothesis를 선택하면 된다. 보통의 경우 데이터의 $1/4, 1/3$ 정도를 cross validation set으로 사용한다.</p>
+<p>하지만 위 방법은 30% 정도의 data를 training 할때 쓰지 못한다는 단점이 있다. 학습 할때 즉 항상 $0.7m$의 데이터만 사용하고 전체 데이터 $m$을 사용을 못한다는 것이다. 물론 충분한 엄청 많은 데이터가 있다면 상관없지만…</p>
+<p>데이터가 충분하지 않다면 다음 <strong>K-fold Cross Validation</strong> 방법을 쓰는것이 조금더 데이터를 활용할수 있을것이다.</p>
+<ol>
+<li><p>렌덤하게 데이터 $S$를 $m/k$개로 이루어진 데이터 $k$개로 나눠 준다. 그리고 각각의 데이터 셋을 $S_1, S_2, \ldots, S_k$로 지정한다.</p>
+</li>
+<li><p>각각의 모델 $M_i$ 에 대해 다음을 실행한다.</p>
 <ul>
-<li><p>$r_{i,j}$ <strong>:</strong> $i$ 유저가 $j$ 영화에게준 실제 평점</p>
-</li>
-<li><p>$e_{i,j}$ <strong>:</strong> $i$ 유저가 $j$ 영화에게준 실제 평점과 예측 평점의 차이</p>
-</li>
-<li><p>$p_{i,k}$ <strong>:</strong> $i$ 유저의 latent feature vector</p>
-</li>
-<li><p>$q_{k,j}$ <strong>:</strong> $j$ 영화의 latent feature vector</p>
-</li>
-<li><p>$\beta$ : Regularization Term</p>
-</li>
-<li><p>$\alpha$ : Learning rate</p>
-</li>
-<li><p>$P$ : 유저들의 Latent Matrix / shape : $\left( \text{유저 명수  (X)  Latent 갯수}\right)$</p>
-</li>
-<li><p>$Q$ : 영화들의 Latent Matrix / shape : $\left( \text{ Latent 갯수 (X) 영화 갯수 }\right)$</p>
-</li>
+<li><p>For $j = 1, 2, \ldots, k$</p>
+<ul>
+<li>S_j 데이터 셋만 제외하고 나머지 데이터 $S_1 \cup \cdots \cup S_{j-1} \cup S_{j+1} \cup \cdots S_k$ 를 가지고 학습을 시킨다음 $h_{ij}$ hypothesis를 얻는다. 그리고 나서 $S_j$데이터를 가지고 테스트를 한후 $\widehat \epsilon (S_j)$ 를 찾는다</li>
 </ul>
-<script type="math/tex; mode=display">e_{i,j}^2 = \left( r_{i,j} -\sum_{k=1}^K p_{i,k} q_{k,j} \right)^2 + {\beta \over 2} \sum_{k=1}^K \left(\lVert P \rVert^2 + \lVert Q \rVert^2\right)</script><script type="math/tex; mode=display">p_{i,k}^{'} = p_{i,k} + \alpha {\partial \over \partial p_{i,k}}e_{i,j}^2 = p_{i,k} + \alpha \left( 2 e_{i,j}q_{k,j} - \beta p_{i,k}\right)</script><script type="math/tex; mode=display">q_{k,j}^{'} = q_{k,j} + \alpha {\partial \over \partial q_{k,j}}e_{i,j}^2 = q_{k,j} + \alpha \left( 2 e_{i,j}p_{i,k} - \beta q_{k,j}\right)</script><p>$p_{i,k}^{‘}$, $q_{k,j}^{‘}$ 각각 벡터이다</p>
+</li>
+<li>$M_i$의 generalization error는 $\widehat \epsilon (S_j)$ 평균으로 구한다.</li>
+</ul>
+</li>
+<li><p>generalization error가 가장 낮은 $M_i$을 구한 다음 다시 전체 데이터 셋 $S$를 가지고 재학습을 하여 얻어진 hypothesis가 최종 답이 된다.</p>
+</li>
+</ol>
+<p>데이터를 나눌때 $1/k$로 전 cross validation보다 훨씬 적게 test로 사용되긴 하였지만, 각각의 모델마다 k번의 계산이 필요하기 때문에 계산적으로는 비효율적이다.</p>
+<p>이러한 교차 검증 방법은 single model / algorithm을 검증하고 싶을때 사용하면 좋은 검증 방법중에 하나가 될것이다.</p>
+<font size="4.5" color="orange">2. Feature Selection</font>
+
+<p>model을 선택할때 중요하고 특별한 방법중의 하나가 Feature selection이다. 만약 supervised learning을 하려고 하는데 Feature의 갯수가 너무 많으면 ($n &gt;&gt; m$) 모델의 학습에 관련있는 몇개의 feature 만 선택해야 할것이다. simple한 선형 분류문제를 풀때 많은 수($n$)의 feature가 사용되면,  hypothesis class의 VC dimension이 여전히 $O(n)$이기 때문에 학습 데이터가 많지 않은 한 overfitting 문제가 발생할수 있기 때문이다.</p>
+<p>만약 n 개의 features가 있다면 feature를 사용할 모든 경우의 수는 $2^n$이 될것이다.</p>
+<p>feature selection 방법중에 forward selection는 다음과 같다.</p>
+<ol>
+<li><p>$\mathcal{F}= \emptyset$</p>
+</li>
+<li><p>Repeat {</p>
+<p> (a) For $i = 1, 2, \ldots, n$ $if$ $i \notin \mathcal{F}$, $\mathcal{F_i}=F \cup \{i\}$로 놓는다. $\mathcal{F_i}$를 평가하기 위해 cross validation 한다. generalization error를 구한다.</p>
+<p> (b) step (a)에서 자장 적합한 feature set $\mathcal{F_i}$를 찾는<br>}</p>
+</li>
+<li><p>전체 과정을 돌고 나서 가장 적합한 feature set을 선택한다.</p>
+</li>
+</ol>
+<p>전체 loop가 종료되는 시점은 The $\mathcal{F}$가 전체 feature set $\{1, \ldots, n\}$이 되었거나, 미리 지정해준 threshold hold $\mid \mathcal{F_i}\mid$ 를 넘었을때이다.</p>
+<p>forward selection은 <em>wrapper model feature selection</em> 의 한 예시로 불리기도한다.</p>
+<p>forward search 와는 다른 방법인 backward search가 있다. 이 방법은 처음 feature set의 시작을 전체 set $\mathcal{F} = \{1, \ldots, n\}$으로 시작 한다. 그리고 반복적으로 하나씩 feature들을 지워가며 $\mathcal{F}= \emptyset$ 가 될때까지 최적의 feature set을 찾는다.</p>
+<p>하지만 이러한 wrapper model feature selection 은 계산 복잡도가 모든 feature set $\mathcal{F} = \{1, \ldots, n\}$ 을 확인할때까지 $O(n^2)$가 된다.</p>
+<p>그러한 이유로 비록 heuristic 하긴 하지만, 계산 복잡도가 조금 더 낮은 방법인 <em>Filter feature selection</em> 을 사용할수 있다. 여기서 사용하는 방법은 간단한 점수 $S(i)$를 활용한다. $S(i)$는 하나의 feature $x_i$가 라벨 $y$에 대해 얼마나 정보성이 있느냐의 점수이다. 점수가 큰 feature를 선택하게 된다.</p>
+<p>$S(i)$를 측정하는 한가지 방법은 학습 데이터에서 얻은 feature $x$ 와 라벨 $y$간의 서로의 correlation을 점수로 쓰는 것이다. 결국 라벨과 가장 강한 관계가 강한 feature가 점수가 높게 될것이다.  </p>
+<p>실제로는 특히 feature $x_i$의 값들이 discrete 할때는 $S(i)$를 상호 정보량($MI(x_i,y)$)으로 수치화 하여 사용한다</p>
+<script type="math/tex; mode=display">MI(x_i,y) = \sum_{x_i \in \{0,1\}} \sum_{y \in \{0,1\}} p(x_i, y) \log \frac{p(x_i, y)}{p(x_i)p(y)}</script><p>위의 공식은 $x_i$와 $y$가 binary value로 이루어져 있을때이고,<br>확률 $p(x_i, y)$, $p(x_i),p(y)$ training data의 empirical distribution에 의해 측정 된것이다</p>
+<p>상호 정보량이 KL divergence로 표현될수 있다는 것을 이해하고 있으면 위 식을 조금더 직관적으로 이해할수 있을것이다.</p>
+<script type="math/tex; mode=display">MI(x_i,y) = KL(p(x_i, y) \mid \mid p(x_i)p(y))</script><p>KL divergence 는 확률 분포 $p(x_i, y)$와 $p(x_i)p(y)$가 얼마나 다른지 나타내는 것이다. 만약 $x_i$와 $y$가 서로 independent 하다면 $p(x_i, y) = p(x_i)p(y)$ 가 성립할것이고, 두 분포간의 KL divergence는 0이 될것이다. 또한 $x_i$가 명백히 $y$에 대한 정보량이 없다는 것을 의마기도 한다. 반대로, 만약 $x_i$가 $y$에 대한 정보량이 많으면 그들의 상호 정보량 $MI(x_i,y)$는 매우 클것이다.</p>
+<p>자 그러면 스코어 S(i)를 구하고, 몇개의 feature를 사용할것인가를 정해야 한다. 가장 표준적인 방법은 가능한 k의 갯수를 cross validation을 통해서 구하는 것이다.</p>
+<p>보통 이방법은 단어의 갯수가 많은 즉 feature의 갯수가 매우 많은 naive Bayes text classification을 할때 feature 갯수를 줄이기 위해 사용한다.</p>
+<font size="4.5" color="orange">3. Bayesian statistics and regularization</font>
+
+<p>이번에는 overfitting을 피하기 위해 쓰이는 방법을 알아보겠다. 우리는 parameter을 찾기 위해 최대 가능도 (maximum likelihood)를 사용한다.</p>
+<script type="math/tex; mode=display">\theta_{ML}=argmax_{\theta}\prod_{i=1}^m p(y^{(i)} \mid x{(i)};\theta)</script><p>기존의 최대 가능도 방법은 $\theta$를 random하게 지정하는게 아닌, 모르는 상수로 놓는다.</p>
+<p>그러나, maximum likelihood 방법 말고 Bayesian 방법을 이용한 방법을 쓰게 되면 모르는 값 $\theta$를 렌덤하게 놓고, 사전확률 분포 $P(\theta)$를 지정한다.<br>만약 학습 데이터 셋 $S=\{(x^{(i)}, y^{(i)})\}_{i=1}^m$ 이 주어졌을때 $\theta$를 사후 확률 분포 $P(\theta \mid S)$ 통해 예측한다.</p>
+<script type="math/tex; mode=display">\begin{matrix}
+P(\theta \mid S) &=& \frac{P(S \mid \theta) P(\theta)}{P(S)} \\
+       &=& \frac{\left(\prod_{i=1}^m p(y^{(i)}\mid x^{(i)},\theta)\right)p(\theta)}
+         {\int_\theta \left(\prod_{i=1}^m p(y^{(i)}\mid x^{(i)},\theta)p(\theta)\right)d\theta}
+\end{matrix}</script><p>위 식의 $p(y^{(i)}\mid x^{(i)},\theta)$는 learning 문제를 풀때마다 나오는 식이다. 만약 Bayesian logistic regression 문제를 풀면 $p(y^{(i)}\mid x^{(i)},\theta)=h_\theta(x^{(i)})^{y^{(i)}}(1-h_\theta(x^{(i)}))^{(1-y^{(i)})}$ 가 된다.</p>
+<p>$h_\theta(x^{(i)})=1/(1+exp(-\theta x^{(i)}))$</p>
+<p>새로운 x데이터에 대해 예측을 하려고 한다면 $\theta$의 사후 확률분포를 활용하여 클래스에 대한 사후 확률 분포를 이용해서 구한다</p>
+<p>$p(y \mid x, S)=\int_\theta p(y \mid x, \theta)p(\theta \mid S)d\theta$</p>
+<p>$E[y \mid x, S] = \int_y yp(y\mid x,S)dy$</p>
+<p>x 데이터가 주어졌을때 $\theta$에대한 사후 확률 분포$p(\theta \mid S)$에 관한  y의 평균으로 구할수 있다.</p>
+<p>하지만 Bayesian 방법은 $\theta$의 차수가 커지면 커질수록 계산 복잡도가 커지고, closed form도 아니라서 계산이 어렵다는 단점이 있다.</p>
+<p>따라서 $\theta$의 사후 확률 분포를 근사하여 구하게 되는데 이 방법을 MAP(maximum a posterior)라고 한다</p>
+<p>$\theta_{MAP}=argmax_\theta \prod_{i=1}^mp(y^{(i)}\mid x^{(i)}, \theta)p(\theta)$</p>
+<p>MAP 식을 보면 알겠지만 maximum likelihood와 다른 점은 단지 뒤에 $p(\theta)$만 붙어 있다는 것이다. 뒤에 사전 확률 분포가 곱해져 있으므로 ML보다 overfitting에 대해 덜 민감한 장점이 있다</p>
 
         </div>
         <footer class="article-footer">
@@ -404,7 +267,7 @@
 
 
 
-    <a data-url="http://progresivoJS.github.io/2019/05/04/Recommend-system/" data-id="cjvfefcdf00047j56dfoitaza" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://progresivoJS.github.io/2019/05/09/Regularization-and-modelselection/" data-id="cjvfefcnt00087j56qntwvgb4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -474,50 +337,16 @@
             "@type": "Person",
             "name": "James Park"
         },
-        "headline": "Recommend system",
+        "headline": "Regularization and model selection",
         "image": "http://progresivoJS.github.io",
         "keywords": "",
         "genre": "",
-        "datePublished": "2019-05-04",
-        "dateCreated": "2019-05-04",
-        "dateModified": "2019-05-04",
-        "url": "http://progresivoJS.github.io/2019/05/04/Recommend-system/",
-        "description": " -->
-andrew ng lecture note recommend 를 공부하며 번역하여서 올립니다
-각 영화에 대해서 평점이 5점까지 줄수 있다고 가정한다
-
-
-
-
-Movie
-Alice(1)
-Bob(2)
-Carol(3)
-Dave(4)
-
-
-
-
-Love at star
-5
-5
-0
-0
-
-
-Romance Forevere
-5
-?
-?
-0
-
-
-Cute love
-?
-4
-0
-"
-        "wordCount": 717
+        "datePublished": "2019-05-09",
+        "dateCreated": "2019-05-09",
+        "dateModified": "2019-05-09",
+        "url": "http://progresivoJS.github.io/2019/05/09/Regularization-and-modelselection/",
+        "description": "다음과 같은 hypothesis $h_\theta(x)=g(\theta_0 + \theta_1 x + \ldots + \theta_k x^k)$ 가 있을때 $k$를 몇으로 해야 할지 어떻게 정할수 있을까? 즉 몇차로 식을 만드는게 bias / variance trade off 에 있어서 가장 좋은 모델일까를 어떻게 알수 있을까?조금 구체적으로 이해 하기 위"
+        "wordCount": 1016
     }
 </script>
 
@@ -557,20 +386,10 @@ Cute love
         
 <nav id="article-nav">
     
-        <a href="/2019/05/05/em-algorithm/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">newer</strong>
-        <p class="article-nav-title">
-        
-            EM Algorithm
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2019/03/29/MLE-MAP-1/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2019/05/07/Learning-Theory/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">older</strong>
-        <p class="article-nav-title">MLE MAP</p>
+        <p class="article-nav-title">Learning_Theory</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -692,7 +511,7 @@ Cute love
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'http://progresivoJS.github.io/2019/05/04/Recommend-system/';
+    var disqus_url = 'http://progresivoJS.github.io/2019/05/09/Regularization-and-modelselection/';
     
     (function() {
     var dsq = document.createElement('script');
