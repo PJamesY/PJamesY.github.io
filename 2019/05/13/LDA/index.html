@@ -6,23 +6,25 @@
     
 
     
-    <title>Recommend system | James Blog</title>
+    <title>Latent Dirichlet Allocation | James Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
         <meta name="keywords" content>
     
-    <meta name="description" content="andrew ng lecture note recommend 를 공부하며 번역하여서 올립니다 각 영화에 대해서 평점이 5점까지 줄수 있다고 가정한다     Movie Alice(1) Bob(2) Carol(3) Dave(4)     Love at star 5 5 0 0   Romance Forevere 5 ? ? 0   Cute love ? 4 0 ?">
+    <meta name="description" content="Topic Modeling    Generative Process  $\theta_i \sim Dir(\alpha), i \in \{1, \ldots, M\}$  $\phi_k \sim Dir(\beta), k \in \{1, \ldots, K\}$  $z_{i,l} \sim Mult(\theta_i), i \in \{1, \ldots, M\}, l \in">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Recommend system">
-<meta property="og:url" content="http://progresivoJS.github.io/2019/05/04/Recommend-system/index.html">
+<meta property="og:title" content="Latent Dirichlet Allocation">
+<meta property="og:url" content="http://progresivoJS.github.io/2019/05/13/LDA/index.html">
 <meta property="og:site_name" content="James Blog">
-<meta property="og:description" content="andrew ng lecture note recommend 를 공부하며 번역하여서 올립니다 각 영화에 대해서 평점이 5점까지 줄수 있다고 가정한다     Movie Alice(1) Bob(2) Carol(3) Dave(4)     Love at star 5 5 0 0   Romance Forevere 5 ? ? 0   Cute love ? 4 0 ?">
+<meta property="og:description" content="Topic Modeling    Generative Process  $\theta_i \sim Dir(\alpha), i \in \{1, \ldots, M\}$  $\phi_k \sim Dir(\beta), k \in \{1, \ldots, K\}$  $z_{i,l} \sim Mult(\theta_i), i \in \{1, \ldots, M\}, l \in">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-04T06:29:55.136Z">
+<meta property="og:image" content="https://www.researchgate.net/publication/326140642/figure/fig1/AS:644129876873217@1530583938944/Graphical-model-of-latent-Dirichlet-allocation-LDA.png">
+<meta property="og:updated_time" content="2019-05-13T14:11:15.123Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Recommend system">
-<meta name="twitter:description" content="andrew ng lecture note recommend 를 공부하며 번역하여서 올립니다 각 영화에 대해서 평점이 5점까지 줄수 있다고 가정한다     Movie Alice(1) Bob(2) Carol(3) Dave(4)     Love at star 5 5 0 0   Romance Forevere 5 ? ? 0   Cute love ? 4 0 ?">
+<meta name="twitter:title" content="Latent Dirichlet Allocation">
+<meta name="twitter:description" content="Topic Modeling    Generative Process  $\theta_i \sim Dir(\alpha), i \in \{1, \ldots, M\}$  $\phi_k \sim Dir(\beta), k \in \{1, \ldots, K\}$  $z_{i,l} \sim Mult(\theta_i), i \in \{1, \ldots, M\}, l \in">
+<meta name="twitter:image" content="https://www.researchgate.net/publication/326140642/figure/fig1/AS:644129876873217@1530583938944/Graphical-model-of-latent-Dirichlet-allocation-LDA.png">
     
 
     
@@ -144,14 +146,14 @@
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-Recommend-system" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-LDA" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Recommend system
+        Latent Dirichlet Allocation
         </h1>
     
 
@@ -161,8 +163,8 @@
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2019/05/04/Recommend-system/" class="article-date">
-            <time datetime="2019-05-04T06:29:55.000Z" itemprop="datePublished">2019-05-04</time>
+        <a href="/2019/05/13/LDA/" class="article-date">
+            <time datetime="2019-05-13T14:11:15.000Z" itemprop="datePublished">2019-05-13</time>
         </a>
     </div>
 
@@ -173,230 +175,67 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <!-- <font size = '4'> -->
-<p>andrew ng lecture note recommend 를 공부하며 번역하여서 올립니다</p>
-<p>각 영화에 대해서 평점이 5점까지 줄수 있다고 가정한다</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>Movie</th>
-<th>Alice(1)</th>
-<th>Bob(2)</th>
-<th>Carol(3)</th>
-<th>Dave(4)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Love at star</td>
-<td>5</td>
-<td>5</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>Romance Forevere</td>
-<td>5</td>
-<td>?</td>
-<td>?</td>
-<td>0</td>
-</tr>
-<tr>
-<td>Cute love</td>
-<td>?</td>
-<td>4</td>
-<td>0</td>
-<td>?</td>
-</tr>
-<tr>
-<td>Nonstop Car</td>
-<td>0</td>
-<td>0</td>
-<td>5</td>
-<td>4</td>
-</tr>
-<tr>
-<td>Sword</td>
-<td>0</td>
-<td>0</td>
-<td>5</td>
-<td>?</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>Notation</strong></p>
+            <font size="5" color="orange">Topic Modeling</font>
+
+<p><img src="https://www.researchgate.net/publication/326140642/figure/fig1/AS:644129876873217@1530583938944/Graphical-model-of-latent-Dirichlet-allocation-LDA.png" alt></p>
+<p><img src="https://cdn-images-1.medium.com/max/885/0*II7wZlKViCt4ssBm.png" alt></p>
+<p><strong>Generative Process</strong></p>
 <ul>
-<li><p>$n_u$ <strong>:</strong> 총 유저의 명(수)</p>
+<li><p>$\theta_i \sim Dir(\alpha), i \in \{1, \ldots, M\}$</p>
 </li>
-<li><p>$n_m$ <strong>:</strong> 총 영화의 갯수</p>
+<li><p>$\phi_k \sim Dir(\beta), k \in \{1, \ldots, K\}$</p>
 </li>
-<li><p>$r(i,j)$ <strong>:</strong> $j$라는 유저가 영화 $i$에 평점을 줬으면 <strong>1</strong></p>
+<li><p>$z_{i,l} \sim Mult(\theta_i), i \in \{1, \ldots, M\}, l \in \{1, \ldots, N\}$</p>
 </li>
-<li><p>$r(i,j)$ <strong>:</strong> $r(i,j) = 1$이라는 조건 하에 user $j$가 movie $i$에게 준 평점 점수</p>
+<li><p>$w_{i,l} \sim Mult(\phi_{z_{i,l}}), i \in \{1, \ldots, M\}, l \in \{1, \ldots, N\}$</p>
 </li>
 </ul>
-<p>우리는 주어진 데이터를 가지고 missing value를 predict해야 한다</p>
-<font size="6" color="sky blue">1. Content_based algorithm</font>
-
-<p>content_based는 content가 어떤 특정한 잠재 feature가 있을거라고 생각하고 그 feature vector를 적용하는 것이다.<br>예를 들어 영화를 추천하는 거라면 영화에는 각 장르가 존재한다. 영화의 로맨스 장르 정도, 액션 정도를 가중치 개념으로 주어서 각 영화의 latent feature vector를 지정해준다</p>
-<p>여기에서는 romance를 $x_1$, action $x_2$의 feature vector를 만들어준다 extra(constant) feature도 넣어준다</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>Movie</th>
-<th>Alice(1)</th>
-<th>Bob(2)</th>
-<th>Carol(3)</th>
-<th>Dave(4)</th>
-<th>$x_0$(constant)</th>
-<th>$x_1$(romance)</th>
-<th>$x_2$(action)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Love at star</td>
-<td>5</td>
-<td>5</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0.9</td>
-<td>0</td>
-</tr>
-<tr>
-<td>Romance Forevere</td>
-<td>5</td>
-<td>?</td>
-<td>?</td>
-<td>0</td>
-<td>1</td>
-<td>1.0</td>
-<td>0.1</td>
-</tr>
-<tr>
-<td>Cute love</td>
-<td>?</td>
-<td>4</td>
-<td>0</td>
-<td>?</td>
-<td>1</td>
-<td>0.99</td>
-<td>0</td>
-</tr>
-<tr>
-<td>Nonstop Car</td>
-<td>0</td>
-<td>0</td>
-<td>5</td>
-<td>4</td>
-<td>1</td>
-<td>0.1</td>
-<td>1.0</td>
-</tr>
-<tr>
-<td>Sword</td>
-<td>0</td>
-<td>0</td>
-<td>5</td>
-<td>?</td>
-<td>1</td>
-<td>0</td>
-<td>0.9</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>각각의 영화는 $\begin{bmatrix}<br>Love.. &amp; Romance.. &amp; Cute.. &amp; Nonstop.. &amp; Sword.. \\<br>\end{bmatrix} =\begin{bmatrix}<br>x^1 &amp; x^2 &amp; x^3 &amp; x^4 &amp; x^5 \\<br>\end{bmatrix}$</p>
-<p>각각의 영화 $x^i$은 feature vector를 가지고 있다<br>에를 들어 영화 Love at star $x^1 = \begin{bmatrix}<br>1 \\<br>0.9\\<br>0<br>\end{bmatrix}$ 의 feature vector를 가지고 있다</p>
-<p>content_based 방식에서는 각각의 content feature vector에 따른 user parameter vector를 learning시켜야한다<br>각각의 user마다 각각의 평점은 linear regression방식으로 나타난다</p>
-<p>만약 Alice의 parameter vector($\theta^1$)이 $x^1 = \begin{bmatrix}<br>0 \\<br>5\\<br>0<br>\end{bmatrix}$ 이라고 한다면 Alice가 Cute love 영화에 평점을 줄 점수는 $(\theta^{(1)})^T x^{(3)}$ inner product를 해주면 4.95 평점을 줄거라는 예측이 나온다</p>
-<font size="5" color="orange">$\theta$를 learning 해보자 </font>
-
-<p><strong>Notation</strong></p>
+<p>단어 $\boldsymbol{w}$는 $\boldsymbol{\phi_z}$ word-topic 분포에 의해 generated 된다</p>
+<p>$\boldsymbol{z}$ topic은 $\boldsymbol{\theta}$ document-topic 분포에 의해 generated 된다</p>
+<p>$\boldsymbol{\theta}$ document-topic 분포는 $\boldsymbol{\alpha}$ 분포에 의해 generated 된다</p>
+<p>$\boldsymbol{\phi}$ word-topic 분포는 $\boldsymbol{\beta}$ 분포에 의해 generated 된다</p>
+<p><br></p>
+<p><strong>만약 우리가 $Z$ 분포를 가지고 있다면 $\theta$와 $\phi$를 likely하게 구할수 있다</strong></p>
 <ul>
-<li><p>n <strong>:</strong> feature의 dimension(constant를 제외한것) 여기서는 2(romance, action)이다</p>
+<li><p>$\theta$ : Topic distribution in a document</p>
 </li>
-<li><p>$m^j$ <strong>:</strong> $j$ user가 평점을 준 영화의 갯수  </p>
+<li><p>$\phi$ : Word distribution in a topic</p>
+</li>
+<li><p>$Z$를 구하는 것이 $\theta$와 $\phi$를 추론하는 중요한 키가 된다</p>
 </li>
 </ul>
-<p>$j$ user가 평점을 준 영화에 한해서 $j$ user의 영화에 준 예측 평점과 실제 평점의 차를 최소화 해야한다</p>
-<script type="math/tex; mode=display">min_{\theta^{(j)}} \frac{1}{2 m^{(j)}} \sum_{i:r(i,j)=1} \left(\left(\theta^{(j)}\right) ^T x^{(i)} - y^{(i,j)}\right)^2 + \frac{\lambda}{2 m^{(j)}}\sum_{k=1}^n \left( \theta_k^{(j)}\right)^2</script><p>최적화 하는데 $m^{(j)}$는 필요 없으므로 없애주어도 된다</p>
-<script type="math/tex; mode=display">min_{\theta^{(j)}} \frac{1}{2} \sum_{i:r(i,j)=1} \left(\left(\theta^{(j)}\right) ^T x^{(i)} - y^{(i,j)}\right)^2 + \frac{\lambda}{2}\sum_{k=1}^n \left( \theta_k^{(j)}\right)^2</script><p>이거를 모든 user에게 적용시켜야 한다. 우리의 objective function이  된다</p>
-<script type="math/tex; mode=display">J(\theta^1, \ldots, \theta^{n_u}) =\underset{\theta^{(1)}, \cdots, \theta^{(n_u)}}{\operatorname{min}}\frac{1}{2} \sum_{j=1}^{n_u}\sum_{i:r(i,j)=1} \left(\left(\theta^{(j)}\right) ^T x^{(i)} - y^{(i,j)}\right)^2 + \frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^n \left( \theta_k^{(j)}\right)^2</script><p>$\theta$에 대해서 미분을 해준다</p>
-<p>$\theta_k^{(j)} : \theta_k^{(j)} - \alpha\sum_{i:r(i,j)=1} \left(\left(\theta^{(j)}\right) ^T x^{(i)} - y^{(i,j)}\right)x_k^{(i)}$ $(for \text{ } k= 0)$</p>
-<p>$\theta_k^{(j)} : \theta_k^{(j)} - \alpha \left(\sum_{i:r(i,j)=1} \left(\left(\theta^{(j)}\right) ^T x^{(i)} - y^{(i,j)}\right)x_k^{(i)} + \lambda \theta_k^{(j)}  \right)$ $(for \text{ } k\neq 0)$</p>
-<p>k가 0인것과 K가 0이 아닌것의 뜻은 feature의 constant term을 하느냐 안하느냐 이다</p>
-<p>우리의 Obejctive function의 최종식은</p>
-<script type="math/tex; mode=display">{\partial^2\over\partial\theta_k^{(j)}}J(\theta^1, \ldots, \theta^{n_u})=\left(\sum_{i:r(i,j)=1} \left(\left(\theta^{(j)}\right) ^T x^{(i)} - y^{(i,j)}\right)x_k^{(i)} + \lambda \theta_k^{(j)}  \right)</script><p>content_based는 각 content에 대한 feature를 알아야 한다는 단점이 있다. 다음에 알아볼 방법은 이거를 보완해준 Colloaborative filtering방법이다</p>
-<font size="6" color="sky blue">2. Collaborative filtering</font>
+<font size="5" color="orange">Gibbs Sampling on Z (1)</font>
 
-<ol>
-<li>content_based 방식에서는 content feature를 알고 있는 상태였다. 하지만 현실에서는 불가능하다</li>
-<li>또한 Feature의 갯수를 조금더 많이 알기를 원한다</li>
-</ol>
-<font size="5" color="orange">user의 영화 취향 벡터 $\theta$와  각 영화의 장르 feature 벡터 $x$를 서로 교차적으로 learning </font>
-
-<p><strong>Notation</strong></p>
+<p>Gibbs Sampling을 활용하여 가장 likely한 $Z$를 구한다</p>
+<p><strong>factorization</strong> 으로 시작한다</p>
 <ul>
-<li><p>$n_m$ <strong>:</strong> 영화의 갯수</p>
-</li>
-<li><p>$n_u$ <strong>:</strong> user의 수</p>
-</li>
+<li><p>$P(W, Z, \theta, \phi; \alpha, \beta)$</p>
+<script type="math/tex; mode=display">= \prod_{i=1}^{K} P(\phi_i;\beta) \prod_{j=1}^{M} P(\theta_j;\alpha) \prod_{l=1}^{N} P(Z_{j,l} \mid \theta_j) P(W_{j,l} \mid \phi_{Z_{j,l}})</script></li>
 </ul>
-<ol>
-<li><p>$\theta$를 랜덤적으로 Initialize한다</p>
-<p> $\theta$를 가지고 $x$를 update시킨다</p>
-<script type="math/tex; mode=display">\underset{x^{(1)}, \cdots, x^{(n_m)}}{\operatorname{min}} {1\over2} \sum_{j=1}^{n_m}\sum_{i:r(i,j)=1} \left(\left(\theta^{(j)}\right) ^T x^{(i)} - y^{(i,j)}\right)^2 + \frac{\lambda}{2}\sum_{j=1}^{n_m}\sum_{k=1}^n \left( x_k^{(j)}\right)^2</script></li>
-<li><p>update된 $x$를 가지고 $\theta$를 Update시킨다</p>
-<script type="math/tex; mode=display">\underset{\theta^{(1)}, \cdots, \theta^{(n_u)}}{\operatorname{min}} {1\over2} \sum_{j=1}^{n_u}\sum_{i:r(i,j)=1} \left(\left(\theta^{(j)}\right) ^T x^{(i)} - y^{(i,j)}\right)^2 + \frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^n \left( \theta_k^{(j)}\right)^2</script></li>
-</ol>
-<font size="5" color="orange">Minimizing $\theta^{(1)}, \cdots, \theta^{(n_u)}$ and $x^{(1)}, \cdots, x^{(n_m)}$ simultaneously</font>
-
-<script type="math/tex; mode=display">J(x^{(1)}, \cdots, x^{(n_m)},\theta^{(1)}, \cdots, \theta^{(n_u)}) ={1\over2} \sum_{(i,j):r(i,j)=1} \left(\left(\theta^{(j)}\right) ^T x^{(i)} - y^{(i,j)}\right)^2 + \frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^n \left( \theta_k^{(j)}\right)^2 + \frac{\lambda}{2}\sum_{i=1}^{n_m}\sum_{k=1}^n \left( x_k^{(i)}\right)^2</script><script type="math/tex; mode=display">\underset{x^{(1)}, \cdots, x^{(n_m)},\theta^{(1)}, \cdots, \theta^{(n_u)}}{\operatorname{min}}J\left(x^{(1)}, \cdots, x^{(n_m)},\theta^{(1)}, \cdots, \theta^{(n_u)}\right)</script><p>content_based와 다른점은 costant Term을 넣어주지 않는다는 것이다</p>
-<p>cost function J를 최대한 줄여주는 벡터를 찾는다</p>
-<font size="6" color="sky blue">3. Low rank matrix Factorization</font>
-
-<script type="math/tex; mode=display">Y = \begin{bmatrix}
-5 & 5 & 0 &0\\
-5 & ? & ? &0\\
-? & 4 & 0 &?\\
-0 & 0 & 5 &4\\
-0 & 0 & 5 &0\\
-\end{bmatrix}</script><p>5개의 영화와 4명의 user matrix이다</p>
-<p>predicted rating은 다음과 같이 나타낼수 있다</p>
-<script type="math/tex; mode=display">X = \begin{bmatrix}
---- \left(x^{(1)}\right)^T ---\\
---- \left(x^{(2)}\right)^T ---\\
-\vdots\\ --- \left(x^{(n_m)}\right)^T ---\\
-\end{bmatrix}</script><script type="math/tex; mode=display">\Theta = \begin{bmatrix}
---- \left(\theta^{(1)}\right)^T ---\\
---- \left(\theta^{(2)}\right)^T ---\\
-\vdots\\ --- \left(\theta^{(n_u)}\right)^T ---\\
-\end{bmatrix}</script><p>predicted rating matrix = $\Theta^T \cdot X$</p>
-<p><strong><em>Notation</em></strong></p>
+<p><br></p>
+<p>$\theta$와 $\phi$를 collapse시키려고 식을 전개한다</p>
 <ul>
-<li><p>$r_{i,j}$ <strong>:</strong> $i$ 유저가 $j$ 영화에게준 실제 평점</p>
-</li>
-<li><p>$e_{i,j}$ <strong>:</strong> $i$ 유저가 $j$ 영화에게준 실제 평점과 예측 평점의 차이</p>
-</li>
-<li><p>$p_{i,k}$ <strong>:</strong> $i$ 유저의 latent feature vector</p>
-</li>
-<li><p>$q_{k,j}$ <strong>:</strong> $j$ 영화의 latent feature vector</p>
-</li>
-<li><p>$\beta$ : Regularization Term</p>
-</li>
-<li><p>$\alpha$ : Learning rate</p>
-</li>
-<li><p>$P$ : 유저들의 Latent Matrix / shape : $\left( \text{유저 명수  (X)  Latent 갯수}\right)$</p>
-</li>
-<li><p>$Q$ : 영화들의 Latent Matrix / shape : $\left( \text{ Latent 갯수 (X) 영화 갯수 }\right)$</p>
-</li>
+<li>왜냐하면 W는 Data point이고, Z 는 Sampling target이고 $\alpha, \beta$는 prior 이기 때문에 살려야 한다</li>
 </ul>
-<script type="math/tex; mode=display">e_{i,j}^2 = \left( r_{i,j} -\sum_{k=1}^K p_{i,k} q_{k,j} \right)^2 + {\beta \over 2} \sum_{k=1}^K \left(\lVert P \rVert^2 + \lVert Q \rVert^2\right)</script><script type="math/tex; mode=display">p_{i,k}^{'} = p_{i,k} + \alpha {\partial \over \partial p_{i,k}}e_{i,j}^2 = p_{i,k} + \alpha \left( 2 e_{i,j}q_{k,j} - \beta p_{i,k}\right)</script><script type="math/tex; mode=display">q_{k,j}^{'} = q_{k,j} + \alpha {\partial \over \partial q_{k,j}}e_{i,j}^2 = q_{k,j} + \alpha \left( 2 e_{i,j}p_{i,k} - \beta q_{k,j}\right)</script><p>$p_{i,k}^{‘}$, $q_{k,j}^{‘}$ 각각 벡터이다</p>
+<p>$P(W, Z; \alpha, \beta) = \int_{\theta} \int_{\phi} P(W, Z, \theta, \phi ; \alpha, \beta)d\phi d\theta$</p>
+<p>$= \int_{\phi} \prod_{i=1}^{K} P(\phi_i;\beta) \prod_{j=1}^{M} \prod_{l=1}^{N} P(W_{j,l} \mid \phi_{Z_{j,l}}) d\phi \times \int_{\theta} \prod_{j=1}^{M} P(\theta_j;\alpha) \prod_{l=1}^{N} P(Z_{j,l} \mid \theta_j) d\theta$</p>
+<p>$= (1) \times (2)$</p>
+<p><br><br>(1)번 식을 먼저 풀어본다</p>
+<p>$(1) = \int_{\phi} \prod_{i=1}^{K} P(\phi_i;\beta) \prod_{j=1}^{M} \prod_{l=1}^{N} P(W_{j,l} \mid \phi_{Z_{j,l}}) d\phi$</p>
+<p>$= \prod_{i=1}^{K} \int_{\phi_i} P(\phi_i;\beta) \prod_{j=1}^{M} \prod_{l=1}^{N} P(W_{j,l} \mid \phi_{Z_{j,l}}) d\phi_i$</p>
+<p>$= \prod_{i=1}^{K} \int_{\phi_i} \frac{\Gamma(\sum_{v=1}^{V} \beta_v)}  {\prod_{v=1}^{V} \Gamma(\beta_v)} \prod_{v=1}^{V}\phi_{i,v}^{\beta_v -1} \prod_{j=1}^{M} \prod_{l=1}^{N} P(W_{j,l} \mid \phi_{Z_{j,l}}) d\phi_i$</p>
+<p>여기서 v는 unique 단어의 갯수이다(dimension)</p>
+<p>$n_{j,r}^i$ : $j$번째 document에 있는 $i$번째 topic의 성질을 가진 $r$번째 unique한 단어이다</p>
+<p>$n_{(.),v}^i$ : 모든 문서를 보고 $i$라는 topic의 성질을 가진 unique한 단어 $v$의 갯수</p>
+<p>$=\prod_{i=1}^{K} \int_{\phi_i} \frac{\Gamma(\sum_{v=1}^{V} \beta_v)}  {\prod_{v=1}^{V} \Gamma(\beta_v)} \prod_{v=1}^{V}\phi_{i,v}^{\beta_v -1} \prod_{v=1}^V \phi_{i,v}^{n_{(.),v}^i} d\phi_i$</p>
+<p>$=\prod_{i=1}^{K} \int_{\phi_i} \frac{\Gamma(\sum_{v=1}^{V} \beta_v)}  {\prod_{v=1}^{V} \Gamma(\beta_v)} \prod_{v=1}^{V}\phi_{i,v}^{n_{(.),v}^i + \beta_v -1}d\phi_i$</p>
+<p>$=\prod_{i=1}^{K} \frac{\prod_{v=1}^{V} \Gamma \left(n_{(.),v}^i + \beta_v \right) \Gamma \left(\sum_{v=1}^V \beta_v\right)}  {\prod_{v=1}^V \Gamma \left( \beta_v\right) \Gamma \left( \sum_{v=1}^V n_{(.),v}^i + \beta_v \right)} \int_{\phi_i} \frac{\Gamma \left( \sum_{v=1}^V n_{(.),v}^i + \beta_v \right)}  {\prod_{v=1}^{V} \Gamma \left(n_{(.),v}^i + \beta_v \right)} \prod_{v=1}^{V}\phi_{i,v}^{n_{(.),v}^i + \beta_v -1}d\phi_i$</p>
+<p>$=\prod_{i=1}^{K} \frac{\prod_{v=1}^{V} \Gamma \left(n_{(.),v}^i + \beta_v \right) \Gamma \left(\sum_{v=1}^V \beta_v\right)}  {\prod_{v=1}^V \Gamma \left( \beta_v\right) \Gamma \left( \sum_{v=1}^V n_{(.),v}^i + \beta_v \right)}$</p>
+<p><br><br>(2)번 식을 먼저 풀어본다</p>
+<p>$\int_{\theta} \prod_{j=1}^{M} P\left(\theta_j;\alpha\right) \prod_{l=1}^{N} P\left(Z_{j,l} \mid \theta_j\right) d\theta$</p>
+<p>$= \prod_{j=1}^{M} \int_{\theta_j} P\left(\theta_j;\alpha\right) \prod_{l=1}^{N} P\left(Z_{j,l} \mid \theta_j\right) d\theta_j$</p>
+<p>$= \prod_{j=1}^{M} \int_{\theta_j} \frac{\Gamma \left( \sum_{k=1}^K \alpha_k \right)}  {\prod_{k=1}^{K} \Gamma \left( \alpha_k \right)} \prod_{k=1}^K \theta_{j,k}^{\alpha_k -1} \prod_{l=1}^N P \left( Z_{j,l} \mid \theta_j\right)d \theta_j$</p>
+<p>$n_{(.),v}^i$ : 모든 단어는 다 포함하고 $i$라는 topic의 성질을 가진 unique한 단어 $v$의 갯수</p>
 
         </div>
         <footer class="article-footer">
@@ -404,7 +243,7 @@
 
 
 
-    <a data-url="http://progresivoJS.github.io/2019/05/04/Recommend-system/" data-id="cjvmg494g000alz56en8qus7j" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://progresivoJS.github.io/2019/05/13/LDA/" data-id="cjvmg48vj0001lz5601cp855s" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -474,50 +313,26 @@
             "@type": "Person",
             "name": "James Park"
         },
-        "headline": "Recommend system",
-        "image": "http://progresivoJS.github.io",
+        "headline": "Latent Dirichlet Allocation",
+        "image": "http://progresivoJS.github.iohttps://www.researchgate.net/publication/326140642/figure/fig1/AS:644129876873217@1530583938944/Graphical-model-of-latent-Dirichlet-allocation-LDA.png",
         "keywords": "",
         "genre": "",
-        "datePublished": "2019-05-04",
-        "dateCreated": "2019-05-04",
-        "dateModified": "2019-05-04",
-        "url": "http://progresivoJS.github.io/2019/05/04/Recommend-system/",
-        "description": " -->
-andrew ng lecture note recommend 를 공부하며 번역하여서 올립니다
-각 영화에 대해서 평점이 5점까지 줄수 있다고 가정한다
+        "datePublished": "2019-05-13",
+        "dateCreated": "2019-05-13",
+        "dateModified": "2019-05-13",
+        "url": "http://progresivoJS.github.io/2019/05/13/LDA/",
+        "description": "Topic Modeling
 
 
 
+Generative Process
 
-Movie
-Alice(1)
-Bob(2)
-Carol(3)
-Dave(4)
+$\theta_i \sim Dir(\alpha), i \in \{1, \ldots, M\}$
 
+$\phi_k \sim Dir(\beta), k \in \{1, \ldots, K\}$
 
-
-
-Love at star
-5
-5
-0
-0
-
-
-Romance Forevere
-5
-?
-?
-0
-
-
-Cute love
-?
-4
-0
-"
-        "wordCount": 717
+$z_{i,l} \sim Mult(\theta_i), i \in \{1, \ldots, M\}, l \in"
+        "wordCount": 390
     }
 </script>
 
@@ -557,20 +372,10 @@ Cute love
         
 <nav id="article-nav">
     
-        <a href="/2019/05/05/em-algorithm/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">newer</strong>
-        <p class="article-nav-title">
-        
-            EM Algorithm
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2019/03/29/MLE-MAP-1/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2019/05/09/Regularization-and-modelselection/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">older</strong>
-        <p class="article-nav-title">MLE MAP</p>
+        <p class="article-nav-title">Regularization and model selection</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -692,7 +497,7 @@ Cute love
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'http://progresivoJS.github.io/2019/05/04/Recommend-system/';
+    var disqus_url = 'http://progresivoJS.github.io/2019/05/13/LDA/';
     
     (function() {
     var dsq = document.createElement('script');
