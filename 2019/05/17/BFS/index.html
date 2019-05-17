@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>BFS | James Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content>
+    
+    <meta name="description" content="너비 우선 탐색  백준 알고리즘을 푸는 중에 BFS를 적용해야 하는 문제가 있어 BFS에 대한 간단한 설명과 queue를 이용한 BFS 알고리즘을 푸는 방법에 대해서 애기해보겠습니다. 제목에서 보는 바와 같이 탐색 알고리즘으로서 그래프상의 모든 노드를 탐색하는 알고리즘입니다.  간단히 그림을 통해서 queue와 함께 어떤식을로 탐색하는지 애기해보겠습니다.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BFS">
+<meta property="og:url" content="http://progresivoJS.github.io/2019/05/17/BFS/index.html">
+<meta property="og:site_name" content="James Blog">
+<meta property="og:description" content="너비 우선 탐색  백준 알고리즘을 푸는 중에 BFS를 적용해야 하는 문제가 있어 BFS에 대한 간단한 설명과 queue를 이용한 BFS 알고리즘을 푸는 방법에 대해서 애기해보겠습니다. 제목에서 보는 바와 같이 탐색 알고리즘으로서 그래프상의 모든 노드를 탐색하는 알고리즘입니다.  간단히 그림을 통해서 queue와 함께 어떤식을로 탐색하는지 애기해보겠습니다.">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUmdNfIZY0J5WKStWYM9b-ht9F4g9pCuBsLTA6bHyYd3I6SJuL">
+<meta property="og:updated_time" content="2019-05-17T13:48:58.507Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BFS">
+<meta name="twitter:description" content="너비 우선 탐색  백준 알고리즘을 푸는 중에 BFS를 적용해야 하는 문제가 있어 BFS에 대한 간단한 설명과 queue를 이용한 BFS 알고리즘을 푸는 방법에 대해서 애기해보겠습니다. 제목에서 보는 바와 같이 탐색 알고리즘으로서 그래프상의 모든 노드를 탐색하는 알고리즘입니다.  간단히 그림을 통해서 queue와 함께 어떤식을로 탐색하는지 애기해보겠습니다.">
+<meta name="twitter:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUmdNfIZY0J5WKStWYM9b-ht9F4g9pCuBsLTA6bHyYd3I6SJuL">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/james.jpg">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">James Data Scientist Blog</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        
+                                    
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="https://github.com/PJamesY">index.github</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    uncategorized
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-BFS" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        BFS
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2019/05/17/BFS/" class="article-date">
+            <time datetime="2019-05-17T13:48:58.000Z" itemprop="datePublished">2019-05-17</time>
+        </a>
+    </div>
+
+		
+
+                
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <font size="5" color="sky blue">너비 우선 탐색</font>
+
+<p>백준 알고리즘을 푸는 중에 BFS를 적용해야 하는 문제가 있어 BFS에 대한 간단한 설명과 queue를 이용한 BFS 알고리즘을 푸는 방법에 대해서 애기해보겠습니다.</p>
+<p>제목에서 보는 바와 같이 탐색 알고리즘으로서 그래프상의 모든 노드를 탐색하는 알고리즘입니다.</p>
+<p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUmdNfIZY0J5WKStWYM9b-ht9F4g9pCuBsLTA6bHyYd3I6SJuL" alt></p>
+<p>간단히 그림을 통해서 queue와 함께 어떤식을로 탐색하는지 애기해보겠습니다.</p>
+<p>그래프에는 다음과 같이 총 $V1$부터 $V9$까지의 9개의 노드가 있습니다. 9개의 노드를 모두 탐색하는 방법은 다음과 같습니다.</p>
+<p>먼저 queue를 하나 선언합니다</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queue = list()</span><br></pre></td></tr></table></figure>
+<p>그리고 가장 먼저 start node(root)를 queue에 넣습니다(append).</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queue.append(V1)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queue = [V1]</span><br></pre></td></tr></table></figure>
+<p>그리고 가장 첫번째 있는 V1노드를 pop해주면서, V1의 자식 노드를 append 해줍니다. pop해준 V1 노드는 search를 했다는 뜻입니다.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">queue.pop(<span class="number">0</span>)</span><br><span class="line">queue.append(V2, V5)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queue = [V2, V5]</span><br></pre></td></tr></table></figure>
+<p>가장 첫번째 있는 V2노드를 pop해주면서, V2의 자식 노드를 append 해줍니다. pop해준 V2 노드는 search를 했다는 뜻입니다.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">queue.pop(<span class="number">0</span>)</span><br><span class="line">queue.append(V3, V4)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queue = [V5, V3, V4]</span><br></pre></td></tr></table></figure>
+<p>가장 첫번째 있는 V5노드를 pop해주면서, V5의 자식 노드를 append 해줍니다. 여기서는 V5의 자식 노드 V4는 한번 queue에 들어갔으므로 따라서 append해줄 자식노드는 없다. pop해준 V5 노드는 search를 했다는 뜻입니다.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queue.pop(<span class="number">0</span>)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queue = [V3, V4]</span><br></pre></td></tr></table></figure>
+<p>가장 첫번째 있는 V3노드를 pop해주면서, V3의 자식 노드를 append 해줍니다. pop해준 V3 노드는 search를 했다는 뜻입니다.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">queue.pop(<span class="number">0</span>)</span><br><span class="line">queue.append(V7)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queue = [V4, V7]</span><br></pre></td></tr></table></figure>
+<p>가장 첫번째 있는 V4노드를 pop해주면서, V4의 자식 노드를 append 해줍니다. pop해준 V4 노드는 search를 했다는 뜻입니다.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">queue.pop(<span class="number">0</span>)</span><br><span class="line">queue.append(V6)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queue = [V7, V6]</span><br></pre></td></tr></table></figure>
+<p>가장 첫번째 있는 V7노드를 pop해주면서, V7의 자식 노드를 append 해줍니다. pop해준 V7 노드는 search를 했다는 뜻입니다.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">queue.pop(<span class="number">0</span>)</span><br><span class="line">queue.append(V8, V9)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queue = [V6, V8, V9]</span><br></pre></td></tr></table></figure>
+<p>가장 첫번째 있는 V6노드를 pop해주면서, V6의 자식 노드를 append 해줍니다. 여기서는 V6의 자식 노드 V9는 한번 queue에 들어갔으므로 따라서 append해줄 자식노드는 없다. pop해준 V6 노드는 search를 했다는 뜻입니다.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queue.pop(<span class="number">0</span>)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queue = [V8, V9]</span><br></pre></td></tr></table></figure>
+<p>가장 첫번째 있는 V8노드를 pop해줍니다. 여기서는 V8의 자식 노드는 없습니다. pop해준 V8 노드는 search를 했다는 뜻입니다.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queue.pop(<span class="number">0</span>)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queue = [V9]</span><br></pre></td></tr></table></figure>
+<p>가장 첫번째 있는 V9노드를 pop해줍니다. 여기서는 V9의 자식 노드는 없습니다. pop해준 V9 노드는 search를 했다는 뜻입니다.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queue.pop(<span class="number">0</span>)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queue = []</span><br></pre></td></tr></table></figure>
+<p>queue가 모두 비게 되면 모든 노드를 search했다는 뜻이 되므로 알고리즘을 종료합니다.</p>
+<p>BFS를 적용한 백준 알고리즘 <strong>미로 탐색</strong> 문제</p>
+<p><strong><em>문제</em></strong></p>
+<p>N×M크기의 배열로 표현되는 미로가 있다.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th>0</th>
+<th>1</th>
+<th>1</th>
+<th>1</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>미로에서 1은 이동할 수 있는 칸을 나타내고, 0은 이동할 수 없는 칸을 나타낸다. 이러한 미로가 주어졌을 때, (1, 1)에서 출발하여 (N, M)의 위치로 이동할 때 지나야 하는 최소의 칸 수를 구하는 프로그램을 작성하시오. 한 칸에서 다른 칸으로 이동할 때, 서로 인접한 칸으로만 이동할 수 있다.</p>
+<p>위의 예에서는 15칸을 지나야 (N, M)의 위치로 이동할 수 있다. 칸을 셀 때에는 시작 위치와 도착 위치도 포함한다.</p>
+<p><strong><em>입력</em></strong><br>첫째 줄에 두 정수 N, M(2 ≤ N, M ≤ 100)이 주어진다. 다음 N개의 줄에는 M개의 정수로 미로가 주어진다. 각각의 수들은 붙어서 입력으로 주어진다.</p>
+<p><strong><em>출력</em></strong><br>첫째 줄에 지나야 하는 최소의 칸 수를 출력한다. 항상 도착위치로 이동할 수 있는 경우만 입력으로 주어진다.</p>
+<p><strong><em>예제 입력 1</em></strong></p>
+<p>4 6<br>101111<br>101010<br>101011<br>111011</p>
+<p><strong><em>예제 출력 1</em></strong><br>15</p>
+<p><strong><em>풀이 코드</em></strong></p>
+<p>입력 받는코드<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">row, num = map(int, input().split())</span><br><span class="line">ls = list()</span><br><span class="line">ls.append([<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(num+<span class="number">2</span>)])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(row):</span><br><span class="line"></span><br><span class="line">    inner_ls = list()</span><br><span class="line">    nums = input()</span><br><span class="line">    inner_ls.append(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> number <span class="keyword">in</span> nums:</span><br><span class="line">        inner_ls.append(int(number))</span><br><span class="line">        </span><br><span class="line">    inner_ls.append(<span class="number">0</span>)</span><br><span class="line">    ls.append(inner_ls)</span><br><span class="line"></span><br><span class="line">ls.append([<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(num+<span class="number">2</span>)])</span><br></pre></td></tr></table></figure></p>
+<p>solution function 코드<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solution</span><span class="params">(ls, row, num)</span>:</span></span><br><span class="line">    start = (<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line">    goal = (row,num)</span><br><span class="line"></span><br><span class="line">    dx = [<span class="number">1</span>, <span class="number">-1</span>, <span class="number">0</span>, <span class="number">0</span>] <span class="comment"># 동서남북</span></span><br><span class="line">    dy = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">-1</span>, <span class="number">1</span>] <span class="comment"># 동서남북</span></span><br><span class="line"></span><br><span class="line">    queue = list()</span><br><span class="line">    queue.append(start)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        cur_x, cur_y = queue.pop(<span class="number">0</span>)</span><br><span class="line">        cur_value = ls[cur_x][cur_y]</span><br><span class="line">        <span class="keyword">for</span> idx <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">            mov_x = cur_x + dx[idx]</span><br><span class="line">            mov_y = cur_y + dy[idx]</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> ls[mov_x][mov_y] != <span class="number">0</span>:</span><br><span class="line">                mov_value = ls[mov_x][mov_y]</span><br><span class="line"></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> mov_value == <span class="number">1</span> <span class="keyword">or</span> cur_value + <span class="number">1</span> &lt; mov_value:</span><br><span class="line">                ls[mov_x][mov_y] = cur_value + <span class="number">1</span></span><br><span class="line">                queue.append((mov_x, mov_y))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ls[goal[<span class="number">0</span>]][goal[<span class="number">1</span>]]</span><br></pre></td></tr></table></figure></p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://progresivoJS.github.io/2019/05/17/BFS/" data-id="cjvs52ttp0002wil5pzkab2zn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "James Park"
+        },
+        "headline": "BFS",
+        "image": "http://progresivoJS.github.iohttps://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUmdNfIZY0J5WKStWYM9b-ht9F4g9pCuBsLTA6bHyYd3I6SJuL",
+        "keywords": "",
+        "genre": "",
+        "datePublished": "2019-05-17",
+        "dateCreated": "2019-05-17",
+        "dateModified": "2019-05-17",
+        "url": "http://progresivoJS.github.io/2019/05/17/BFS/",
+        "description": "너비 우선 탐색
+
+백준 알고리즘을 푸는 중에 BFS를 적용해야 하는 문제가 있어 BFS에 대한 간단한 설명과 queue를 이용한 BFS 알고리즘을 푸는 방법에 대해서 애기해보겠습니다.
+제목에서 보는 바와 같이 탐색 알고리즘으로서 그래프상의 모든 노드를 탐색하는 알고리즘입니다.
+
+간단히 그림을 통해서 queue와 함께 어떤식을로 탐색하는지 애기해보겠습니다.
+"
+        "wordCount": 986
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/PJamesY" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2019/05/13/LDA/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Latent Dirichlet Allocation</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/05/17/BFS/" class="title">BFS</a></p>
+                            <p class="item-date"><time datetime="2019-05-17T13:48:58.000Z" itemprop="datePublished">2019-05-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/05/13/LDA/" class="title">Latent Dirichlet Allocation</a></p>
+                            <p class="item-date"><time datetime="2019-05-13T14:11:15.000Z" itemprop="datePublished">2019-05-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/05/09/Regularization-and-modelselection/" class="title">Regularization and model selection</a></p>
+                            <p class="item-date"><time datetime="2019-05-08T15:48:24.000Z" itemprop="datePublished">2019-05-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/05/07/Learning-Theory/" class="title">Learning_Theory</a></p>
+                            <p class="item-date"><time datetime="2019-05-07T01:46:02.000Z" itemprop="datePublished">2019-05-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/05/07/SVM-1/" class="title">SVM</a></p>
+                            <p class="item-date"><time datetime="2019-05-06T15:46:00.000Z" itemprop="datePublished">2019-05-07</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+
+            
+                
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2019 James Park</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://progresivoJS.github.io/2019/05/17/BFS/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
