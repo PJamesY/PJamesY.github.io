@@ -6,25 +6,25 @@
     
 
     
-    <title>EM Algorithm | James Blog</title>
+    <title>Data Structure(Deque) | James Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
         <meta name="keywords" content>
     
-    <meta name="description" content="latent variable 추론  clustering과 classification의 가장 큰 차이점은 숨어있는 변수가 있느냐 없느냐이다.clustering은 latent variable이 포함되어 있다classification은 observed variable로 분류 한다  $\{ X, Z\}$ : 모든 variable  $X$ : 관측된(Observed">
+    <meta name="description" content="자료구조2. Deque   자료구조 중에서 stack과 queue를 합쳐 놓은 자료구조 방식으로, data를 넣고 빼는 곳이 두 곳으로 두 군데에서 모두 push / pop 이 가능한 자료 구조입니다. deque 을 이용한 알고리즘 문제 (1)   비교 대상이 되는 문장 base_sentence와 비교하는 문장 compare_sentence가 주어집니다.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="EM Algorithm">
-<meta property="og:url" content="http://progresivoJS.github.io/2019/05/05/em-algorithm/index.html">
+<meta property="og:title" content="Data Structure(Deque)">
+<meta property="og:url" content="http://progresivoJS.github.io/2019/05/20/deque/index.html">
 <meta property="og:site_name" content="James Blog">
-<meta property="og:description" content="latent variable 추론  clustering과 classification의 가장 큰 차이점은 숨어있는 변수가 있느냐 없느냐이다.clustering은 latent variable이 포함되어 있다classification은 observed variable로 분류 한다  $\{ X, Z\}$ : 모든 variable  $X$ : 관측된(Observed">
+<meta property="og:description" content="자료구조2. Deque   자료구조 중에서 stack과 queue를 합쳐 놓은 자료구조 방식으로, data를 넣고 빼는 곳이 두 곳으로 두 군데에서 모두 push / pop 이 가능한 자료 구조입니다. deque 을 이용한 알고리즘 문제 (1)   비교 대상이 되는 문장 base_sentence와 비교하는 문장 compare_sentence가 주어집니다.">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://www.probabilitycourse.com/images/chapter6/Convex_b.png">
-<meta property="og:updated_time" content="2019-05-05T14:29:55.089Z">
+<meta property="og:image" content="https://iq.opengenus.org/content/images/2018/05/image.PNG">
+<meta property="og:updated_time" content="2019-05-20T08:20:18.646Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="EM Algorithm">
-<meta name="twitter:description" content="latent variable 추론  clustering과 classification의 가장 큰 차이점은 숨어있는 변수가 있느냐 없느냐이다.clustering은 latent variable이 포함되어 있다classification은 observed variable로 분류 한다  $\{ X, Z\}$ : 모든 variable  $X$ : 관측된(Observed">
-<meta name="twitter:image" content="https://www.probabilitycourse.com/images/chapter6/Convex_b.png">
+<meta name="twitter:title" content="Data Structure(Deque)">
+<meta name="twitter:description" content="자료구조2. Deque   자료구조 중에서 stack과 queue를 합쳐 놓은 자료구조 방식으로, data를 넣고 빼는 곳이 두 곳으로 두 군데에서 모두 push / pop 이 가능한 자료 구조입니다. deque 을 이용한 알고리즘 문제 (1)   비교 대상이 되는 문장 base_sentence와 비교하는 문장 compare_sentence가 주어집니다.">
+<meta name="twitter:image" content="https://iq.opengenus.org/content/images/2018/05/image.PNG">
     
 
     
@@ -146,14 +146,14 @@
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-em-algorithm" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-deque" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        EM Algorithm
+        Data Structure(Deque)
         </h1>
     
 
@@ -163,8 +163,8 @@
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2019/05/05/em-algorithm/" class="article-date">
-            <time datetime="2019-05-05T14:29:55.000Z" itemprop="datePublished">2019-05-05</time>
+        <a href="/2019/05/20/deque/" class="article-date">
+            <time datetime="2019-05-20T08:20:18.000Z" itemprop="datePublished">2019-05-20</time>
         </a>
     </div>
 
@@ -175,53 +175,37 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <font size="5" color="orange">latent variable 추론</font>
+            <font size="5" color="sky blue">자료구조2. Deque</font>
 
-<p>clustering과 classification의 가장 큰 차이점은 숨어있는 변수가 있느냐 없느냐이다.<br>clustering은 latent variable이 포함되어 있다<br>classification은 observed variable로 분류 한다</p>
+<p><img src="https://iq.opengenus.org/content/images/2018/05/image.PNG" alt></p>
+<p>자료구조 중에서 stack과 queue를 합쳐 놓은 자료구조 방식으로, data를 넣고 빼는 곳이 두 곳으로 두 군데에서 모두 push / pop 이 가능한 자료 구조입니다.</p>
+<font size="4.5" color="orange">deque 을 이용한 알고리즘 문제 (1)</font>
+
+
+<p>비교 대상이 되는 문장 <code>base_sentence</code>와 비교하는 문장 <code>compare_sentence</code>가 주어집니다.</p>
+<p>compare_sentence 속에있는 단어는 모두 base_sentence 속에 있어야 하며, 단어의 순서 또한 같아야 합니다.</p>
+<p><code>example</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 입력값</span></span><br><span class="line">base_sentence = <span class="string">"give me one grand today night"</span></span><br><span class="line">compare_sentence = <span class="string">"give one grand today"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 반환값</span></span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 입력값</span></span><br><span class="line">base_sentence = <span class="string">"I am student"</span></span><br><span class="line">compare_sentence = <span class="string">"I am singer"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 반환값</span></span><br><span class="line"><span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 입력값</span></span><br><span class="line">base_sentence = <span class="string">"one two three four"</span></span><br><span class="line">compare_sentence = <span class="string">"one three two"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 반환값</span></span><br><span class="line"><span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<p><strong><em>풀이 코드</em></strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check_duplicate</span><span class="params">(base_sentence, compare_sentence)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    base_sentence : string type sentence</span></span><br><span class="line"><span class="string">    compare_sentence = string type sentence</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    base_sentence_list = base_sentence.split(<span class="string">' '</span>)</span><br><span class="line">    <span class="comment"># make deque data Structure</span></span><br><span class="line">    compare_deque = compare_sentence.split(<span class="string">' '</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> word <span class="keyword">in</span> base_sentence_list:</span><br><span class="line">        <span class="comment"># exception for index error</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="comment"># if base_sentence word and compare_deque word are same</span></span><br><span class="line">            <span class="comment"># then pop the word from compare_deque</span></span><br><span class="line">            <span class="keyword">if</span> word == compare_deque[<span class="number">0</span>]:</span><br><span class="line">                compare_deque.pop(<span class="number">0</span>)</span><br><span class="line">        <span class="comment"># if compare_deque is empty then return True</span></span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># if compare_deque is not empty then return False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span> <span class="keyword">if</span> len(ransome_deque) != <span class="number">0</span> <span class="keyword">else</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<p><strong><em>복잡도 Big-O</em></strong></p>
+<p><code>시간 복잡도</code></p>
 <ul>
-<li><p>$\{ X, Z\}$ : 모든 variable</p>
-</li>
-<li><p>$X$ : 관측된(Observed) variable</p>
-</li>
-<li><p>$Z$ : hidden(latent) Variable</p>
-</li>
-<li><p>$\theta$ : 분포 parameter</p>
+<li><code>O(N)</code><ul>
+<li>N : number of base_sentence words</li>
+<li>최악의 경우 base_sentence 총 단어의 갯수가 됩니다.</li>
+</ul>
 </li>
 </ul>
-<p>latent variable을 marginal out 해주면 된다</p>
-<script type="math/tex; mode=display">P(X \mid \theta) = \sum_z P(X,Z \mid \theta)</script><p>로그 속에 summation이 있으면 계산이 복잡해져서 결국에는 summation의 위치를 바꿔줘야 한다(Jensens’s inequality). 그리고 $q(z)$의 임의의 pdf를 넣어준다</p>
-<script type="math/tex; mode=display">\ln P(X \mid \theta) = \ln \left\{ \sum_z P(X,Z \mid \theta)\right\}</script><script type="math/tex; mode=display">l(\theta) = \ln P(X \mid \theta) = \ln \left\{ \sum_z q(z)\frac{P(X,Z \mid \theta)}{q(z)} \right\}</script><p><strong>CF) Jensen’s inequality</strong></p>
-<p><img src="https://www.probabilitycourse.com/images/chapter6/Convex_b.png" alt></p>
+<p><code>공간 복잡도</code></p>
 <ul>
-<li>$\psi$가 <code>convex</code> function일때는</li>
+<li><code>O(N)</code><ul>
+<li>N : Max(base_sentence 단어 갯수, compare_sentence 단어 갯수)</li>
 </ul>
-<script type="math/tex; mode=display">f \left( \frac{x+y}{2}\right) \leq \frac{f(x) + f(y)}{2}</script><script type="math/tex; mode=display">\psi\left( \frac{\sum a_i x_i}{\sum a_j} \right) \leq \frac{\sum a_i \psi (x_i)}{\sum a_j}</script><ul>
-<li>$\psi$가 <code>concave</code> function일때는</li>
+</li>
 </ul>
-<script type="math/tex; mode=display">f \left( \frac{x+y}{2}\right) \geq \frac{f(x) + f(y)}{2}</script><script type="math/tex; mode=display">\psi\left( \frac{\sum a_i x_i}{\sum a_j} \right) \geq \frac{\sum a_i \psi (x_i)}{\sum a_j}</script><p>로그는 Concave function이므로 jensen’s inequality에 의해 다음과 같이 로그 속의 summation을 다음과 같이 빼서 식을 정리할수 있다</p>
-<script type="math/tex; mode=display">l(\theta) = \ln \left\{ \sum_z q(z)\frac{P(X,Z \mid \theta)}{q(z)} \right\} \geq \sum_z q(z) \ln \frac{P(X,Z \mid \theta)}{q(z)}</script><p>오른쪽항의 식을 정리해주면</p>
-<script type="math/tex; mode=display">\sum_z \left\{q(z) \ln P(X,Z \mid \theta) - q(z)\ln q(z) \right\}</script><p>첫번째 항은 $q(z)$의 가중평균이고 두번째 항은 $q(z)$가 확률분포라는 가정하에 엔트로피를 나타낸다. 따라서 다음과 같이 식을 notation 해줄 수 있다</p>
-<script type="math/tex; mode=display">Q(\theta, q) = E_{q(z)} \ln P(X,Z \mid \theta) + H(q)</script><p>$Q(\theta, q)$은 결국 $l(\theta)$의 lower bound이다 이것을 최대화 시켜주면 $l(\theta)$값도 같이 최대화 시켜줄수 있다는 것이다<br> 단 항상 그런것은 아니다 왜냐하면 서로 inequality하기 때문이다</p>
- <font size="5" color="orange">Maximizing lower bound(1)</font>
-
-<script type="math/tex; mode=display">l(\theta) \geq \sum_z q(z) \ln \frac{P(X,Z \mid \theta)}{q(z)} = \sum_z q(z) \ln \frac{P(Z \mid X, \theta)P(X \mid \theta)}{q(z)}</script><p>맨 오른쪽의 항을 다음과 같이 정리할수 있다</p>
-<script type="math/tex; mode=display">\sum_z \left\{q(z) \ln \frac{P(Z \mid X, \theta)}{q(z)} + q(z)\ln P(X \mid \theta) \right\}</script><script type="math/tex; mode=display">=\sum_z \left\{q(z) \ln \frac{P(Z \mid X, \theta)}{q(z)}\right\} + \ln P(X \mid \theta)</script><p>다음을 최적화 시키기 위한 식으로 바꿔주기 위해 summation 속의 로그를 역수로 취해줌으로써 Kullback-Leiber divergence로 변형 시켜준다</p>
-<script type="math/tex; mode=display">L(\theta, q) = \ln P(X \mid \theta) - \sum_z \left\{ q(z) \ln \frac{q(z)}{P(Z \mid X, \theta)} \right\}</script><p>이 식을 보면 많은 뜻을 볼수 있다 기존의 우리가 maximize시키고 싶었던 $\ln P(X \mid \theta)$에 KL divergence term을 빼주는 식이 되었다 즉 KL divergence term을 0에 가깝게 해주면 해줄수록 우리의 objective function에 가까워 진다<br>KL divergence term이 0에 가까워 진다는 것은 $q(z)$ 분포 모양과 $P(Z \mid X, \theta)$의 분포 모양이 비슷해 진다는 것을 의미한다</p>
- <font size="5" color="orange">Maximizing lower bound(2)</font>
-
-
-<script type="math/tex; mode=display">Q(\theta, q) = E_{q(z)} \ln P(X,Z \mid \theta) + H(q)</script><script type="math/tex; mode=display">L(\theta, q) = \ln P(X \mid \theta) - \sum_z \left\{ q(z) \ln \frac{q(z)}{P(Z \mid X, \theta)} \right\}</script><p>우리가 $L(\theta, q)$를 구한 이유는<br>우리가 제일 처음 구한 $Q(\theta, q)$만 가지고 optimal value를 구하는 것은 쉽지 않다. 왜냐하면 $q(z)$를 업데이트하는 방법에 대한 정확한 지식이 없기 때문이다<br>하지만 $L(\theta, q)$를 가지고 $q(z)$를 업데이트 하기는 쉽다 임의의 $\theta$에 대해 $q(z)$는 $P(Z \mid X, \theta)$의 분포와 비슷하게 Update해주면 된다</p>
-<script type="math/tex; mode=display">KL\left(q(Z) \lVert P(Z \mid X, \theta)\right) = 0 \to q^t(z) = P(Z \mid X, \theta^t)</script><p>특정한 iteration동안 $\theta^t$로 되면 $q^t(z)$로 업그레이드 된다</p>
-<script type="math/tex; mode=display">Q(\theta, q^t) = E_{q^t(z)} \ln P(X,Z \mid \theta^t) + H(q^t)</script><script type="math/tex; mode=display">\theta^{t+1} = argmax_{\theta}Q(\theta, q^t) = argmax_{\theta}E_{q^t(z)} \ln P(X,Z \mid \theta)</script><p>그러면 업그레이드 된 $q^t$를 가지고 다시 $\theta$를 업그레이드 해준다</p>
- <font size="5" color="orange">정리</font>
-
-<script type="math/tex; mode=display">P(X \mid \theta) = \sum_z P(X,Z \mid \theta)</script> <font> 1. EM 알고리즘은 latent variable이 포함된 maximum likelihood를 찾는것이다 </font>
-<br>
-
-<font> 2. 처음에는 $\theta$를 랜덤으로 정해준다 </font>
-<br>
-
-<font> 3. likelihood가 converge할때 까지 iteration을 돌려준다 </font>
 
         </div>
         <footer class="article-footer">
@@ -229,7 +213,7 @@
 
 
 
-    <a data-url="http://progresivoJS.github.io/2019/05/05/em-algorithm/" data-id="cjvw3nmro000akyl599gdyy27" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://progresivoJS.github.io/2019/05/20/deque/" data-id="cjvw3nmrk0008kyl5459a0pea" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -299,22 +283,24 @@
             "@type": "Person",
             "name": "James Park"
         },
-        "headline": "EM Algorithm",
-        "image": "http://progresivoJS.github.iohttps://www.probabilitycourse.com/images/chapter6/Convex_b.png",
+        "headline": "Data Structure(Deque)",
+        "image": "http://progresivoJS.github.iohttps://iq.opengenus.org/content/images/2018/05/image.PNG",
         "keywords": "",
         "genre": "",
-        "datePublished": "2019-05-05",
-        "dateCreated": "2019-05-05",
-        "dateModified": "2019-05-05",
-        "url": "http://progresivoJS.github.io/2019/05/05/em-algorithm/",
-        "description": "latent variable 추론
+        "datePublished": "2019-05-20",
+        "dateCreated": "2019-05-20",
+        "dateModified": "2019-05-20",
+        "url": "http://progresivoJS.github.io/2019/05/20/deque/",
+        "description": "자료구조2. Deque
 
-clustering과 classification의 가장 큰 차이점은 숨어있는 변수가 있느냐 없느냐이다.clustering은 latent variable이 포함되어 있다classification은 observed variable로 분류 한다
 
-$\{ X, Z\}$ : 모든 variable
+자료구조 중에서 stack과 queue를 합쳐 놓은 자료구조 방식으로, data를 넣고 빼는 곳이 두 곳으로 두 군데에서 모두 push / pop 이 가능한 자료 구조입니다.
+deque 을 이용한 알고리즘 문제 (1)
 
-$X$ : 관측된(Observed"
-        "wordCount": 547
+
+비교 대상이 되는 문장 base_sentence와 비교하는 문장 compare_sentence가 주어집니다.
+"
+        "wordCount": 461
     }
 </script>
 
@@ -354,20 +340,10 @@ $X$ : 관측된(Observed"
         
 <nav id="article-nav">
     
-        <a href="/2019/05/07/SVM-1/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">newer</strong>
-        <p class="article-nav-title">
-        
-            SVM
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2019/05/04/Recommend-system/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2019/05/20/Stack/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">older</strong>
-        <p class="article-nav-title">Recommend system</p>
+        <p class="article-nav-title">Data Structure(Stack)</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -489,7 +465,7 @@ $X$ : 관측된(Observed"
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'http://progresivoJS.github.io/2019/05/05/em-algorithm/';
+    var disqus_url = 'http://progresivoJS.github.io/2019/05/20/deque/';
     
     (function() {
     var dsq = document.createElement('script');
