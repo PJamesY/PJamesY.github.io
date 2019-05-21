@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="James Blog">
 <meta property="og:description" content="andrew ng lecture note recommend 를 공부하며 번역하여서 올립니다 각 영화에 대해서 평점이 5점까지 줄수 있다고 가정한다     Movie Alice(1) Bob(2) Carol(3) Dave(4)     Love at star 5 5 0 0   Romance Forevere 5 ? ? 0   Cute love ? 4 0 ?">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-21T03:02:36.791Z">
+<meta property="og:updated_time" content="2019-05-21T03:45:16.537Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Recommend system">
 <meta name="twitter:description" content="andrew ng lecture note recommend 를 공부하며 번역하여서 올립니다 각 영화에 대해서 평점이 5점까지 줄수 있다고 가정한다     Movie Alice(1) Bob(2) Carol(3) Dave(4)     Love at star 5 5 0 0   Romance Forevere 5 ? ? 0   Cute love ? 4 0 ?">
@@ -313,7 +313,7 @@
 <p>각각의 영화는 $\begin{bmatrix}<br>Love.. &amp; Romance.. &amp; Cute.. &amp; Nonstop.. &amp; Sword.. \\<br>\end{bmatrix} =\begin{bmatrix}<br>x^1 &amp; x^2 &amp; x^3 &amp; x^4 &amp; x^5 \\<br>\end{bmatrix}$</p>
 <p>각각의 영화 $x^i$은 feature vector를 가지고 있다<br>에를 들어 영화 Love at star $x^1 = \begin{bmatrix}<br>1 \\<br>0.9\\<br>0<br>\end{bmatrix}$ 의 feature vector를 가지고 있다</p>
 <p>content_based 방식에서는 각각의 content feature vector에 따른 user parameter vector를 learning시켜야한다<br>각각의 user마다 각각의 평점은 linear regression방식으로 나타난다</p>
-<p>만약 Alice의 parameter vector($\theta^1$)이 $x^1 = \begin{bmatrix}<br>0 \\<br>5\\<br>0<br>\end{bmatrix}$ 이라고 한다면 Alice가 Cute love 영화에 평점을 줄 점수는 $(\theta^{(1)})^T x^{(3)}$ inner product를 해주면 4.95 평점을 줄거라는 예측이 나온다</p>
+<p>만약 Alice의 parameter vector($\theta^1$)이 $\theta^1 = \begin{bmatrix}<br>0 \\<br>5\\<br>0<br>\end{bmatrix}$ 이라고 한다면 Alice가 Cute love 영화에 평점을 줄 점수는 $(\theta^{(1)})^T x^{(3)}$ inner product를 해주면 4.95 평점을 줄거라는 예측이 나온다</p>
 <font size="5" color="orange">$\theta$를 learning 해보자 </font>
 
 <p><strong>Notation</strong></p>
@@ -404,7 +404,7 @@
 
 
 
-    <a data-url="http://progresivoJS.github.io/2019/05/04/Recommend-system/" data-id="cjvx7rh4d0001l5l5wvh6evmr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://progresivoJS.github.io/2019/05/04/Recommend-system/" data-id="cjvx9f3t500086rl5c2it0293" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
