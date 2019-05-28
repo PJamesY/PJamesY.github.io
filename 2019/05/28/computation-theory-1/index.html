@@ -6,25 +6,23 @@
     
 
     
-    <title>Data Structure(Stack) | James Blog</title>
+    <title>Theory of computation (1) | James Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
         <meta name="keywords" content>
     
-    <meta name="description" content="자료구조1. Stack   자료구조 중에서 가장 많이 알려진 stack 구조는 data를 넣고 빼는 곳이 한곳으로 가장 먼저 넣은 data는 가장 나중에 나오는 구조 (FILO) First In Last Out 입니다. stack 을 이용한 알고리즘 문제  Balanced Brackets opening bracket = &amp;#39;(&amp;#39;, &amp;#39;[&amp;">
+    <meta name="description" content="본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 1강을 보며 정리한 내용입니다. 기호  1. alphabet  $\Sigma$라는 기호를 사용하며 symbol들의 집합을 의미합니다. ex) $\Sigma = \{a, b\}$ $a,b$ 라는 symbol로 이루어져 있다. 2. string  alphabet 안에 있는 symbol들을 연결해서 만">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Data Structure(Stack)">
-<meta property="og:url" content="http://progresivoJS.github.io/2019/05/20/Stack/index.html">
+<meta property="og:title" content="Theory of computation (1)">
+<meta property="og:url" content="http://progresivoJS.github.io/2019/05/28/computation-theory-1/index.html">
 <meta property="og:site_name" content="James Blog">
-<meta property="og:description" content="자료구조1. Stack   자료구조 중에서 가장 많이 알려진 stack 구조는 data를 넣고 빼는 곳이 한곳으로 가장 먼저 넣은 data는 가장 나중에 나오는 구조 (FILO) First In Last Out 입니다. stack 을 이용한 알고리즘 문제  Balanced Brackets opening bracket = &amp;#39;(&amp;#39;, &amp;#39;[&amp;">
+<meta property="og:description" content="본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 1강을 보며 정리한 내용입니다. 기호  1. alphabet  $\Sigma$라는 기호를 사용하며 symbol들의 집합을 의미합니다. ex) $\Sigma = \{a, b\}$ $a,b$ 라는 symbol로 이루어져 있다. 2. string  alphabet 안에 있는 symbol들을 연결해서 만">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnkJ-3i903TPlQFINiJgShsaiaHkEWf3HFJDzkjL5Lk9ovylX9">
-<meta property="og:updated_time" content="2019-05-20T07:00:41.651Z">
+<meta property="og:updated_time" content="2019-05-28T07:29:16.030Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Data Structure(Stack)">
-<meta name="twitter:description" content="자료구조1. Stack   자료구조 중에서 가장 많이 알려진 stack 구조는 data를 넣고 빼는 곳이 한곳으로 가장 먼저 넣은 data는 가장 나중에 나오는 구조 (FILO) First In Last Out 입니다. stack 을 이용한 알고리즘 문제  Balanced Brackets opening bracket = &amp;#39;(&amp;#39;, &amp;#39;[&amp;">
-<meta name="twitter:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnkJ-3i903TPlQFINiJgShsaiaHkEWf3HFJDzkjL5Lk9ovylX9">
+<meta name="twitter:title" content="Theory of computation (1)">
+<meta name="twitter:description" content="본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 1강을 보며 정리한 내용입니다. 기호  1. alphabet  $\Sigma$라는 기호를 사용하며 symbol들의 집합을 의미합니다. ex) $\Sigma = \{a, b\}$ $a,b$ 라는 symbol로 이루어져 있다. 2. string  alphabet 안에 있는 symbol들을 연결해서 만">
     
 
     
@@ -146,14 +144,14 @@
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-Stack" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-computation-theory-1" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Data Structure(Stack)
+        Theory of computation (1)
         </h1>
     
 
@@ -163,8 +161,8 @@
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2019/05/20/Stack/" class="article-date">
-            <time datetime="2019-05-20T07:00:41.000Z" itemprop="datePublished">2019-05-20</time>
+        <a href="/2019/05/28/computation-theory-1/" class="article-date">
+            <time datetime="2019-05-28T07:29:16.000Z" itemprop="datePublished">2019-05-28</time>
         </a>
     </div>
 
@@ -175,42 +173,186 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <font size="5" color="sky blue">자료구조1. Stack</font>
+            <p>본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 1강을 보며 정리한 내용입니다.</p>
+<font size="5" color="sky blue">기호</font>
+<br>
+<font size="4" color="orange">1. alphabet</font>
 
-<p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnkJ-3i903TPlQFINiJgShsaiaHkEWf3HFJDzkjL5Lk9ovylX9" alt></p>
-<p>자료구조 중에서 가장 많이 알려진 stack 구조는 data를 넣고 빼는 곳이 한곳으로 가장 먼저 넣은 data는 가장 나중에 나오는 구조 <strong><em>(FILO)</em></strong> First In Last Out 입니다.</p>
-<font size="4.5" color="orange">stack 을 이용한 알고리즘 문제</font>
+<p>$\Sigma$라는 기호를 사용하며 symbol들의 집합을 의미합니다.</p>
+<p>ex) $\Sigma = \{a, b\}$</p>
+<p>$a,b$ 라는 symbol로 이루어져 있다.</p>
+<font size="4" color="orange">2. string</font>
 
-<p><strong><em>Balanced Brackets</em></strong></p>
-<p>opening bracket = <code>&#39;(&#39;, &#39;[&#39;, &#39;{&#39;</code><br>closing bracket = <code>&#39;)&#39;, &#39;]&#39;, &#39;}&#39;</code><br>pair 쌍 = <code>()</code>, <code>[]</code>, <code>{}</code></p>
-<p><code>example</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">입력값</span><br><span class="line">((&#123;&#125;))[]()</span><br><span class="line"></span><br><span class="line">반환값</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">입력값</span><br><span class="line">((&#123;&#125;))[)(]</span><br><span class="line"></span><br><span class="line">반환값</span><br><span class="line"><span class="literal">False</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">입력값</span><br><span class="line">[[[]]</span><br><span class="line"></span><br><span class="line">반환값</span><br><span class="line"><span class="literal">False</span></span><br></pre></td></tr></table></figure>
-<p><strong><em>풀이 코드</em></strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_matched</span><span class="params">(expression)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    expression : string type input -&gt; "()()))"</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># &#123;open bracket : close bracket&#125; -&gt; pair dictionary</span></span><br><span class="line">    pair = &#123;</span><br><span class="line">        <span class="string">'&#123;'</span>: <span class="string">'&#125;'</span>,</span><br><span class="line">        <span class="string">'('</span>: <span class="string">')'</span>,</span><br><span class="line">        <span class="string">'['</span>: <span class="string">']'</span>,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># stack list that will be stacked by opening bracket</span></span><br><span class="line">    stack = list()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># if first bracket is closing bracket then return False</span></span><br><span class="line">    <span class="keyword">if</span> expression[<span class="number">0</span>] <span class="keyword">not</span> <span class="keyword">in</span> pair.keys():</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># foor loop in string input</span></span><br><span class="line">    <span class="keyword">for</span> bracket <span class="keyword">in</span> expression:</span><br><span class="line">        <span class="comment"># if bracket is opening bracket then push bracket</span></span><br><span class="line">        <span class="keyword">if</span> bracket <span class="keyword">in</span> pair.keys():</span><br><span class="line">            stack.append(bracket)</span><br><span class="line">        <span class="comment"># if bracket is closing bracket</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># exception case for out of index</span></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                <span class="comment"># if closing bracket and opening bracket are not pair</span></span><br><span class="line">                <span class="comment"># then return False</span></span><br><span class="line">                <span class="keyword">if</span> pair[stack.pop()] != bracket:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">                <span class="comment"># if closing bracket and opening bracket are pair</span></span><br><span class="line">                <span class="comment"># then pop opening bracket from stack</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">            <span class="comment"># if stack is empty and bracket is closing bracket</span></span><br><span class="line">            <span class="comment"># then return False</span></span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># if final stack is empty then return True</span></span><br><span class="line">    <span class="keyword">if</span> len(stack) == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="comment"># if there is opening bracket then return False</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure></p>
-<p><strong><em>코드 설명</em></strong></p>
-<p>stack을 활용한 알고리즘입니다. stack에는 opening bracket만 쌓습니다. 계속 쌓다가 만약 가장 나중에 쌓인 opening bracket과 비교하려는 closing bracket의 pair가 맞지 않으면 False를 반환하는 알고리즘입니다.</p>
-<p><strong><em>복잡도 Big-O</em></strong></p>
-<ol>
-<li>시간 복잡도</li>
-</ol>
+<p>alphabet 안에 있는 symbol들을 연결해서 만든 모든것</p>
+<p>ex) $\Sigma = \{a, b\}$, $w = abab, aaabbbaa$</p>
+<p>$w$ string 의 갯수는 무한개가 될수 이다.</p>
 <ul>
-<li><code>O(N)</code><ul>
-<li>N : length of input string</li>
-<li>최악의 경우 input 값의 길이가 됩니다.</li>
+<li><font size="4" color="green">string concatenation</font>
+
+<ul>
+<li>$w = a_1 a_2 \cdots a_n$, $v=b_1b_2 \cdots b_n$</li>
+<li>$wv = a_1 a_2 \cdots a_nb_1b_2 \cdots b_n$</li>
+</ul>
+</li>
+<li><p><font size="4" color="green">reverse string</font></p>
+<ul>
+<li>$w = a_1 a_2 \cdots a_n$</li>
+<li>$w^R = a_n a_{n-1} \cdots a_1$</li>
+</ul>
+</li>
+<li><p><font size="4" color="green">length of string</font></p>
+<ul>
+<li>$w = a_1 a_2 \cdots a_n$</li>
+<li>$\mid w \mid= n$</li>
+</ul>
+</li>
+<li><p><font size="4" color="green">null string (길이가 0인 string)</font></p>
+<ul>
+<li>$\mid \lambda \mid= 0$</li>
+</ul>
+</li>
+<li><font size="4" color="green">sub string (string의 일부)</font>
+
+<ul>
+<li>$w = a b c\cdots wxyz$</li>
+<li><p>prefix (맨 앞의 symbol에서 시작하는 string)</p>
+<ul>
+<li>$w_{prefix} =a, ab, abc$</li>
+</ul>
+</li>
+<li><p>suffix (맨 뒤의 symbol로 끝나는 string)</p>
+<ul>
+<li>$w_{suffix} =z, yz, xyz$</li>
 </ul>
 </li>
 </ul>
-<ol>
-<li>공간 복잡도</li>
-</ol>
+</li>
+</ul>
 <ul>
-<li><code>O(N)</code><ul>
-<li>N : number of opening bracket</li>
-<li>최악의 경우 input string이 전부 opening bracket인 경우</li>
+<li><font size="4" color="green">$w^n$</font>
+
+<ul>
+<li>$w$를 n개 concatenation 한것을 의미합니다</li>
+<li>$w^0$ = $\lambda$ $\to$ $\mid w^0 \mid = 0$</li>
+<li>$w^1$ =  $w$</li>
+<li>$w^2$ =  $ww$</li>
+<li>$w^n$ =  $w \cdots w$</li>
 </ul>
 </li>
 </ul>
+<font size="4" color="orange">3. language</font>
+
+<p>만약 $\Sigma=\{a,b\}$라고 한다면 가능한 모든 조합의 집합을 $\Sigma^{*}=\{\lambda, a, b, ab, aa, bb, aab, \cdots\}$ 라고 한다.</p>
+<p>$\Sigma^+ = \Sigma^{*} - \{\lambda\}$ 로 정의합니다.</p>
+<p>language는 $\Sigma^{*}$의 subset이라고 생각하면 됩니다.</p>
+<p>ex) $L=\{a^n b^n ; n\geq0\}$</p>
+<p>$a$가 $b$보다 앞에 있고, $a, b$의 갯수가 같은 모든 가능한 것을 language라고 할수 있다.</p>
+<p>language안에 있는 string을 sentence라고 부릅니다. 즉 language는 sentence의 집합입니다.</p>
+<ul>
+<li><font size="4" color="green">$L^R$ = $\{W^R : W \in L\}$</font>
+
+<ul>
+<li>$L$ = $\{a^n b^n ; n\geq0\}$</li>
+<li>$L^R$ = $\{b^n a^n ; n\geq0\}$</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><font size="4" color="green">$L_1 L_2$</font>
+
+<ul>
+<li>$L_1$ = $\{a, aa\}$, $L_2$ = $\{b, bb\}$</li>
+<li>$L_1 L_2$ = $\{ab, abb, aab, aabb\}$</li>
+</ul>
+</li>
+<li><p><font size="4" color="green">$L^n$= $L \cdots L$ : $L$을 $n$ 번 반복한것 </font></p>
+<ul>
+<li>$L$ = $\{a^n b^n ; n\geq0\}$</li>
+<li><p>$L^0$ = $\{\lambda\} \neq \{\}$</p>
+</li>
+<li><p>$L^2$ = $\{a^n b^n a^m b^m; n\geq0, m\geq0\}$</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><font size="4" color="green">$L^*$</font>
+
+<ul>
+<li>$L^*$ = $L^0 \cup L^1 \cup L^2 \cdots $</li>
+</ul>
+</li>
+<li><font size="4" color="green">$L^+$</font>
+
+<ul>
+<li>$L^*$ = $L^1 \cup L^2 \cup L^3 \cdots $</li>
+</ul>
+</li>
+</ul>
+<font size="5" color="sky blue">문법(Grammer)</font>
+
+<p>$G = (V, T, S, P)$</p>
+<ul>
+<li>V : Variables</li>
+<li>T : terminal symbols</li>
+<li>S : start variable</li>
+<li>P : productions</li>
+</ul>
+<p>이해를 하기 위해 바로 예를 들어 보겠습니다.</p>
+<p>G = $(\{S\}, \{a,b\}, S, P)$</p>
+<p>production rule $P$는 다음과 같이 정의하였습니다.</p>
+<script type="math/tex; mode=display">S\to aSb</script><script type="math/tex; mode=display">S \to \lambda</script><p>production rule에 의해 변형하는 것을 derivation이라고 합니다. derivation은 다음과 같이 할수 있습니다</p>
+<p>$S \Rightarrow aSb \Rightarrow ab$</p>
+<p>terminal symbols로 이루어지면 sentence라고 하며, sentence 전을 sentential form이라고 합니다.</p>
+<p>위의 예에서 sentence는 $ab$이며, sentential form은 $aSb$ 입니다. 또 다른 예를 들어보겠습니다</p>
+<p>$S \Rightarrow aSb \Rightarrow aaSbb \Rightarrow aabb$</p>
+<p>위의 예에서 sentence는 $aabb$이며, sentential form은 $aaSbb$ 입니다.</p>
+<p>위의 두가지 예를 다음과 같은 기호로 쓸수 있습니다.</p>
+<p>$S \Rightarrow ^<em> ab$, $S \Rightarrow ^</em> aabb$</p>
+<p>위 식의 의미는 derivation을 몇번이건 하면 $ab$, $aabb$를 만들수 있다는 것입니다.</p>
+<font size="5" color="sky blue">Grammer와 language와의 관계</font>
+첫번째는 Grammer가 주어졌을때 만들수 있는 sentence로 생각할수 있습니다.
+
+$$L(G)=\{w \in T^* ; S \Rightarrow^* w\}$$
+
+위 식의 의미는 start variable $S$에서 derivation 해서 나올수 있는 모든 가능한 sentence를 의미합니다.
+
+또한 반대로 language가 주어졌을때 해당 language를 만들기 위해 어떠한 grammer를 적용할지 생각해 볼수 있습니다.
+
+예를 들어 $L = \{a^n b^{n+1} ; n \geq 0\}$ 라고 하면
+
+production rule은 다음과 같이 쓸수 있다.
+
+$$S \Rightarrow Ab$$
+
+$$A \Rightarrow aAb$$
+
+$$A \Rightarrow \lambda$$
+
+
+<font size="4" color="orange">심화 문제</font>
+
+<p>다음과 production rule이 있다고 합시다.</p>
+<script type="math/tex; mode=display">S \Rightarrow SS</script><script type="math/tex; mode=display">S \Rightarrow \lambda</script><script type="math/tex; mode=display">S \Rightarrow aSb</script><script type="math/tex; mode=display">S \Rightarrow bSa</script><p>위의 방법을 이용하여 만들어진 모든 sentence의 $a$의 갯수 $n_a(w)$ 와 $b$의 갯수 $n_b(w)$ 가 같다는 것은 쉽게 알수 있을것입니다.</p>
+<p>하지만 역으로 생각해서 $n_a(w)$ = $n_b(w)$ 인 sentence를 만드는 production rule이 위와 같다는 것은 쉽게 와닿지는 않을 것입니다.</p>
+<p>따라서 이것은 귀납적 방법으로 증명을 해보겠습니다.</p>
+<p>$n_a(w)$ = $n_b(w)$ 인 sentence의 경우수는 다음과 같이 4가지가 있을수 있습니다.</p>
+<ol>
+<li><p>$a \ldots b$</p>
+</li>
+<li><p>$b \ldots a$</p>
+</li>
+<li><p>$a \ldots a$</p>
+</li>
+<li><p>$b \ldots b$</p>
+</li>
+</ol>
+<p>귀납적 방법의 induction 가정으로 $\mid w \mid \leq 2n$ 길이의 sentence에 대해서는 production rule이 성립한다고 가정한다고 하면, sentence 길이가 $\mid w \mid =2n+2$ 인 것에서도 production rule이 성립된다는 것을 보이면 될것입니다. 위 4개의 sentence의 길이가 $2n+2$라고 하고, production rule이 성립이 된다는 것을 보이면 될것입니다.</p>
+<p>1, 2번의 sentence는 쉽게 증명할수 있습니다.</p>
+<p>1번의 양끝의 a,b를 제외하면 sentence길이는 $2n$이 되고, 2번의 양끝의 b,a를 제외하면 sentence길이는 $2n$이 될것입니다. 가정에서 $2n$에 대해서는 production rule이 성립된다고 하였으므로 1번은 $S \Rightarrow aSb$ derivation으로 성립됨을 알수 있고, 2번은 $S \Rightarrow bSa$ derivation으로 성립됨을 알수 있습니다.</p>
+<p>3, 4번의 경우에는</p>
+<p>sentence의 어느 중간 시점($t$)을 기준으로 왼쪽의 sentence를 편의상 $w_{left}$ 오른쪽의  sentence를 편의상 $w_{right}$ 라고 한다면 $n_a(w_{left})$ = $n_b(w_{left})$, $n_a(w_{right})$ = $n_b(w_{right})$를 만족하는 중간 지점 $t$는 존재하게 됩니다.</p>
+<p>그러면 $S \Rightarrow SS$ derivation을 적용하면 증명할수 있습니다.</p>
 
         </div>
         <footer class="article-footer">
@@ -218,7 +360,7 @@
 
 
 
-    <a data-url="http://progresivoJS.github.io/2019/05/20/Stack/" data-id="cjw7hcz9d000ee6l57qsrt418" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://progresivoJS.github.io/2019/05/28/computation-theory-1/" data-id="cjw7hcz950009e6l5bz4l14cj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -288,23 +430,26 @@
             "@type": "Person",
             "name": "James Park"
         },
-        "headline": "Data Structure(Stack)",
-        "image": "http://progresivoJS.github.iohttps://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnkJ-3i903TPlQFINiJgShsaiaHkEWf3HFJDzkjL5Lk9ovylX9",
+        "headline": "Theory of computation (1)",
+        "image": "http://progresivoJS.github.io",
         "keywords": "",
         "genre": "",
-        "datePublished": "2019-05-20",
-        "dateCreated": "2019-05-20",
-        "dateModified": "2019-05-20",
-        "url": "http://progresivoJS.github.io/2019/05/20/Stack/",
-        "description": "자료구조1. Stack
+        "datePublished": "2019-05-28",
+        "dateCreated": "2019-05-28",
+        "dateModified": "2019-05-28",
+        "url": "http://progresivoJS.github.io/2019/05/28/computation-theory-1/",
+        "description": "본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 1강을 보며 정리한 내용입니다.
+기호
 
+1. alphabet
 
-자료구조 중에서 가장 많이 알려진 stack 구조는 data를 넣고 빼는 곳이 한곳으로 가장 먼저 넣은 data는 가장 나중에 나오는 구조 (FILO) First In Last Out 입니다.
-stack 을 이용한 알고리즘 문제
+$\Sigma$라는 기호를 사용하며 symbol들의 집합을 의미합니다.
+ex) $\Sigma = \{a, b\}$
+$a,b$ 라는 symbol로 이루어져 있다.
+2. string
 
-Balanced Brackets
-opening bracket = &#39;(&#39;, &#39;[&"
-        "wordCount": 809
+alphabet 안에 있는 symbol들을 연결해서 만"
+        "wordCount": 672
     }
 </script>
 
@@ -344,20 +489,10 @@ opening bracket = &#39;(&#39;, &#39;[&"
         
 <nav id="article-nav">
     
-        <a href="/2019/05/20/deque/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">newer</strong>
-        <p class="article-nav-title">
-        
-            Data Structure(Deque)
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2019/05/17/BFS/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2019/05/25/kmeans/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">older</strong>
-        <p class="article-nav-title">BFS</p>
+        <p class="article-nav-title">k-means clustering</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -479,7 +614,7 @@ opening bracket = &#39;(&#39;, &#39;[&"
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'http://progresivoJS.github.io/2019/05/20/Stack/';
+    var disqus_url = 'http://progresivoJS.github.io/2019/05/28/computation-theory-1/';
     
     (function() {
     var dsq = document.createElement('script');
