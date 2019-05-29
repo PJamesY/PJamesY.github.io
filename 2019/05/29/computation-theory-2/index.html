@@ -6,25 +6,25 @@
     
 
     
-    <title>Data Structure(Stack) | James Blog</title>
+    <title>Theory of computation (2) | James Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
         <meta name="keywords" content>
     
-    <meta name="description" content="자료구조1. Stack   자료구조 중에서 가장 많이 알려진 stack 구조는 data를 넣고 빼는 곳이 한곳으로 가장 먼저 넣은 data는 가장 나중에 나오는 구조 (FILO) First In Last Out 입니다. stack 을 이용한 알고리즘 문제  Balanced Brackets opening bracket = &amp;#39;(&amp;#39;, &amp;#39;[&amp;">
+    <meta name="description" content="본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 2강을 보며 정리한 내용입니다. DFA(Deterministic Finite Automaton)  1. notation  M(Q, \Sigma, \delta, q_0, F) $Q$ : State들의 집합 $\Sigma$ : input alphabet $\delta$ : $Q \times \Sigm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Data Structure(Stack)">
-<meta property="og:url" content="http://progresivoJS.github.io/2019/05/20/Stack/index.html">
+<meta property="og:title" content="Theory of computation (2)">
+<meta property="og:url" content="http://progresivoJS.github.io/2019/05/29/computation-theory-2/index.html">
 <meta property="og:site_name" content="James Blog">
-<meta property="og:description" content="자료구조1. Stack   자료구조 중에서 가장 많이 알려진 stack 구조는 data를 넣고 빼는 곳이 한곳으로 가장 먼저 넣은 data는 가장 나중에 나오는 구조 (FILO) First In Last Out 입니다. stack 을 이용한 알고리즘 문제  Balanced Brackets opening bracket = &amp;#39;(&amp;#39;, &amp;#39;[&amp;">
+<meta property="og:description" content="본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 2강을 보며 정리한 내용입니다. DFA(Deterministic Finite Automaton)  1. notation  M(Q, \Sigma, \delta, q_0, F) $Q$ : State들의 집합 $\Sigma$ : input alphabet $\delta$ : $Q \times \Sigm">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnkJ-3i903TPlQFINiJgShsaiaHkEWf3HFJDzkjL5Lk9ovylX9">
-<meta property="og:updated_time" content="2019-05-20T07:00:41.651Z">
+<meta property="og:image" content="http://itsalif.info/blogfiles/dfa/dfa-010.jpg">
+<meta property="og:updated_time" content="2019-05-29T06:28:12.284Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Data Structure(Stack)">
-<meta name="twitter:description" content="자료구조1. Stack   자료구조 중에서 가장 많이 알려진 stack 구조는 data를 넣고 빼는 곳이 한곳으로 가장 먼저 넣은 data는 가장 나중에 나오는 구조 (FILO) First In Last Out 입니다. stack 을 이용한 알고리즘 문제  Balanced Brackets opening bracket = &amp;#39;(&amp;#39;, &amp;#39;[&amp;">
-<meta name="twitter:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnkJ-3i903TPlQFINiJgShsaiaHkEWf3HFJDzkjL5Lk9ovylX9">
+<meta name="twitter:title" content="Theory of computation (2)">
+<meta name="twitter:description" content="본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 2강을 보며 정리한 내용입니다. DFA(Deterministic Finite Automaton)  1. notation  M(Q, \Sigma, \delta, q_0, F) $Q$ : State들의 집합 $\Sigma$ : input alphabet $\delta$ : $Q \times \Sigm">
+<meta name="twitter:image" content="http://itsalif.info/blogfiles/dfa/dfa-010.jpg">
     
 
     
@@ -146,14 +146,14 @@
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-Stack" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-computation-theory-2" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Data Structure(Stack)
+        Theory of computation (2)
         </h1>
     
 
@@ -163,8 +163,8 @@
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2019/05/20/Stack/" class="article-date">
-            <time datetime="2019-05-20T07:00:41.000Z" itemprop="datePublished">2019-05-20</time>
+        <a href="/2019/05/29/computation-theory-2/" class="article-date">
+            <time datetime="2019-05-29T06:28:12.000Z" itemprop="datePublished">2019-05-29</time>
         </a>
     </div>
 
@@ -175,42 +175,83 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <font size="5" color="sky blue">자료구조1. Stack</font>
+            <p>본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 2강을 보며 정리한 내용입니다.</p>
+<font size="5" color="sky blue">DFA(Deterministic Finite Automaton)</font>
+<br>
+<font size="4" color="orange">1. notation</font>
 
-<p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnkJ-3i903TPlQFINiJgShsaiaHkEWf3HFJDzkjL5Lk9ovylX9" alt></p>
-<p>자료구조 중에서 가장 많이 알려진 stack 구조는 data를 넣고 빼는 곳이 한곳으로 가장 먼저 넣은 data는 가장 나중에 나오는 구조 <strong><em>(FILO)</em></strong> First In Last Out 입니다.</p>
-<font size="4.5" color="orange">stack 을 이용한 알고리즘 문제</font>
+<script type="math/tex; mode=display">M(Q, \Sigma, \delta, q_0, F)</script><ul>
+<li>$Q$ : State들의 집합</li>
+<li>$\Sigma$ : input alphabet</li>
+<li>$\delta$ : $Q \times \Sigma \to$ transition function</li>
+<li>$q_0$ : $q_0 \in Q$ initial state (1개)</li>
+<li>$F$ : $F \in Q$ Final states (1개 이상 가능)</li>
+</ul>
+<font size="4" color="orange">2. example</font>
 
-<p><strong><em>Balanced Brackets</em></strong></p>
-<p>opening bracket = <code>&#39;(&#39;, &#39;[&#39;, &#39;{&#39;</code><br>closing bracket = <code>&#39;)&#39;, &#39;]&#39;, &#39;}&#39;</code><br>pair 쌍 = <code>()</code>, <code>[]</code>, <code>{}</code></p>
-<p><code>example</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">입력값</span><br><span class="line">((&#123;&#125;))[]()</span><br><span class="line"></span><br><span class="line">반환값</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">입력값</span><br><span class="line">((&#123;&#125;))[)(]</span><br><span class="line"></span><br><span class="line">반환값</span><br><span class="line"><span class="literal">False</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">입력값</span><br><span class="line">[[[]]</span><br><span class="line"></span><br><span class="line">반환값</span><br><span class="line"><span class="literal">False</span></span><br></pre></td></tr></table></figure>
-<p><strong><em>풀이 코드</em></strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_matched</span><span class="params">(expression)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    expression : string type input -&gt; "()()))"</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># &#123;open bracket : close bracket&#125; -&gt; pair dictionary</span></span><br><span class="line">    pair = &#123;</span><br><span class="line">        <span class="string">'&#123;'</span>: <span class="string">'&#125;'</span>,</span><br><span class="line">        <span class="string">'('</span>: <span class="string">')'</span>,</span><br><span class="line">        <span class="string">'['</span>: <span class="string">']'</span>,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># stack list that will be stacked by opening bracket</span></span><br><span class="line">    stack = list()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># if first bracket is closing bracket then return False</span></span><br><span class="line">    <span class="keyword">if</span> expression[<span class="number">0</span>] <span class="keyword">not</span> <span class="keyword">in</span> pair.keys():</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># foor loop in string input</span></span><br><span class="line">    <span class="keyword">for</span> bracket <span class="keyword">in</span> expression:</span><br><span class="line">        <span class="comment"># if bracket is opening bracket then push bracket</span></span><br><span class="line">        <span class="keyword">if</span> bracket <span class="keyword">in</span> pair.keys():</span><br><span class="line">            stack.append(bracket)</span><br><span class="line">        <span class="comment"># if bracket is closing bracket</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># exception case for out of index</span></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                <span class="comment"># if closing bracket and opening bracket are not pair</span></span><br><span class="line">                <span class="comment"># then return False</span></span><br><span class="line">                <span class="keyword">if</span> pair[stack.pop()] != bracket:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">                <span class="comment"># if closing bracket and opening bracket are pair</span></span><br><span class="line">                <span class="comment"># then pop opening bracket from stack</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">            <span class="comment"># if stack is empty and bracket is closing bracket</span></span><br><span class="line">            <span class="comment"># then return False</span></span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># if final stack is empty then return True</span></span><br><span class="line">    <span class="keyword">if</span> len(stack) == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="comment"># if there is opening bracket then return False</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure></p>
-<p><strong><em>코드 설명</em></strong></p>
-<p>stack을 활용한 알고리즘입니다. stack에는 opening bracket만 쌓습니다. 계속 쌓다가 만약 가장 나중에 쌓인 opening bracket과 비교하려는 closing bracket의 pair가 맞지 않으면 False를 반환하는 알고리즘입니다.</p>
-<p><strong><em>복잡도 Big-O</em></strong></p>
-<ol>
-<li>시간 복잡도</li>
-</ol>
-<ul>
-<li><code>O(N)</code><ul>
-<li>N : length of input string</li>
-<li>최악의 경우 input 값의 길이가 됩니다.</li>
-</ul>
-</li>
-</ul>
-<ol>
-<li>공간 복잡도</li>
-</ol>
-<ul>
-<li><code>O(N)</code><ul>
-<li>N : number of opening bracket</li>
-<li>최악의 경우 input string이 전부 opening bracket인 경우</li>
-</ul>
-</li>
-</ul>
+<p>notation으로 이해하기 어려우므로 DFA 한가지 예제로 이해를 해봅시다.</p>
+<script type="math/tex; mode=display">M(\{a,b,c,d\}, \{0,1\}, \delta, a, \{d\})</script><script type="math/tex; mode=display">\delta(a,0)=b, \text{ } \delta(a,1)=a</script><script type="math/tex; mode=display">\delta(b,0)=b, \text{ } \delta(b,1)=c</script><script type="math/tex; mode=display">\delta(c,0)=d, \text{ } \delta(c,1)=a</script><script type="math/tex; mode=display">\delta(d,0)=d, \text{ } \delta(d,1)=d</script><p>위의 DFA 에는 state가 $a,b,c,d$ 4개가 있습니다.</p>
+<p>$0,1$ symbols 로 이우러진 alphabet $\{0,1\}$이 있습니다.</p>
+<p>transition function의 갯수는 state의 갯수(4) X alphabet의 길이(2) 가 된다.</p>
+<p>initial state는 $a$ 입니다.</p>
+<p>final state는 $d$ 입니다.</p>
+<p>이해를 쉽게 하기 위해 그래프로 나타내면 다음과 같습니다.</p>
+<p><img src="http://itsalif.info/blogfiles/dfa/dfa-010.jpg" alt></p>
+<p>그래프에서 보는 바와 같이 symbol들은 edge로 표현되고, state는 node로 표현됩니다. 또한 initial state $a$는 아무런 symbol표시 없는 화살표가 하나 붙게 되고, final state $d$는 2중 동그라미로 나타냅니다.</p>
+<p>DFA에서 initial state $a$에서 출발해서 final state $d$로 state가 바뀌게 되는 string은 accept하게 됩니다.</p>
+<p>예를 들면 111은 $aaa$가 됩니다. 그럼 마지막 state가 final state $d$ 가 아니므로 111 string은 accept하지 않습니다.</p>
+<p>1010은 state가 $aabcd$ 가 되므로 final state $d$로 끝나게 되므로 1010 string은 accept 하게 됩니다.</p>
+<p>graph를 table 형식으로 나타내면 다음과 같습니다.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th>0</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>a</td>
+<td>b</td>
+<td>a</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>b</td>
+<td>b</td>
+<td>c</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>c</td>
+<td>d</td>
+<td>a</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>d</td>
+<td>d</td>
+<td>d</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<font size="4" color="green">$\delta$ notation의 확장</font>
+
+<p>$\delta ^* (a, 10)=b$</p>
+<p>위의 식은  state  $a$ 에서 edge 1로 이동하고 거기서 다시 edge 0으로 간 state가 $b$ 라는 의미입니다.</p>
+<p>$\delta ^* (a, 10)=\delta  (\delta(a,1), 0)=b$ 로 표현될수 있습니다.</p>
+<font size="4" color="green">DFA에서 accept 되는 string의 집합 notation</font>
+
+<script type="math/tex; mode=display">L(M)=\{w \in \Sigma^* ; \delta ^* (q_0, w) \in F\}</script><p>위 식은 $q_0$ initial state에서 출발해서 final state에 도달하는 transition function을 적용해서 나온 모든 string의 집합을 의미합니다. 즉 위 조건을 만족하는 string은 accept 된 string이라고 보면 됩니다.</p>
 
         </div>
         <footer class="article-footer">
@@ -218,7 +259,7 @@
 
 
 
-    <a data-url="http://progresivoJS.github.io/2019/05/20/Stack/" data-id="cjw8um4cf000d7tl56kykennl" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://progresivoJS.github.io/2019/05/29/computation-theory-2/" data-id="cjw8um4cb000a7tl51ggauioi" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -288,23 +329,24 @@
             "@type": "Person",
             "name": "James Park"
         },
-        "headline": "Data Structure(Stack)",
-        "image": "http://progresivoJS.github.iohttps://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnkJ-3i903TPlQFINiJgShsaiaHkEWf3HFJDzkjL5Lk9ovylX9",
+        "headline": "Theory of computation (2)",
+        "image": "http://progresivoJS.github.iohttp://itsalif.info/blogfiles/dfa/dfa-010.jpg",
         "keywords": "",
         "genre": "",
-        "datePublished": "2019-05-20",
-        "dateCreated": "2019-05-20",
-        "dateModified": "2019-05-20",
-        "url": "http://progresivoJS.github.io/2019/05/20/Stack/",
-        "description": "자료구조1. Stack
+        "datePublished": "2019-05-29",
+        "dateCreated": "2019-05-29",
+        "dateModified": "2019-05-29",
+        "url": "http://progresivoJS.github.io/2019/05/29/computation-theory-2/",
+        "description": "본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 2강을 보며 정리한 내용입니다.
+DFA(Deterministic Finite Automaton)
 
+1. notation
 
-자료구조 중에서 가장 많이 알려진 stack 구조는 data를 넣고 빼는 곳이 한곳으로 가장 먼저 넣은 data는 가장 나중에 나오는 구조 (FILO) First In Last Out 입니다.
-stack 을 이용한 알고리즘 문제
-
-Balanced Brackets
-opening bracket = &#39;(&#39;, &#39;[&"
-        "wordCount": 809
+M(Q, \Sigma, \delta, q_0, F)
+$Q$ : State들의 집합
+$\Sigma$ : input alphabet
+$\delta$ : $Q \times \Sigm"
+        "wordCount": 280
     }
 </script>
 
@@ -344,20 +386,10 @@ opening bracket = &#39;(&#39;, &#39;[&"
         
 <nav id="article-nav">
     
-        <a href="/2019/05/20/deque/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">newer</strong>
-        <p class="article-nav-title">
-        
-            Data Structure(Deque)
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2019/05/17/BFS/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2019/05/28/computation-theory-1/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">older</strong>
-        <p class="article-nav-title">BFS</p>
+        <p class="article-nav-title">Theory of computation (1)</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -479,7 +511,7 @@ opening bracket = &#39;(&#39;, &#39;[&"
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'http://progresivoJS.github.io/2019/05/20/Stack/';
+    var disqus_url = 'http://progresivoJS.github.io/2019/05/29/computation-theory-2/';
     
     (function() {
     var dsq = document.createElement('script');
