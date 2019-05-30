@@ -6,23 +6,25 @@
     
 
     
-    <title>Recommend system | James Blog</title>
+    <title>Theory of computation (3) | James Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
         <meta name="keywords" content>
     
-    <meta name="description" content="andrew ng lecture note recommend 를 공부하며 번역하여서 올립니다 각 영화에 대해서 평점이 5점까지 줄수 있다고 가정한다     Movie Alice(1) Bob(2) Carol(3) Dave(4)     Love at star 5 5 0 0   Romance Forevere 5 ? ? 0   Cute love ? 4 0 ?">
+    <meta name="description" content="본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 3강을 보며 정리한 내용입니다. NFA(Nondeterministic Finite Acceptors)  1. 정의  M(Q, \Sigma, \delta, q_0, F) $Q$ : State들의 집합 $\Sigma$ : input alphabet $\delta$ : $Q \times \{\Sigma">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Recommend system">
-<meta property="og:url" content="http://progresivoJS.github.io/2019/05/04/Recommend-system/index.html">
+<meta property="og:title" content="Theory of computation (3)">
+<meta property="og:url" content="http://progresivoJS.github.io/2019/05/30/computation-theory-3/index.html">
 <meta property="og:site_name" content="James Blog">
-<meta property="og:description" content="andrew ng lecture note recommend 를 공부하며 번역하여서 올립니다 각 영화에 대해서 평점이 5점까지 줄수 있다고 가정한다     Movie Alice(1) Bob(2) Carol(3) Dave(4)     Love at star 5 5 0 0   Romance Forevere 5 ? ? 0   Cute love ? 4 0 ?">
+<meta property="og:description" content="본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 3강을 보며 정리한 내용입니다. NFA(Nondeterministic Finite Acceptors)  1. 정의  M(Q, \Sigma, \delta, q_0, F) $Q$ : State들의 집합 $\Sigma$ : input alphabet $\delta$ : $Q \times \{\Sigma">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-21T03:45:16.537Z">
+<meta property="og:image" content="https://www.dennis-grinch.co.uk/resources/images/automata_7.svg">
+<meta property="og:updated_time" content="2019-05-30T05:14:05.934Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Recommend system">
-<meta name="twitter:description" content="andrew ng lecture note recommend 를 공부하며 번역하여서 올립니다 각 영화에 대해서 평점이 5점까지 줄수 있다고 가정한다     Movie Alice(1) Bob(2) Carol(3) Dave(4)     Love at star 5 5 0 0   Romance Forevere 5 ? ? 0   Cute love ? 4 0 ?">
+<meta name="twitter:title" content="Theory of computation (3)">
+<meta name="twitter:description" content="본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 3강을 보며 정리한 내용입니다. NFA(Nondeterministic Finite Acceptors)  1. 정의  M(Q, \Sigma, \delta, q_0, F) $Q$ : State들의 집합 $\Sigma$ : input alphabet $\delta$ : $Q \times \{\Sigma">
+<meta name="twitter:image" content="https://www.dennis-grinch.co.uk/resources/images/automata_7.svg">
     
 
     
@@ -144,14 +146,14 @@
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-Recommend-system" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-computation-theory-3" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Recommend system
+        Theory of computation (3)
         </h1>
     
 
@@ -161,8 +163,8 @@
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2019/05/04/Recommend-system/" class="article-date">
-            <time datetime="2019-05-04T06:29:55.000Z" itemprop="datePublished">2019-05-04</time>
+        <a href="/2019/05/30/computation-theory-3/" class="article-date">
+            <time datetime="2019-05-30T05:14:05.000Z" itemprop="datePublished">2019-05-30</time>
         </a>
     </div>
 
@@ -173,230 +175,38 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <!-- <font size = '4'> -->
-<p>andrew ng lecture note recommend 를 공부하며 번역하여서 올립니다</p>
-<p>각 영화에 대해서 평점이 5점까지 줄수 있다고 가정한다</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>Movie</th>
-<th>Alice(1)</th>
-<th>Bob(2)</th>
-<th>Carol(3)</th>
-<th>Dave(4)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Love at star</td>
-<td>5</td>
-<td>5</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>Romance Forevere</td>
-<td>5</td>
-<td>?</td>
-<td>?</td>
-<td>0</td>
-</tr>
-<tr>
-<td>Cute love</td>
-<td>?</td>
-<td>4</td>
-<td>0</td>
-<td>?</td>
-</tr>
-<tr>
-<td>Nonstop Car</td>
-<td>0</td>
-<td>0</td>
-<td>5</td>
-<td>4</td>
-</tr>
-<tr>
-<td>Sword</td>
-<td>0</td>
-<td>0</td>
-<td>5</td>
-<td>?</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>Notation</strong></p>
-<ul>
-<li><p>$n_u$ <strong>:</strong> 총 유저의 명(수)</p>
-</li>
-<li><p>$n_m$ <strong>:</strong> 총 영화의 갯수</p>
-</li>
-<li><p>$r(i,j)$ <strong>:</strong> $j$라는 유저가 영화 $i$에 평점을 줬으면 <strong>1</strong></p>
-</li>
-<li><p>$y^{(i,j)}$ <strong>:</strong> $r(i,j) = 1$이라는 조건 하에 user $j$가 movie $i$에게 준 평점 점수</p>
-</li>
+            <p>본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 3강을 보며 정리한 내용입니다.</p>
+<font size="5" color="sky blue">NFA(Nondeterministic Finite
+Acceptors)</font>
+<br>
+<font size="4" color="orange">1. 정의</font>
+
+<script type="math/tex; mode=display">M(Q, \Sigma, \delta, q_0, F)</script><ul>
+<li>$Q$ : State들의 집합</li>
+<li>$\Sigma$ : input alphabet</li>
+<li>$\delta$ : $Q \times \{\Sigma \cup \{\lambda\}\} \to P(Q)$ transition function</li>
+<li>$q_0$ : $q_0 \in Q$ initial state (1개)</li>
+<li>$F$ : $F \in Q$ Final states (1개 이상 가능)</li>
 </ul>
-<p>우리는 주어진 데이터를 가지고 missing value를 predict해야 한다</p>
-<font size="6" color="sky blue">1. Content_based algorithm</font>
+<p>DFA, NFA의 가장 큰 차이점은 transition function $\delta$ 입니다.</p>
+<p>DFA는 state가 결정되고, input alphabet이 결정되면, edge를 통해 갈수 있는 state가 하나 있다. 하지만 NFA는 하나의 state에서 input alphabet이 결정되면 edge를 통해 갈 수 있는 state가 여러개일수 있습니다. 또 DFA는 input alphabet은 하나의 state에 하나만 있지만 NFA는 하나의 state에서 중복된 input alphabet이 있을수 있습니다.</p>
+<font size="4" color="orange">2. 예제</font>
 
-<p>content_based는 content가 어떤 특정한 잠재 feature가 있을거라고 생각하고 그 feature vector를 적용하는 것이다.<br>예를 들어 영화를 추천하는 거라면 영화에는 각 장르가 존재한다. 영화의 로맨스 장르 정도, 액션 정도를 가중치 개념으로 주어서 각 영화의 latent feature vector를 지정해준다</p>
-<p>여기에서는 romance를 $x_1$, action $x_2$의 feature vector를 만들어준다 extra(constant) feature도 넣어준다</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>Movie</th>
-<th>Alice(1)</th>
-<th>Bob(2)</th>
-<th>Carol(3)</th>
-<th>Dave(4)</th>
-<th>$x_0$(constant)</th>
-<th>$x_1$(romance)</th>
-<th>$x_2$(action)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Love at star</td>
-<td>5</td>
-<td>5</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0.9</td>
-<td>0</td>
-</tr>
-<tr>
-<td>Romance Forevere</td>
-<td>5</td>
-<td>?</td>
-<td>?</td>
-<td>0</td>
-<td>1</td>
-<td>1.0</td>
-<td>0.1</td>
-</tr>
-<tr>
-<td>Cute love</td>
-<td>?</td>
-<td>4</td>
-<td>0</td>
-<td>?</td>
-<td>1</td>
-<td>0.99</td>
-<td>0</td>
-</tr>
-<tr>
-<td>Nonstop Car</td>
-<td>0</td>
-<td>0</td>
-<td>5</td>
-<td>4</td>
-<td>1</td>
-<td>0.1</td>
-<td>1.0</td>
-</tr>
-<tr>
-<td>Sword</td>
-<td>0</td>
-<td>0</td>
-<td>5</td>
-<td>?</td>
-<td>1</td>
-<td>0</td>
-<td>0.9</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>각각의 영화는 $\begin{bmatrix}<br>Love.. &amp; Romance.. &amp; Cute.. &amp; Nonstop.. &amp; Sword.. \\<br>\end{bmatrix} =\begin{bmatrix}<br>x^1 &amp; x^2 &amp; x^3 &amp; x^4 &amp; x^5 \\<br>\end{bmatrix}$</p>
-<p>각각의 영화 $x^i$은 feature vector를 가지고 있다<br>에를 들어 영화 Love at star $x^1 = \begin{bmatrix}<br>1 \\<br>0.9\\<br>0<br>\end{bmatrix}$ 의 feature vector를 가지고 있다</p>
-<p>content_based 방식에서는 각각의 content feature vector에 따른 user parameter vector를 learning시켜야한다<br>각각의 user마다 각각의 평점은 linear regression방식으로 나타난다</p>
-<p>만약 Alice의 parameter vector($\theta^1$)이 $\theta^1 = \begin{bmatrix}<br>0 \\<br>5\\<br>0<br>\end{bmatrix}$ 이라고 한다면 Alice가 Cute love 영화에 평점을 줄 점수는 $(\theta^{(1)})^T x^{(3)}$ inner product를 해주면 4.95 평점을 줄거라는 예측이 나온다</p>
-<font size="5" color="orange">$\theta$를 learning 해보자 </font>
-
-<p><strong>Notation</strong></p>
-<ul>
-<li><p>n <strong>:</strong> feature의 dimension(constant를 제외한것) 여기서는 2(romance, action)이다</p>
-</li>
-<li><p>$m^j$ <strong>:</strong> $j$ user가 평점을 준 영화의 갯수  </p>
-</li>
-</ul>
-<p>$j$ user가 평점을 준 영화에 한해서 $j$ user의 영화에 준 예측 평점과 실제 평점의 차를 최소화 해야한다</p>
-<script type="math/tex; mode=display">min_{\theta^{(j)}} \frac{1}{2 m^{(j)}} \sum_{i:r(i,j)=1} \left(\left(\theta^{(j)}\right) ^T x^{(i)} - y^{(i,j)}\right)^2 + \frac{\lambda}{2 m^{(j)}}\sum_{k=1}^n \left( \theta_k^{(j)}\right)^2</script><p>최적화 하는데 $m^{(j)}$는 필요 없으므로 없애주어도 된다</p>
-<script type="math/tex; mode=display">min_{\theta^{(j)}} \frac{1}{2} \sum_{i:r(i,j)=1} \left(\left(\theta^{(j)}\right) ^T x^{(i)} - y^{(i,j)}\right)^2 + \frac{\lambda}{2}\sum_{k=1}^n \left( \theta_k^{(j)}\right)^2</script><p>이거를 모든 user에게 적용시켜야 한다. 우리의 objective function이  된다</p>
-<script type="math/tex; mode=display">J(\theta^1, \ldots, \theta^{n_u}) =\underset{\theta^{(1)}, \cdots, \theta^{(n_u)}}{\operatorname{min}}\frac{1}{2} \sum_{j=1}^{n_u}\sum_{i:r(i,j)=1} \left(\left(\theta^{(j)}\right) ^T x^{(i)} - y^{(i,j)}\right)^2 + \frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^n \left( \theta_k^{(j)}\right)^2</script><p>$\theta$에 대해서 미분을 해준다</p>
-<p>$\theta_k^{(j)} : \theta_k^{(j)} - \alpha\sum_{i:r(i,j)=1} \left(\left(\theta^{(j)}\right) ^T x^{(i)} - y^{(i,j)}\right)x_k^{(i)}$ $(for \text{ } k= 0)$</p>
-<p>$\theta_k^{(j)} : \theta_k^{(j)} - \alpha \left(\sum_{i:r(i,j)=1} \left(\left(\theta^{(j)}\right) ^T x^{(i)} - y^{(i,j)}\right)x_k^{(i)} + \lambda \theta_k^{(j)}  \right)$ $(for \text{ } k\neq 0)$</p>
-<p>k가 0인것과 K가 0이 아닌것의 뜻은 feature의 constant term을 하느냐 안하느냐 이다</p>
-<p>우리의 Obejctive function의 최종식은</p>
-<script type="math/tex; mode=display">{\partial^2\over\partial\theta_k^{(j)}}J(\theta^1, \ldots, \theta^{n_u})=\left(\sum_{i:r(i,j)=1} \left(\left(\theta^{(j)}\right) ^T x^{(i)} - y^{(i,j)}\right)x_k^{(i)} + \lambda \theta_k^{(j)}  \right)</script><p>content_based는 각 content에 대한 feature를 알아야 한다는 단점이 있다. 다음에 알아볼 방법은 이거를 보완해준 Colloaborative filtering방법이다</p>
-<font size="6" color="sky blue">2. Collaborative filtering</font>
-
-<ol>
-<li>content_based 방식에서는 content feature를 알고 있는 상태였다. 하지만 현실에서는 불가능하다</li>
-<li>또한 Feature의 갯수를 조금더 많이 알기를 원한다</li>
-</ol>
-<font size="5" color="orange">user의 영화 취향 벡터 $\theta$와  각 영화의 장르 feature 벡터 $x$를 서로 교차적으로 learning </font>
-
-<p><strong>Notation</strong></p>
-<ul>
-<li><p>$n_m$ <strong>:</strong> 영화의 갯수</p>
-</li>
-<li><p>$n_u$ <strong>:</strong> user의 수</p>
-</li>
-</ul>
-<ol>
-<li><p>$\theta$를 랜덤적으로 Initialize한다</p>
-<p> $\theta$를 가지고 $x$를 update시킨다</p>
-<script type="math/tex; mode=display">\underset{x^{(1)}, \cdots, x^{(n_m)}}{\operatorname{min}} {1\over2} \sum_{j=1}^{n_m}\sum_{i:r(i,j)=1} \left(\left(\theta^{(j)}\right) ^T x^{(i)} - y^{(i,j)}\right)^2 + \frac{\lambda}{2}\sum_{j=1}^{n_m}\sum_{k=1}^n \left( x_k^{(j)}\right)^2</script></li>
-<li><p>update된 $x$를 가지고 $\theta$를 Update시킨다</p>
-<script type="math/tex; mode=display">\underset{\theta^{(1)}, \cdots, \theta^{(n_u)}}{\operatorname{min}} {1\over2} \sum_{j=1}^{n_u}\sum_{i:r(i,j)=1} \left(\left(\theta^{(j)}\right) ^T x^{(i)} - y^{(i,j)}\right)^2 + \frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^n \left( \theta_k^{(j)}\right)^2</script></li>
-</ol>
-<font size="5" color="orange">Minimizing $\theta^{(1)}, \cdots, \theta^{(n_u)}$ and $x^{(1)}, \cdots, x^{(n_m)}$ simultaneously</font>
-
-<script type="math/tex; mode=display">J(x^{(1)}, \cdots, x^{(n_m)},\theta^{(1)}, \cdots, \theta^{(n_u)}) ={1\over2} \sum_{(i,j):r(i,j)=1} \left(\left(\theta^{(j)}\right) ^T x^{(i)} - y^{(i,j)}\right)^2 + \frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^n \left( \theta_k^{(j)}\right)^2 + \frac{\lambda}{2}\sum_{i=1}^{n_m}\sum_{k=1}^n \left( x_k^{(i)}\right)^2</script><script type="math/tex; mode=display">\underset{x^{(1)}, \cdots, x^{(n_m)},\theta^{(1)}, \cdots, \theta^{(n_u)}}{\operatorname{min}}J\left(x^{(1)}, \cdots, x^{(n_m)},\theta^{(1)}, \cdots, \theta^{(n_u)}\right)</script><p>content_based와 다른점은 costant Term을 넣어주지 않는다는 것이다</p>
-<p>cost function J를 최대한 줄여주는 벡터를 찾는다</p>
-<font size="6" color="sky blue">3. Low rank matrix Factorization</font>
-
-<script type="math/tex; mode=display">Y = \begin{bmatrix}
-5 & 5 & 0 &0\\
-5 & ? & ? &0\\
-? & 4 & 0 &?\\
-0 & 0 & 5 &4\\
-0 & 0 & 5 &0\\
-\end{bmatrix}</script><p>5개의 영화와 4명의 user matrix이다</p>
-<p>predicted rating은 다음과 같이 나타낼수 있다</p>
-<script type="math/tex; mode=display">X = \begin{bmatrix}
---- \left(x^{(1)}\right)^T ---\\
---- \left(x^{(2)}\right)^T ---\\
-\vdots\\ --- \left(x^{(n_m)}\right)^T ---\\
-\end{bmatrix}</script><script type="math/tex; mode=display">\Theta = \begin{bmatrix}
---- \left(\theta^{(1)}\right)^T ---\\
---- \left(\theta^{(2)}\right)^T ---\\
-\vdots\\ --- \left(\theta^{(n_u)}\right)^T ---\\
-\end{bmatrix}</script><p>predicted rating matrix = $\Theta^T \cdot X$</p>
-<p><strong><em>Notation</em></strong></p>
-<ul>
-<li><p>$r_{i,j}$ <strong>:</strong> $i$ 유저가 $j$ 영화에게준 실제 평점</p>
-</li>
-<li><p>$e_{i,j}$ <strong>:</strong> $i$ 유저가 $j$ 영화에게준 실제 평점과 예측 평점의 차이</p>
-</li>
-<li><p>$p_{i,k}$ <strong>:</strong> $i$ 유저의 latent feature vector</p>
-</li>
-<li><p>$q_{k,j}$ <strong>:</strong> $j$ 영화의 latent feature vector</p>
-</li>
-<li><p>$\beta$ : Regularization Term</p>
-</li>
-<li><p>$\alpha$ : Learning rate</p>
-</li>
-<li><p>$P$ : 유저들의 Latent Matrix / shape : $\left( \text{유저 명수  (X)  Latent 갯수}\right)$</p>
-</li>
-<li><p>$Q$ : 영화들의 Latent Matrix / shape : $\left( \text{ Latent 갯수 (X) 영화 갯수 }\right)$</p>
-</li>
-</ul>
-<script type="math/tex; mode=display">e_{i,j}^2 = \left( r_{i,j} -\sum_{k=1}^K p_{i,k} q_{k,j} \right)^2 + {\beta \over 2} \sum_{k=1}^K \left(\lVert P \rVert^2 + \lVert Q \rVert^2\right)</script><script type="math/tex; mode=display">p_{i,k}^{'} = p_{i,k} + \alpha {\partial \over \partial p_{i,k}}e_{i,j}^2 = p_{i,k} + \alpha \left( 2 e_{i,j}q_{k,j} - \beta p_{i,k}\right)</script><script type="math/tex; mode=display">q_{k,j}^{'} = q_{k,j} + \alpha {\partial \over \partial q_{k,j}}e_{i,j}^2 = q_{k,j} + \alpha \left( 2 e_{i,j}p_{i,k} - \beta q_{k,j}\right)</script><p>$p_{i,k}^{‘}$, $q_{k,j}^{‘}$ 각각 벡터이다</p>
+<p>예제 그래프를 통해 이해해보면 좀 더 쉽게 이해할수 있습니다.</p>
+<p><img src="https://www.dennis-grinch.co.uk/resources/images/automata_7.svg" alt></p>
+<p>위 그림의 start state, final state가 $q_0$입니다.<br>NFA에서는 DFA와 다르점을 보려면 state $q_1$을 보면 됩니다.<br>DFA에서는 하나의 state에서는 반드시 input alphabet 1개씩 되어야 하는데 NFA에서는 $q_1$에서와 같이 총 3개의 edge가 있고, symbol $a$가 두번 쓰이는 것을 알수 있습니다. 또한 $\epsilon$ symbol은 transition function으로 쓰이지 않았습니다.</p>
+<p>또 다른 예제를 보겠습니다.</p>
+<p><img src="https://i.stack.imgur.com/RDAEi.png" alt></p>
+<p>위 그림에서는 start state가 $q_0$, final state가 $q_1$ 입니다.<br>또 다른 기호인 $\lambda$가 보이는데 이것은 특별한 input alphabet이 없어도 다른 state로 transition 될수 있다는 뜻입니다.</p>
+<p>예를 들어 $q_2$에서 $\lambda$ string이 들어오면 어느 state에 있을지 알아보면 가능한 state는 $q_0, q_2$가 될것입니다.<br>즉 $q_0$로 transition되거나, 또는 아무 symbol이 없다는 뜻도 되므로 움직이지 않고 자기 자신 $q_2$에 있을수 있습니다.<br>식으로 나타내면 다음과 같습니다.</p>
+<script type="math/tex; mode=display">\delta(q_2, \lambda)=\{q_0, q_2\}</script><p>그러면 $\lambda$ 는 NFA가 accept 할지 안할지는 어떻게 판단을 할까요?<br>판단 방법은 transition을 통해서 나온 state 중에서 final state가 있으면 accept하고 아니면 accept 하지 않습니다. 위 예제에서는 final state가 $q_1$ 이지만, $q_1$ 이 $\lambda$ transition에 의해 나온 state 집합에 없으므로 $\lambda$ 는 accept 하지 않습니다.</p>
+<p>그러면 조금 더 심화해서 symbol 하나만으로 transition 하는게 아닌 string으로 transition을 해보겠습니다.</p>
+<script type="math/tex; mode=display">\delta ^* (q_1, a)</script><p>위 방법으로 transition하면 나올수 있는 state는 어떤게 있을까요?</p>
+<p>답은 모든 state가 가능합니다 즉 다음과 같습니다.</p>
+<script type="math/tex; mode=display">\delta ^* (q_1, a)=\{q_0, q_1, q_2\}</script><p>$q_1$에서 $q_0$로 transition 할때에는 $\delta ^* (q_1, \lambda \lambda a \lambda \lambda)$ 가 되면 가능합니다.</p>
+<p>$q_1$에서 $q_1$로 transition 할때에는 $\delta ^* (q_1, \lambda \lambda a)$ 가 되면 가능합니다.</p>
+<p>$q_1$에서 $q_2$로 transition 할때에는 $\delta ^* (q_1, \lambda \lambda a \lambda)$ 가 되면 가능합니다.</p>
+<p>위와 같이 모든 state로 이동이 가능할 뿐더러 그러면 당연히 final state도 포함이 되기 때문에 $a$는 accept 이 된다는 것도 알수 있습니다.</p>
 
         </div>
         <footer class="article-footer">
@@ -404,7 +214,7 @@
 
 
 
-    <a data-url="http://progresivoJS.github.io/2019/05/04/Recommend-system/" data-id="cjwa7eoo10008qnl5kqcsjkmj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://progresivoJS.github.io/2019/05/30/computation-theory-3/" data-id="cjwa7eooa000dqnl5rpdhg9xt" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -474,50 +284,25 @@
             "@type": "Person",
             "name": "James Park"
         },
-        "headline": "Recommend system",
-        "image": "http://progresivoJS.github.io",
+        "headline": "Theory of computation (3)",
+        "image": "http://progresivoJS.github.iohttps://www.dennis-grinch.co.uk/resources/images/automata_7.svg",
         "keywords": "",
         "genre": "",
-        "datePublished": "2019-05-04",
-        "dateCreated": "2019-05-04",
-        "dateModified": "2019-05-21",
-        "url": "http://progresivoJS.github.io/2019/05/04/Recommend-system/",
-        "description": " -->
-andrew ng lecture note recommend 를 공부하며 번역하여서 올립니다
-각 영화에 대해서 평점이 5점까지 줄수 있다고 가정한다
+        "datePublished": "2019-05-30",
+        "dateCreated": "2019-05-30",
+        "dateModified": "2019-05-30",
+        "url": "http://progresivoJS.github.io/2019/05/30/computation-theory-3/",
+        "description": "본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 3강을 보며 정리한 내용입니다.
+NFA(Nondeterministic Finite
+Acceptors)
 
+1. 정의
 
-
-
-Movie
-Alice(1)
-Bob(2)
-Carol(3)
-Dave(4)
-
-
-
-
-Love at star
-5
-5
-0
-0
-
-
-Romance Forevere
-5
-?
-?
-0
-
-
-Cute love
-?
-4
-0
-"
-        "wordCount": 717
+M(Q, \Sigma, \delta, q_0, F)
+$Q$ : State들의 집합
+$\Sigma$ : input alphabet
+$\delta$ : $Q \times \{\Sigma"
+        "wordCount": 365
     }
 </script>
 
@@ -557,20 +342,10 @@ Cute love
         
 <nav id="article-nav">
     
-        <a href="/2019/05/05/em-algorithm/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">newer</strong>
-        <p class="article-nav-title">
-        
-            EM Algorithm
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2019/03/29/MLE-MAP-1/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2019/05/29/computation-theory-2/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">older</strong>
-        <p class="article-nav-title">MLE MAP</p>
+        <p class="article-nav-title">Theory of computation (2)</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -692,7 +467,7 @@ Cute love
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'http://progresivoJS.github.io/2019/05/04/Recommend-system/';
+    var disqus_url = 'http://progresivoJS.github.io/2019/05/30/computation-theory-3/';
     
     (function() {
     var dsq = document.createElement('script');
