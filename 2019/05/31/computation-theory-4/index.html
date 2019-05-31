@@ -6,25 +6,25 @@
     
 
     
-    <title>EM Algorithm | James Blog</title>
+    <title>Theory of computation (4) | James Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
         <meta name="keywords" content>
     
-    <meta name="description" content="latent variable 추론  clustering과 classification의 가장 큰 차이점은 숨어있는 변수가 있느냐 없느냐이다.clustering은 latent variable이 포함되어 있다classification은 observed variable로 분류 한다  $\{ X, Z\}$ : 모든 variable  $X$ : 관측된(Observed">
+    <meta name="description" content="본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 4, 5강을 보며 정리한 내용입니다. converting NFA to DFA   이번 글에서는 NFA를 DFA로 변형하는 방법을 정리하였습니다.  ![Sample Image Added via Markdown](../images/dfa_nfa_1.jpg)    위 NFA를 DFA로 표현하여 보겠습니">
 <meta property="og:type" content="article">
-<meta property="og:title" content="EM Algorithm">
-<meta property="og:url" content="http://progresivoJS.github.io/2019/05/05/em-algorithm/index.html">
+<meta property="og:title" content="Theory of computation (4)">
+<meta property="og:url" content="http://progresivoJS.github.io/2019/05/31/computation-theory-4/index.html">
 <meta property="og:site_name" content="James Blog">
-<meta property="og:description" content="latent variable 추론  clustering과 classification의 가장 큰 차이점은 숨어있는 변수가 있느냐 없느냐이다.clustering은 latent variable이 포함되어 있다classification은 observed variable로 분류 한다  $\{ X, Z\}$ : 모든 variable  $X$ : 관측된(Observed">
+<meta property="og:description" content="본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 4, 5강을 보며 정리한 내용입니다. converting NFA to DFA   이번 글에서는 NFA를 DFA로 변형하는 방법을 정리하였습니다.  ![Sample Image Added via Markdown](../images/dfa_nfa_1.jpg)    위 NFA를 DFA로 표현하여 보겠습니">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://www.probabilitycourse.com/images/chapter6/Convex_b.png">
-<meta property="og:updated_time" content="2019-05-05T14:29:55.089Z">
+<meta property="og:image" content="https://www.geeksforgeeks.org/wp-content/uploads/gq/2016/03/fig-11.png">
+<meta property="og:updated_time" content="2019-05-31T06:26:45.229Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="EM Algorithm">
-<meta name="twitter:description" content="latent variable 추론  clustering과 classification의 가장 큰 차이점은 숨어있는 변수가 있느냐 없느냐이다.clustering은 latent variable이 포함되어 있다classification은 observed variable로 분류 한다  $\{ X, Z\}$ : 모든 variable  $X$ : 관측된(Observed">
-<meta name="twitter:image" content="https://www.probabilitycourse.com/images/chapter6/Convex_b.png">
+<meta name="twitter:title" content="Theory of computation (4)">
+<meta name="twitter:description" content="본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 4, 5강을 보며 정리한 내용입니다. converting NFA to DFA   이번 글에서는 NFA를 DFA로 변형하는 방법을 정리하였습니다.  ![Sample Image Added via Markdown](../images/dfa_nfa_1.jpg)    위 NFA를 DFA로 표현하여 보겠습니">
+<meta name="twitter:image" content="https://www.geeksforgeeks.org/wp-content/uploads/gq/2016/03/fig-11.png">
     
 
     
@@ -146,14 +146,14 @@
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-em-algorithm" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-computation-theory-4" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        EM Algorithm
+        Theory of computation (4)
         </h1>
     
 
@@ -163,8 +163,8 @@
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2019/05/05/em-algorithm/" class="article-date">
-            <time datetime="2019-05-05T14:29:55.000Z" itemprop="datePublished">2019-05-05</time>
+        <a href="/2019/05/31/computation-theory-4/" class="article-date">
+            <time datetime="2019-05-31T06:26:45.000Z" itemprop="datePublished">2019-05-31</time>
         </a>
     </div>
 
@@ -175,53 +175,99 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <font size="5" color="orange">latent variable 추론</font>
-
-<p>clustering과 classification의 가장 큰 차이점은 숨어있는 변수가 있느냐 없느냐이다.<br>clustering은 latent variable이 포함되어 있다<br>classification은 observed variable로 분류 한다</p>
-<ul>
-<li><p>$\{ X, Z\}$ : 모든 variable</p>
-</li>
-<li><p>$X$ : 관측된(Observed) variable</p>
-</li>
-<li><p>$Z$ : hidden(latent) Variable</p>
-</li>
-<li><p>$\theta$ : 분포 parameter</p>
-</li>
-</ul>
-<p>latent variable을 marginal out 해주면 된다</p>
-<script type="math/tex; mode=display">P(X \mid \theta) = \sum_z P(X,Z \mid \theta)</script><p>로그 속에 summation이 있으면 계산이 복잡해져서 결국에는 summation의 위치를 바꿔줘야 한다(Jensens’s inequality). 그리고 $q(z)$의 임의의 pdf를 넣어준다</p>
-<script type="math/tex; mode=display">\ln P(X \mid \theta) = \ln \left\{ \sum_z P(X,Z \mid \theta)\right\}</script><script type="math/tex; mode=display">l(\theta) = \ln P(X \mid \theta) = \ln \left\{ \sum_z q(z)\frac{P(X,Z \mid \theta)}{q(z)} \right\}</script><p><strong>CF) Jensen’s inequality</strong></p>
-<p><img src="https://www.probabilitycourse.com/images/chapter6/Convex_b.png" alt></p>
-<ul>
-<li>$\psi$가 <code>convex</code> function일때는</li>
-</ul>
-<script type="math/tex; mode=display">f \left( \frac{x+y}{2}\right) \leq \frac{f(x) + f(y)}{2}</script><script type="math/tex; mode=display">\psi\left( \frac{\sum a_i x_i}{\sum a_j} \right) \leq \frac{\sum a_i \psi (x_i)}{\sum a_j}</script><ul>
-<li>$\psi$가 <code>concave</code> function일때는</li>
-</ul>
-<script type="math/tex; mode=display">f \left( \frac{x+y}{2}\right) \geq \frac{f(x) + f(y)}{2}</script><script type="math/tex; mode=display">\psi\left( \frac{\sum a_i x_i}{\sum a_j} \right) \geq \frac{\sum a_i \psi (x_i)}{\sum a_j}</script><p>로그는 Concave function이므로 jensen’s inequality에 의해 다음과 같이 로그 속의 summation을 다음과 같이 빼서 식을 정리할수 있다</p>
-<script type="math/tex; mode=display">l(\theta) = \ln \left\{ \sum_z q(z)\frac{P(X,Z \mid \theta)}{q(z)} \right\} \geq \sum_z q(z) \ln \frac{P(X,Z \mid \theta)}{q(z)}</script><p>오른쪽항의 식을 정리해주면</p>
-<script type="math/tex; mode=display">\sum_z \left\{q(z) \ln P(X,Z \mid \theta) - q(z)\ln q(z) \right\}</script><p>첫번째 항은 $q(z)$의 가중평균이고 두번째 항은 $q(z)$가 확률분포라는 가정하에 엔트로피를 나타낸다. 따라서 다음과 같이 식을 notation 해줄 수 있다</p>
-<script type="math/tex; mode=display">Q(\theta, q) = E_{q(z)} \ln P(X,Z \mid \theta) + H(q)</script><p>$Q(\theta, q)$은 결국 $l(\theta)$의 lower bound이다 이것을 최대화 시켜주면 $l(\theta)$값도 같이 최대화 시켜줄수 있다는 것이다<br> 단 항상 그런것은 아니다 왜냐하면 서로 inequality하기 때문이다</p>
- <font size="5" color="orange">Maximizing lower bound(1)</font>
-
-<script type="math/tex; mode=display">l(\theta) \geq \sum_z q(z) \ln \frac{P(X,Z \mid \theta)}{q(z)} = \sum_z q(z) \ln \frac{P(Z \mid X, \theta)P(X \mid \theta)}{q(z)}</script><p>맨 오른쪽의 항을 다음과 같이 정리할수 있다</p>
-<script type="math/tex; mode=display">\sum_z \left\{q(z) \ln \frac{P(Z \mid X, \theta)}{q(z)} + q(z)\ln P(X \mid \theta) \right\}</script><script type="math/tex; mode=display">=\sum_z \left\{q(z) \ln \frac{P(Z \mid X, \theta)}{q(z)}\right\} + \ln P(X \mid \theta)</script><p>다음을 최적화 시키기 위한 식으로 바꿔주기 위해 summation 속의 로그를 역수로 취해줌으로써 Kullback-Leiber divergence로 변형 시켜준다</p>
-<script type="math/tex; mode=display">L(\theta, q) = \ln P(X \mid \theta) - \sum_z \left\{ q(z) \ln \frac{q(z)}{P(Z \mid X, \theta)} \right\}</script><p>이 식을 보면 많은 뜻을 볼수 있다 기존의 우리가 maximize시키고 싶었던 $\ln P(X \mid \theta)$에 KL divergence term을 빼주는 식이 되었다 즉 KL divergence term을 0에 가깝게 해주면 해줄수록 우리의 objective function에 가까워 진다<br>KL divergence term이 0에 가까워 진다는 것은 $q(z)$ 분포 모양과 $P(Z \mid X, \theta)$의 분포 모양이 비슷해 진다는 것을 의미한다</p>
- <font size="5" color="orange">Maximizing lower bound(2)</font>
-
-
-<script type="math/tex; mode=display">Q(\theta, q) = E_{q(z)} \ln P(X,Z \mid \theta) + H(q)</script><script type="math/tex; mode=display">L(\theta, q) = \ln P(X \mid \theta) - \sum_z \left\{ q(z) \ln \frac{q(z)}{P(Z \mid X, \theta)} \right\}</script><p>우리가 $L(\theta, q)$를 구한 이유는<br>우리가 제일 처음 구한 $Q(\theta, q)$만 가지고 optimal value를 구하는 것은 쉽지 않다. 왜냐하면 $q(z)$를 업데이트하는 방법에 대한 정확한 지식이 없기 때문이다<br>하지만 $L(\theta, q)$를 가지고 $q(z)$를 업데이트 하기는 쉽다 임의의 $\theta$에 대해 $q(z)$는 $P(Z \mid X, \theta)$의 분포와 비슷하게 Update해주면 된다</p>
-<script type="math/tex; mode=display">KL\left(q(Z) \lVert P(Z \mid X, \theta)\right) = 0 \to q^t(z) = P(Z \mid X, \theta^t)</script><p>특정한 iteration동안 $\theta^t$로 되면 $q^t(z)$로 업그레이드 된다</p>
-<script type="math/tex; mode=display">Q(\theta, q^t) = E_{q^t(z)} \ln P(X,Z \mid \theta^t) + H(q^t)</script><script type="math/tex; mode=display">\theta^{t+1} = argmax_{\theta}Q(\theta, q^t) = argmax_{\theta}E_{q^t(z)} \ln P(X,Z \mid \theta)</script><p>그러면 업그레이드 된 $q^t$를 가지고 다시 $\theta$를 업그레이드 해준다</p>
- <font size="5" color="orange">정리</font>
-
-<script type="math/tex; mode=display">P(X \mid \theta) = \sum_z P(X,Z \mid \theta)</script> <font> 1. EM 알고리즘은 latent variable이 포함된 maximum likelihood를 찾는것이다 </font>
+            <p>본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 4, 5강을 보며 정리한 내용입니다.</p>
+<font size="5" color="sky blue">converting NFA to DFA</font>
 <br>
 
-<font> 2. 처음에는 $\theta$를 랜덤으로 정해준다 </font>
-<br>
+이번 글에서는 NFA를 DFA로 변형하는 방법을 정리하였습니다.
 
-<font> 3. likelihood가 converge할때 까지 iteration을 돌려준다 </font>
+![Sample Image Added via Markdown](../images/dfa_nfa_1.jpg)
+
+
+
+위 NFA를 DFA로 표현하여 보겠습니다.
+
+initial state $q_0$ 에서 transition 해서 갈수 있는 state를 알아보겠습니다.
+
+$$\delta (\{q_0\}, a) = \{q_1, q_2\}$$
+
+$$\delta (\{q_0\}, b) = \phi$$
+
+그래프로 나타내면 아래 그림과 같습니다.
+
+
+![](https://image.slidesharecdn.com/dfavsnfa-110323134101-phpapp02/95/dfa-vs-nfa-29-728.jpg?cb=1300887724)
+
+그 다음에 state $\{q_1, q_2\}$ 에서 a, b transition 을 하면 어느 state로 가는지 알아보겠습니다.
+
+$$\delta (\{q_1, q_2\}, a) = \{q_1, q_2\}$$
+
+$$\delta (\{q_1, q_2\}, b) = \{q_0\}$$
+
+그래프로 나타내면 아래 그림과 같습니다.
+
+![](https://image.slidesharecdn.com/dfavsnfa-110323134101-phpapp02/95/dfa-vs-nfa-31-728.jpg?cb=1300887724)
+
+마지막으로 $\phi$ 에서 transition 해서 갈수 있는 state를 알아보겠습니다.
+
+$$\delta (\phi, a) = \phi$$
+
+$$\delta (\phi, b) = \phi$$
+
+그래프로 나타내면 아래 그림과 같습니다.
+
+![](https://image.slidesharecdn.com/dfavsnfa-110323134101-phpapp02/95/dfa-vs-nfa-32-728.jpg?cb=1300887724)
+
+위의 과정으로 NFA에서 DFA로 변형하였습니다.
+
+<font size="4" color="orange">distinguishable / undistinguishable</font>
+
+<p>NFA를 DFA로 변환하는 알고리즘을 배우는데 중요한 개념인 state간의 distinguishable / undistinguishable 관계에 대해서 알아보도록 하겠습니다.</p>
+<p><strong><em>undistinguishable</em></strong></p>
+<p>예를 들어 $a$,$b$ state가 있고, $c$라는 final state가 있다고 합시다.<br>만약 모든 string $w$ 에 대해서 $a$, $b$를 transition 했을때, 두 state 모두 final state $c$에 도달하거나, 아니면 두 state 모두 final state에 도달하지 않으면 state $a$, $b$ 는 undistinguishable 이라고 합니다.</p>
+<p><strong><em>distinguishable (by a string w)</em></strong></p>
+<p>반면에 $a$ 가 final state로 가고 $b$ 가 final state로 가지 않거나, $a$ 가 final state로 가지 않고 $b$ 가 final state로 가는 string $w$ 가 하나라도 존재하면 2개의 state 가 distinguishable 이라고 합니다.</p>
+<p>예제 그래프를 통해 이해하는게 더 쉬우니 그래프를 통해 이해해보겠습니다.</p>
+<p><img src="https://www.geeksforgeeks.org/wp-content/uploads/gq/2016/03/fig-11.png" alt></p>
+<blockquote>
+<p><strong><em>먼저 $w$를 $\lambda$ 라고 한다면 어떤 state가 서로 distinguishable 한지 undistinguishable 한지 알아보겠습니다.</em></strong></p>
+</blockquote>
+<script type="math/tex; mode=display">w=\lambda</script><script type="math/tex; mode=display">\delta(\{q_0\},w)={q_0}</script><script type="math/tex; mode=display">\delta(\{q_1\},w)={q_1}</script><script type="math/tex; mode=display">\delta(\{q_2\},w)={q_2}</script><script type="math/tex; mode=display">\delta(\{q_3\},w)={q_3}</script><script type="math/tex; mode=display">\delta(\{q_4\},w)={q_4}</script><script type="math/tex; mode=display">\delta(\{q_5\},w)={q_5}</script><p>$\{q_0, q_3, q_5\}$ 는 서로 undistinguishable 하고, $\{q_1, q_2, q_4\}$ 도 서로 undistinguishable 합니다.</p>
+<p>$\{q_0, q_3, q_5\}$, $\{q_1, q_2, q_4\}$ 는 서로 undistinguishable 합니다. $w(\lambda)$ string transition 했을때, $\{q_0, q_3, q_5\}$ 는 각각 자기 자신 state로 남으며 자기 자신 state들은 final state가 아니며, $\{q_1, q_2, q_4\}$ 도 역시 자신 state에 남으며 final state로 모두 같습니다.</p>
+<p>그래서 다음과 같이 쪼갤수 있습니다.</p>
+<script type="math/tex; mode=display">\{q_0, q_3, q_5\}, \{q_1, q_2, q_4\}</script><p>잘 보면 final state 와 final state가 아닌 state로 쪼개지는 것을 알수있습니다.</p>
+<blockquote>
+<p><strong><em>$w$를 0,1 이라고 한다면 어떤 state가 서로 distinguishable 한지 undistinguishable 한지 알아보겠습니다.</em></strong></p>
+</blockquote>
+<p>$\{q_0, q_3, q_5\}, \{q_1, q_2, q_4\}$ 는 서로 distinguishable 하기 때문에 따로 생각을 해보겠습니다.</p>
+<p>먼저 $\{q_0, q_3, q_5\}$ 안에서 또 distinguishable 한 state가 있는지 확인을 해보겠습니다.</p>
+<script type="math/tex; mode=display">w=0</script><script type="math/tex; mode=display">\delta(\{q_0\},w)={q_3}</script><script type="math/tex; mode=display">\delta(\{q_3\},w)={q_0}</script><script type="math/tex; mode=display">\delta(\{q_5\},w)={q_5}</script><p>$w = 0$ 일 때는 3개의 state는 transition 했을때 모두 final state가 아닌 곳에 가므로 서로 undistinguishable 합니다.</p>
+<script type="math/tex; mode=display">w=1</script><script type="math/tex; mode=display">\delta(\{q_0\},w)={q_1}</script><script type="math/tex; mode=display">\delta(\{q_3\},w)={q_4}</script><script type="math/tex; mode=display">\delta(\{q_5\},w)={q_5}</script><p>$w = 1$ 일 때는 $\{q_0, q_3\}$과 $\{q_5\}$가 distinguishable 한것을 알수있습니다. $q_0, q_3$는 final state 인곳으로 가지만, $q_5$ 는 final state가 아닌 곳으로 가기 때문입니다.</p>
+<p>이제 $\{q_1, q_2, q_4\}$ 안에서 또 distinguishable 한 state가 있는지 확인을 해보겠습니다.</p>
+<script type="math/tex; mode=display">w=0</script><script type="math/tex; mode=display">\delta(\{q_1\},w)={q_2}</script><script type="math/tex; mode=display">\delta(\{q_2\},w)={q_2}</script><script type="math/tex; mode=display">\delta(\{q_4\},w)={q_2}</script><p>세 state 모두 final state로 이동하기 때문에 distinguishable 한 state는 없습니다.</p>
+<script type="math/tex; mode=display">w=1</script><script type="math/tex; mode=display">\delta(\{q_1\},w)={q_5}</script><script type="math/tex; mode=display">\delta(\{q_2\},w)={q_5}</script><script type="math/tex; mode=display">\delta(\{q_4\},w)={q_5}</script><p>세 state 모두 final state가 아닌 곳으로 이동하기 때문에 distinguishable 한 state는 없습니다.</p>
+<p>따라서 $w = 0,1$일 때 확인한 distinguishable / undistinguishable state들은 다음과 같습니다.</p>
+<script type="math/tex; mode=display">\{q_0, q_3\}, \{q_5\}, \{q_1, q_2, q_4\}</script><blockquote>
+<p><strong><em>$w$를 00,01,10,11 이라고 한다면 어떤 state가 서로 distinguishable 한지 undistinguishable 한지 알아보겠습니다.</em></strong></p>
+</blockquote>
+<p>이제는 $\{q_0, q_3\}$, $ \{q_1, q_2, q_4\}$ 를 확인하면 됩니다.</p>
+<p>먼저 $\{q_0, q_3\}$를 먼저 확인해 보겠습니다.</p>
+<script type="math/tex; mode=display">w=00</script><script type="math/tex; mode=display">\delta(\{q_0\},w)={q_3}</script><script type="math/tex; mode=display">\delta(\{q_3\},w)={q_0}</script><p>두 transition state 모두 final state가 아니므로 distinguishable 하지 않습니다.</p>
+<script type="math/tex; mode=display">w=01</script><script type="math/tex; mode=display">\delta(\{q_0\},w)={q_4}</script><script type="math/tex; mode=display">\delta(\{q_3\},w)={q_1}</script><p>두 transition state 모두 final state 이므로 distinguishable 하지 않습니다.</p>
+<script type="math/tex; mode=display">w=10</script><script type="math/tex; mode=display">\delta(\{q_0\},w)={q_2}</script><script type="math/tex; mode=display">\delta(\{q_3\},w)={q_2}</script><p>두 transition state 모두 final state 이므로 distinguishable 하지 않습니다.</p>
+<script type="math/tex; mode=display">w=11</script><script type="math/tex; mode=display">\delta(\{q_0\},w)={q_5}</script><script type="math/tex; mode=display">\delta(\{q_3\},w)={q_5}</script><p>두 transition state 모두 final state가 아니므로 distinguishable 하지 않습니다.</p>
+<p>결과적으로 $q_0, q_3$은 서로 undistinguishable 합니다.</p>
+<p>이제 $ \{q_1, q_2, q_4\}$를 확인해보겠습니다.</p>
+<script type="math/tex; mode=display">w=00</script><script type="math/tex; mode=display">\delta(\{q_1\},w)={q_2}</script><script type="math/tex; mode=display">\delta(\{q_2\},w)={q_2}</script><script type="math/tex; mode=display">\delta(\{q_4\},w)={q_2}</script><p>transition state 모두 final state 이므로 distinguishable 하지 않습니다.</p>
+<script type="math/tex; mode=display">w=10</script><script type="math/tex; mode=display">\delta(\{q_1\},w)={q_5}</script><script type="math/tex; mode=display">\delta(\{q_2\},w)={q_5}</script><script type="math/tex; mode=display">\delta(\{q_4\},w)={q_5}</script><p>transition state 모두 final state가 아니므로 distinguishable 하지 않습니다.</p>
+<script type="math/tex; mode=display">w=01</script><script type="math/tex; mode=display">\delta(\{q_1\},w)={q_5}</script><script type="math/tex; mode=display">\delta(\{q_2\},w)={q_5}</script><script type="math/tex; mode=display">\delta(\{q_4\},w)={q_5}</script><p>transition state 모두 final state가 아니므로 distinguishable 하지 않습니다.</p>
+<script type="math/tex; mode=display">w=11</script><script type="math/tex; mode=display">\delta(\{q_1\},w)={q_5}</script><script type="math/tex; mode=display">\delta(\{q_2\},w)={q_5}</script><script type="math/tex; mode=display">\delta(\{q_4\},w)={q_5}</script><p>transition state 모두 final state가 아니므로 distinguishable 하지 않습니다.</p>
+<p>최종적으로 모두 확인한 state는 모두 undistinguishable 입니다.</p>
+<p>이제는 더이상 쪼개지지 않는다는 것을 알수있습니다</p>
+<p>최종적인 distinguishable undistinguishable 관계는 다음과 같습니다.</p>
+<script type="math/tex; mode=display">\{q_0, q_3\}, \{q_5\}, \{q_1, q_2, q_4\}</script><p>그러면 다음과 같은 그래프를 그릴수 있습니다</p>
+<p><img src="https://www.geeksforgeeks.org/wp-content/uploads/gq/2016/03/fig-22.png" alt></p>
+<p>그래프를 보시면 undistinguishable 한것은 같은 state로 묶어줄수 있습니다.</p>
 
         </div>
         <footer class="article-footer">
@@ -229,7 +275,7 @@
 
 
 
-    <a data-url="http://progresivoJS.github.io/2019/05/05/em-algorithm/" data-id="cjwbpfz63000hz1l5no7093e7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://progresivoJS.github.io/2019/05/31/computation-theory-4/" data-id="cjwbpfz5y000dz1l5v2708d8c" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -299,22 +345,26 @@
             "@type": "Person",
             "name": "James Park"
         },
-        "headline": "EM Algorithm",
-        "image": "http://progresivoJS.github.iohttps://www.probabilitycourse.com/images/chapter6/Convex_b.png",
+        "headline": "Theory of computation (4)",
+        "image": "http://progresivoJS.github.iohttps://www.geeksforgeeks.org/wp-content/uploads/gq/2016/03/fig-11.png",
         "keywords": "",
         "genre": "",
-        "datePublished": "2019-05-05",
-        "dateCreated": "2019-05-05",
-        "dateModified": "2019-05-05",
-        "url": "http://progresivoJS.github.io/2019/05/05/em-algorithm/",
-        "description": "latent variable 추론
+        "datePublished": "2019-05-31",
+        "dateCreated": "2019-05-31",
+        "dateModified": "2019-05-31",
+        "url": "http://progresivoJS.github.io/2019/05/31/computation-theory-4/",
+        "description": "본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 4, 5강을 보며 정리한 내용입니다.
+converting NFA to DFA
 
-clustering과 classification의 가장 큰 차이점은 숨어있는 변수가 있느냐 없느냐이다.clustering은 latent variable이 포함되어 있다classification은 observed variable로 분류 한다
 
-$\{ X, Z\}$ : 모든 variable
+이번 글에서는 NFA를 DFA로 변형하는 방법을 정리하였습니다.
 
-$X$ : 관측된(Observed"
-        "wordCount": 547
+![Sample Image Added via Markdown](../images/dfa_nfa_1.jpg)
+
+
+
+위 NFA를 DFA로 표현하여 보겠습니"
+        "wordCount": 669
     }
 </script>
 
@@ -354,20 +404,10 @@ $X$ : 관측된(Observed"
         
 <nav id="article-nav">
     
-        <a href="/2019/05/07/SVM-1/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">newer</strong>
-        <p class="article-nav-title">
-        
-            SVM
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2019/05/04/Recommend-system/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2019/05/30/computation-theory-3/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">older</strong>
-        <p class="article-nav-title">Recommend system</p>
+        <p class="article-nav-title">Theory of computation (3)</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -489,7 +529,7 @@ $X$ : 관측된(Observed"
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'http://progresivoJS.github.io/2019/05/05/em-algorithm/';
+    var disqus_url = 'http://progresivoJS.github.io/2019/05/31/computation-theory-4/';
     
     (function() {
     var dsq = document.createElement('script');
