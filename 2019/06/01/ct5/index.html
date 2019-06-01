@@ -6,17 +6,23 @@
     
 
     
-    <title>Archive: 2019/3 | James Blog</title>
+    <title>Theory of computation (4) | James Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="James Blog">
-<meta property="og:url" content="http://progresivoJS.github.io/archives/2019/03/index.html">
+        <meta name="keywords" content>
+    
+    <meta name="description" content="본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 6강을 보며 정리한 내용입니다. Regular Expression language를 표현할수 있는 방법은 3가지가 있습니다. 첫번째는 grammer를 이용하여 grammer로 derivation 하는 모든 sentence 들을 language로 하는것입니다. 두번째는 DFA나 NFA가 accept">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Theory of computation (4)">
+<meta property="og:url" content="http://progresivoJS.github.io/2019/06/01/ct5/index.html">
 <meta property="og:site_name" content="James Blog">
+<meta property="og:description" content="본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 6강을 보며 정리한 내용입니다. Regular Expression language를 표현할수 있는 방법은 3가지가 있습니다. 첫번째는 grammer를 이용하여 grammer로 derivation 하는 모든 sentence 들을 language로 하는것입니다. 두번째는 DFA나 NFA가 accept">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-06-01T07:00:11.521Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="James Blog">
+<meta name="twitter:title" content="Theory of computation (4)">
+<meta name="twitter:description" content="본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 6강을 보며 정리한 내용입니다. Regular Expression language를 표현할수 있는 방법은 3가지가 있습니다. 첫번째는 grammer를 이용하여 grammer로 derivation 하는 모든 sentence 들을 language로 하는것입니다. 두번째는 DFA나 NFA가 accept">
     
 
     
@@ -133,63 +139,196 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-archive"></i>Archive: 2019/3
+    uncategorized
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-ct5" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2019" class="archive-year"><i class="icon fa fa-calendar-o"></i>2019</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2019-03-29T06:28:54.000Z" itemprop="datePublished">2019-03-29</time></div>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2019/03/29/MLE-MAP-1/">MLE MAP</a>
+        Theory of computation (4)
         </h1>
     
 
-        <p class="article-excerpt">
-            1. MLE(Maximum Liklihood Estimation) 최대가능도  Notation 
-
-
-$D$ : Data (관측한(Observed) 데이터)
-$\theta$ : parameter (확률)&lt;/font&gt;
-$H$ : 앞면이 나온 횟수
-$T$ : 뒷면이 나온 횟수
-
-
-Maximum Likelihood Estimation (MLE) of $
-        </p>
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2019/06/01/ct5/" class="article-date">
+            <time datetime="2019-06-01T07:00:11.000Z" itemprop="datePublished">2019-06-01</time>
+        </a>
     </div>
-</article>
-    
+
+		
+
+                
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 6강을 보며 정리한 내용입니다.</p>
+<p><font size="5" color="sky blue">Regular Expression</font><br><br></p>
+<p>language를 표현할수 있는 방법은 3가지가 있습니다.</p>
+<p>첫번째는 grammer를 이용하여 grammer로 derivation 하는 모든 sentence 들을 language로 하는것입니다.</p>
+<p>두번째는 DFA나 NFA가 accept 하는 string 들을 language 라고 하는 것입니다.</p>
+<p>마지막 방법인 regular expression 입니다.</p>
+<ul>
+<li><p>$\phi$, $\lambda$, $a \in \Sigma$</p>
+<ul>
+<li><p>$\phi, \lambda$는 서로 다른 것입니다.</p>
+<ul>
+<li>$\phi$ = $\{\}$ 는 empty set 입니다.</li>
+<li>$\lambda$ = $\{\lambda\}$ null string이 있다는 것입니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>$r_1+r_2$, $r_1 r_2$, $r_1^* $, $(r_1)$</p>
+<ul>
+<li><p>$L(r_1)+L(r_2) = L(r_1) \cup L(r_2)$</p>
+<ul>
+<li>$a+b = \{a\} \cup \{b\}= \{a,b\}$</li>
+</ul>
+</li>
+<li><p>$L(r_1)L(r_2)$ concatenation</p>
+<ul>
+<li>$\{a+b\}\{c+d\} = \{ac, ad, bc, bd\}$</li>
+</ul>
+</li>
+<li><p>$L(r_1)^* $</p>
+<ul>
+<li>concatenation 을 0번부터 하는것입니다.</li>
+<li>$a^* = \{\lambda, a, aa, \cdots \}$</li>
+</ul>
+</li>
+<li><p>$L((r_1)) = L(r_1)$</p>
+<ul>
+<li>language 표현 자체는 변하는게 없지만 우선순위를 정할때 사용합니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong><em>예제 1)</em></strong></p>
+<script type="math/tex; mode=display">(a+b)^* (a+bb)</script><p>$(a+b)^* = \{\lambda, a, b, aa, bb, ab, ba \cdots\}$<br>a,b로 표현할수 있는 모든 language를 나타냅니다.</p>
+<p>$(a+bb)$를 $(a+b)^* $  뒤에 concatenation 한다는 것 $a,b$ 로 나타낼수 있는 language 뒤에 $a$ 를 붙이거나 $bb$ 를 붙이는 language 를 표현합니다.</p>
+<p><strong><em>예제 2)</em></strong></p>
+<script type="math/tex; mode=display">(aa)^* (bb)^* b</script><p>$a$ 짝수개와 $b$ 홀수개를 concatenation 한 language 입니다</p>
+<p><strong><em>예제 3)</em></strong></p>
+<p>조건을 만족하는 language 를 나타내는 regular expression 다음과 같습니다.</p>
+<script type="math/tex; mode=display">1001 \in L</script><script type="math/tex; mode=display">101 \notin L</script><p>가운데 0이 두개가 들어가야 하므로</p>
+<script type="math/tex; mode=display">(0+1)^* 00 (0+1)^*</script>
         </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://progresivoJS.github.io/2019/06/01/ct5/" data-id="cjwd62sd8000gifl5p9z5nyng" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "James Park"
+        },
+        "headline": "Theory of computation (4)",
+        "image": "http://progresivoJS.github.io",
+        "keywords": "",
+        "genre": "",
+        "datePublished": "2019-06-01",
+        "dateCreated": "2019-06-01",
+        "dateModified": "2019-06-01",
+        "url": "http://progresivoJS.github.io/2019/06/01/ct5/",
+        "description": "본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 6강을 보며 정리한 내용입니다.
+Regular Expression
+language를 표현할수 있는 방법은 3가지가 있습니다.
+첫번째는 grammer를 이용하여 grammer로 derivation 하는 모든 sentence 들을 language로 하는것입니다.
+두번째는 DFA나 NFA가 accept"
+        "wordCount": 181
+    }
+</script>
+
+</article>
+
+    <section id="comments">
     
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
 
-
-    </div></section>
+    
+    </section>
 
 
 
@@ -211,6 +350,19 @@ Maximum Likelihood Estimation (MLE) of $
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2019/05/31/computation-theory-4/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Theory of computation (4)</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -327,11 +479,13 @@ Maximum Likelihood Estimation (MLE) of $
     var disqus_shortname = 'hexo-theme-hueman';
     
     
+    var disqus_url = 'http://progresivoJS.github.io/2019/06/01/ct5/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
