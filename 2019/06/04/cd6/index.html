@@ -6,25 +6,25 @@
     
 
     
-    <title>Data Structure(Deque) | James Blog</title>
+    <title>Theory of computation (6) | James Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
         <meta name="keywords" content>
     
-    <meta name="description" content="자료구조2. Deque   자료구조 중에서 stack과 queue를 합쳐 놓은 자료구조 방식으로, data를 넣고 빼는 곳이 두 곳으로 두 군데에서 모두 push / pop 이 가능한 자료 구조입니다. deque 을 이용한 알고리즘 문제 (1)   비교 대상이 되는 문장 base_sentence와 비교하는 문장 compare_sentence가 주어집니다.">
+    <meta name="description" content="본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 6강을 보며 정리한 내용입니다. GTG(Generalized Transition Graph) GTG는 NFA를 포함하는 개념입니다. GTG는 NFA의 Transition에 symbol 이 아닌 regular expression 이 들어간 Graph 를 애기합니다. complete GTG 는 모든">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Data Structure(Deque)">
-<meta property="og:url" content="http://progresivoJS.github.io/2019/05/20/deque/index.html">
+<meta property="og:title" content="Theory of computation (6)">
+<meta property="og:url" content="http://progresivoJS.github.io/2019/06/04/cd6/index.html">
 <meta property="og:site_name" content="James Blog">
-<meta property="og:description" content="자료구조2. Deque   자료구조 중에서 stack과 queue를 합쳐 놓은 자료구조 방식으로, data를 넣고 빼는 곳이 두 곳으로 두 군데에서 모두 push / pop 이 가능한 자료 구조입니다. deque 을 이용한 알고리즘 문제 (1)   비교 대상이 되는 문장 base_sentence와 비교하는 문장 compare_sentence가 주어집니다.">
+<meta property="og:description" content="본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 6강을 보며 정리한 내용입니다. GTG(Generalized Transition Graph) GTG는 NFA를 포함하는 개념입니다. GTG는 NFA의 Transition에 symbol 이 아닌 regular expression 이 들어간 Graph 를 애기합니다. complete GTG 는 모든">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://iq.opengenus.org/content/images/2018/05/image.PNG">
-<meta property="og:updated_time" content="2019-05-20T08:20:18.646Z">
+<meta property="og:image" content="http://lti.cs.vt.edu/OpenDSA/Books/CS4114/html/_images/nfatore1.png">
+<meta property="og:updated_time" content="2019-06-04T05:37:55.691Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Data Structure(Deque)">
-<meta name="twitter:description" content="자료구조2. Deque   자료구조 중에서 stack과 queue를 합쳐 놓은 자료구조 방식으로, data를 넣고 빼는 곳이 두 곳으로 두 군데에서 모두 push / pop 이 가능한 자료 구조입니다. deque 을 이용한 알고리즘 문제 (1)   비교 대상이 되는 문장 base_sentence와 비교하는 문장 compare_sentence가 주어집니다.">
-<meta name="twitter:image" content="https://iq.opengenus.org/content/images/2018/05/image.PNG">
+<meta name="twitter:title" content="Theory of computation (6)">
+<meta name="twitter:description" content="본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 6강을 보며 정리한 내용입니다. GTG(Generalized Transition Graph) GTG는 NFA를 포함하는 개념입니다. GTG는 NFA의 Transition에 symbol 이 아닌 regular expression 이 들어간 Graph 를 애기합니다. complete GTG 는 모든">
+<meta name="twitter:image" content="http://lti.cs.vt.edu/OpenDSA/Books/CS4114/html/_images/nfatore1.png">
     
 
     
@@ -146,14 +146,14 @@
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-deque" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-cd6" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Data Structure(Deque)
+        Theory of computation (6)
         </h1>
     
 
@@ -163,8 +163,8 @@
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2019/05/20/deque/" class="article-date">
-            <time datetime="2019-05-20T08:20:18.000Z" itemprop="datePublished">2019-05-20</time>
+        <a href="/2019/06/04/cd6/" class="article-date">
+            <time datetime="2019-06-04T05:37:55.000Z" itemprop="datePublished">2019-06-04</time>
         </a>
     </div>
 
@@ -175,37 +175,69 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <font size="5" color="sky blue">자료구조2. Deque</font>
-
-<p><img src="https://iq.opengenus.org/content/images/2018/05/image.PNG" alt></p>
-<p>자료구조 중에서 stack과 queue를 합쳐 놓은 자료구조 방식으로, data를 넣고 빼는 곳이 두 곳으로 두 군데에서 모두 push / pop 이 가능한 자료 구조입니다.</p>
-<font size="4.5" color="orange">deque 을 이용한 알고리즘 문제 (1)</font>
-
-
-<p>비교 대상이 되는 문장 <code>base_sentence</code>와 비교하는 문장 <code>compare_sentence</code>가 주어집니다.</p>
-<p>compare_sentence 속에있는 단어는 모두 base_sentence 속에 있어야 하며, 단어의 순서 또한 같아야 합니다.</p>
-<p><code>example</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 입력값</span></span><br><span class="line">base_sentence = <span class="string">"give me one grand today night"</span></span><br><span class="line">compare_sentence = <span class="string">"give one grand today"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 반환값</span></span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 입력값</span></span><br><span class="line">base_sentence = <span class="string">"I am student"</span></span><br><span class="line">compare_sentence = <span class="string">"I am singer"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 반환값</span></span><br><span class="line"><span class="literal">False</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 입력값</span></span><br><span class="line">base_sentence = <span class="string">"one two three four"</span></span><br><span class="line">compare_sentence = <span class="string">"one three two"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 반환값</span></span><br><span class="line"><span class="literal">False</span></span><br></pre></td></tr></table></figure>
-<p><strong><em>풀이 코드</em></strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check_duplicate</span><span class="params">(base_sentence, compare_sentence)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    base_sentence : string type sentence</span></span><br><span class="line"><span class="string">    compare_sentence = string type sentence</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    base_sentence_list = base_sentence.split(<span class="string">' '</span>)</span><br><span class="line">    <span class="comment"># make deque data Structure</span></span><br><span class="line">    compare_deque = compare_sentence.split(<span class="string">' '</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> word <span class="keyword">in</span> base_sentence_list:</span><br><span class="line">        <span class="comment"># exception for index error</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="comment"># if base_sentence word and compare_deque word are same</span></span><br><span class="line">            <span class="comment"># then pop the word from compare_deque</span></span><br><span class="line">            <span class="keyword">if</span> word == compare_deque[<span class="number">0</span>]:</span><br><span class="line">                compare_deque.pop(<span class="number">0</span>)</span><br><span class="line">        <span class="comment"># if compare_deque is empty then return True</span></span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># if compare_deque is not empty then return False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span> <span class="keyword">if</span> len(ransome_deque) != <span class="number">0</span> <span class="keyword">else</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
-<p><strong><em>복잡도 Big-O</em></strong></p>
-<p><code>시간 복잡도</code></p>
-<ul>
-<li><code>O(N)</code><ul>
-<li>N : number of base_sentence words</li>
-<li>최악의 경우 base_sentence 총 단어의 갯수가 됩니다.</li>
-</ul>
-</li>
-</ul>
-<p><code>공간 복잡도</code></p>
-<ul>
-<li><code>O(N)</code><ul>
-<li>N : Max(base_sentence 단어 갯수, compare_sentence 단어 갯수)</li>
-</ul>
-</li>
-</ul>
+            <p>본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 6강을 보며 정리한 내용입니다.</p>
+<p><font size="5" color="sky blue">GTG(Generalized Transition Graph)</font><br><br></p>
+<p>GTG는 NFA를 포함하는 개념입니다.</p>
+<p>GTG는 NFA의 Transition에 symbol 이 아닌 regular expression 이 들어간 Graph 를 애기합니다.</p>
+<p>complete GTG 는 모든 state에서 다른 state로의 Transition 이 모두 있는것입니다. 혹 Transition 이 일어나지 않는 state간에는 공집합 $\phi$로 지정해줍니다.</p>
+<p><img src="http://lti.cs.vt.edu/OpenDSA/Books/CS4114/html/_images/nfatore1.png" alt></p>
+<p>위의 그래프에서 Transition symbol이 아닌 regular expression이라고 한다면 위 그래프는 GTG 입니다.</p>
+<p>위의 Graph 에서 accept 되는 language를 regular expression 으로 표현하면 다음과 같습니다.</p>
+<script type="math/tex; mode=display">r_{ii}^* r_{ij} (r_{jj} + r_{ji} r_{ii}^* r_{ij})^*</script><p>initial state $q_0$ 에서 final state $q_f$ 로 Transition 하는 방법은 두가지가 있습니다.</p>
+<p>먼저 $q_i \to q_j$ 로 Transition 하는 방법</p>
+<script type="math/tex; mode=display">r_{ii}^* r_{ij} r_{jj}^ {* }</script><p>그리고 $q_0 \to q_f \to q_0 \to q_f$ 로 Transition 하는 방법</p>
+<script type="math/tex; mode=display">r_{ii}^* r_{ij} r_{ji}r_{ii}^* r_{ij}</script><p>state가 3개인 경우에도 위 공식을 적용할수 있습니다. initial state 와 final state 를 제외한 state를 지워주면 가능합니다. 예제를 통해 알아보겠습니다.</p>
+<p><img src="http://lti.cs.vt.edu/OpenDSA/Books/CS4114/html/_images/nfatore2.png" alt></p>
+<p>위 그래프에서 initial state와 final state가 아닌 $q_k$를 지워주면서 $q_k$를 통해 발생할수 있는 Transition 을 모두 반영해주는 graph로 변형해주면 됩니다.</p>
+<p>$q_i$에서 자기 자신 $q_i$ 로 Transition 하는 방법은 2가지 입니다. 첫번째는</p>
+<script type="math/tex; mode=display">r_{ii}</script><p>이고, 또 다른 방법은 $q_i \to q_k \to q_i$로 가는 방법입니다.</p>
+<script type="math/tex; mode=display">r_{ik} r_{kk}^* r_{ki}</script><p>따라서 최종 $q_i$ 에서 자기 자신으로의 Transition 은</p>
+<script type="math/tex; mode=display">r_{ii} + r_{ik} r_{kk}^* r_{ki}</script><hr>
+<p>마찬가지로 $q_j$에서 자기 자신 $q_j$ 로 Transition 하는 방법도 2가지 입니다.</p>
+<p>첫번째는</p>
+<script type="math/tex; mode=display">r_{jj}</script><p>이고, 또 다른 방법은 $q_j \to q_k \to q_j$ 로 가는 방법입니다.</p>
+<script type="math/tex; mode=display">r_{jk} r_{kk}^* r_{kj}</script><p>따라서 최종 $q_j$ 에서 자기 자신으로의 Transition 은</p>
+<script type="math/tex; mode=display">r_{jj} + r_{jk} r_{kk}^* r_{kj}</script><hr>
+<p>이제 $q_i$ 에서 $q_j$로 Transition 하는 방법에 대해 알아보겠습니다.</p>
+<p>첫번째는 $q_i \to q_j$로 Transition 하는 방법입니다.</p>
+<script type="math/tex; mode=display">r_{ij}</script><p>두번째는</p>
+<p>$q_i \to q_k \to q_j$로 Transition 하는 방법입니다.</p>
+<script type="math/tex; mode=display">r_{ik} r_{kk}^* r_{kj}</script><p>입니다.</p>
+<p>최종적으로 두개를 합친 regular expression 으로 나타내면</p>
+<script type="math/tex; mode=display">r_{ij} + r_{ik} r_{kk}^* r_{kj}</script><p>입니다.</p>
+<hr>
+<p>마지막으로 $q_j$ 에서 $q_i$로 Transition 하는 방법에 대해 알아보겠습니다.</p>
+<p>첫번째는 $q_j \to q_i$로 Transition 하는 방법입니다.</p>
+<script type="math/tex; mode=display">r_{ji}</script><p>두번째는</p>
+<p>$q_j \to q_k \to q_i$로 Transition 하는 방법입니다.</p>
+<script type="math/tex; mode=display">r_{jk} r_{kk}^* r_{ki}</script><p>입니다.</p>
+<p>최종적으로 두개를 합친 regular expression 으로 나타내면</p>
+<script type="math/tex; mode=display">r_{ji} + r_{jk} r_{kk}^* r_{ki}</script><p>입니다.</p>
+<p>간단히 표로 정리해보면 다음과 같습니다.</p>
+<p>Transition 방향은 모두 행에서 열로 가는걸로 생각하면 됩니다.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>$q_i$</th>
+<th>$q_j$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$q_i$</td>
+<td>$r_{ii} + r_{ik} r_{kk}^* r_{ki}$</td>
+<td>$r_{ij} + r_{ik} r_{kk}^* r_{kj}$</td>
+</tr>
+<tr>
+<td>$q_j$</td>
+<td>$r_{ji} + r_{jk} r_{kk}^* r_{ki}$</td>
+<td>$r_{jj} + r_{jk} r_{kk}^* r_{kj}$</td>
+</tr>
+</tbody>
+</table>
+</div>
 
         </div>
         <footer class="article-footer">
@@ -213,7 +245,7 @@
 
 
 
-    <a data-url="http://progresivoJS.github.io/2019/05/20/deque/" data-id="cjwhdgnkz000j0al5k1asa7wd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://progresivoJS.github.io/2019/06/04/cd6/" data-id="cjwhdgnkp000b0al5zwhcnzfo" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -283,24 +315,20 @@
             "@type": "Person",
             "name": "James Park"
         },
-        "headline": "Data Structure(Deque)",
-        "image": "http://progresivoJS.github.iohttps://iq.opengenus.org/content/images/2018/05/image.PNG",
+        "headline": "Theory of computation (6)",
+        "image": "http://progresivoJS.github.iohttp://lti.cs.vt.edu/OpenDSA/Books/CS4114/html/_images/nfatore1.png",
         "keywords": "",
         "genre": "",
-        "datePublished": "2019-05-20",
-        "dateCreated": "2019-05-20",
-        "dateModified": "2019-05-20",
-        "url": "http://progresivoJS.github.io/2019/05/20/deque/",
-        "description": "자료구조2. Deque
-
-
-자료구조 중에서 stack과 queue를 합쳐 놓은 자료구조 방식으로, data를 넣고 빼는 곳이 두 곳으로 두 군데에서 모두 push / pop 이 가능한 자료 구조입니다.
-deque 을 이용한 알고리즘 문제 (1)
-
-
-비교 대상이 되는 문장 base_sentence와 비교하는 문장 compare_sentence가 주어집니다.
-"
-        "wordCount": 461
+        "datePublished": "2019-06-04",
+        "dateCreated": "2019-06-04",
+        "dateModified": "2019-06-04",
+        "url": "http://progresivoJS.github.io/2019/06/04/cd6/",
+        "description": "본 내용은 KOCW 한양대학교 “오토마타 및 계산이론” 강좌 6강을 보며 정리한 내용입니다.
+GTG(Generalized Transition Graph)
+GTG는 NFA를 포함하는 개념입니다.
+GTG는 NFA의 Transition에 symbol 이 아닌 regular expression 이 들어간 Graph 를 애기합니다.
+complete GTG 는 모든 "
+        "wordCount": 349
     }
 </script>
 
@@ -340,20 +368,10 @@ deque 을 이용한 알고리즘 문제 (1)
         
 <nav id="article-nav">
     
-        <a href="/2019/05/25/kmeans/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">newer</strong>
-        <p class="article-nav-title">
-        
-            k-means clustering
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2019/05/20/Stack/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2019/06/01/ct5/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">older</strong>
-        <p class="article-nav-title">Data Structure(Stack)</p>
+        <p class="article-nav-title">Theory of computation (5)</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -475,7 +493,7 @@ deque 을 이용한 알고리즘 문제 (1)
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'http://progresivoJS.github.io/2019/05/20/deque/';
+    var disqus_url = 'http://progresivoJS.github.io/2019/06/04/cd6/';
     
     (function() {
     var dsq = document.createElement('script');
